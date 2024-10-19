@@ -1,15 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=10 format=3 uid="uid://cn1l7xc1yxymr"]
 
-[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/player.tscn" id="1_idkq2"]
+[ext_resource type="Script" path="res://Scenes/Game/PlayerBehaviour.gd" id="1_rr0hm"]
+[ext_resource type="Script" path="res://Scenes/Game/camera_3d.gd" id="2_jhbw3"]
+[ext_resource type="Script" path="res://Scenes/Game/game_menu.gd" id="3_1xtic"]
+[ext_resource type="Script" path="res://Scenes/Game/puzzle_interact.gd" id="3_toxb6"]
+[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/BaseButton.tscn" id="4_3bvip"]
 [ext_resource type="MeshLibrary" uid="uid://bhvcmrh5kcn1c" path="res://Mesh/MeshLibraryTest1.tres" id="5_2pac6"]
-[ext_resource type="PackedScene" uid="uid://sr5vjokjeivh" path="res://Scenes/Game/Scenes/puzzle_master.tscn" id="5_rrasj"]
-[ext_resource type="PackedScene" uid="uid://c7yv7p5floq7r" path="res://Scenes/Game/Scenes/puzzle_piece.tscn" id="6_f7rnq"]
-[ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="7_nw2gi"]
-[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="8_jq53e"]
+[ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="6_u20v0"]
+[ext_resource type="Script" path="res://Scenes/Game/PuzzleMaster.gd" id="7_qa70d"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ohwu"]
 
 [node name="Game" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_idkq2")]
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36344, 0)
+script = ExtResource("1_rr0hm")
+speed = 500.0
+jumpForce = 1200.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_4ohwu")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_jhbw3")
+mouseSpeed = 0.2
+ctrlSpeed = 0.2
+pitch = Vector2(-90, 90)
+yaw = Vector2(0, 360)
+
+[node name="PuzzleInteract" type="Node" parent="Player"]
+script = ExtResource("3_toxb6")
 
 [node name="PlayerHUD" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -46,11 +69,23 @@ data = {
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="PuzzleMaster" parent="." instance=ExtResource("5_rrasj")]
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.004
+offset_bottom = 0.239929
+script = ExtResource("7_qa70d")
 
-[node name="PuzzlePiece" parent="PuzzleMaster" instance=ExtResource("6_f7rnq")]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
-offset_bottom = -0.383987
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.136
+offset_right = -88.0
+offset_bottom = -88.384
+texture = ExtResource("6_u20v0")
 
 [node name="GameMenu" type="Control" parent="."]
 process_mode = 3
@@ -62,7 +97,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_nw2gi")
+script = ExtResource("3_1xtic")
 
 [node name="ColorRect" type="ColorRect" parent="GameMenu"]
 layout_mode = 1
@@ -73,7 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.45098, 0.45098, 0.45098, 0.470588)
 
-[node name="BaseButton" parent="GameMenu" node_paths=PackedStringArray("targetMenu") instance=ExtResource("8_jq53e")]
+[node name="BaseButton" parent="GameMenu" node_paths=PackedStringArray("targetMenu") instance=ExtResource("4_3bvip")]
 layout_mode = 1
 anchor_left = 0.056
 anchor_top = 0.296
@@ -87,7 +122,7 @@ text = "Resume"
 behaviour = 1
 targetMenu = NodePath("..")
 
-[node name="BaseButton2" parent="GameMenu" instance=ExtResource("8_jq53e")]
+[node name="BaseButton2" parent="GameMenu" instance=ExtResource("4_3bvip")]
 layout_mode = 1
 anchor_left = 0.056
 anchor_top = 0.494
@@ -101,7 +136,7 @@ text = "Restart
 "
 behaviour = 2
 
-[node name="BaseButton3" parent="GameMenu" instance=ExtResource("8_jq53e")]
+[node name="BaseButton3" parent="GameMenu" instance=ExtResource("4_3bvip")]
 layout_mode = 1
 anchor_left = 0.056
 anchor_top = 0.691

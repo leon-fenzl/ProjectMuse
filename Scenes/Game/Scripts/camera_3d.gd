@@ -5,7 +5,7 @@ extends Camera3D
 @export var yaw := Vector2.ZERO
 @onready var camInputs := Vector2.ZERO
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !Input.is_action_pressed("LMB"):
 		rotation.x -= event.relative.y*mouseSpeed*get_physics_process_delta_time()
 		rotation.x = clamp(rotation.x,deg_to_rad(pitch.x),deg_to_rad(pitch.y))
 		rotation.y -= event.relative.x*mouseSpeed*get_physics_process_delta_time()

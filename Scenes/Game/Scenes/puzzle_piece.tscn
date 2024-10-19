@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7yv7p5floq7r"]
+
+[ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="1_t7omh"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/PuzzlePiece.gd" id="2_mu2vj"]
+
+[node name="PuzzlePiece" type="TextureRect"]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.136
+offset_bottom = 0.159996
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("1_t7omh")
+script = ExtResource("2_mu2vj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c803xrvfkmpnt"]
 
-[ext_resource type="Script" path="res://Scenes/base_button.gd" id="1_iky3m"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/base_button.gd" id="1_iky3m"]
 
 [node name="BaseButton" type="Button"]
 anchors_preset = -1

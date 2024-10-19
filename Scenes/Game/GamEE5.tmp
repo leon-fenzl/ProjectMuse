@@ -1,15 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=10 format=3 uid="uid://cn1l7xc1yxymr"]
 
-[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/player.tscn" id="1_idkq2"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/PlayerBehaviour.gd" id="1_jdgv5"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/camera_3d.gd" id="2_bn7ah"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/puzzle_interact.gd" id="3_j8vpw"]
 [ext_resource type="MeshLibrary" uid="uid://bhvcmrh5kcn1c" path="res://Mesh/MeshLibraryTest1.tres" id="5_2pac6"]
 [ext_resource type="PackedScene" uid="uid://sr5vjokjeivh" path="res://Scenes/Game/Scenes/puzzle_master.tscn" id="5_rrasj"]
 [ext_resource type="PackedScene" uid="uid://c7yv7p5floq7r" path="res://Scenes/Game/Scenes/puzzle_piece.tscn" id="6_f7rnq"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="7_nw2gi"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="8_jq53e"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ohwu"]
+
 [node name="Game" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_idkq2")]
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36344, 0)
+script = ExtResource("1_jdgv5")
+speed = 500.0
+jumpForce = 1200.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_4ohwu")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_bn7ah")
+mouseSpeed = 0.2
+ctrlSpeed = 0.2
+pitch = Vector2(-90, 90)
+yaw = Vector2(0, 360)
+
+[node name="PuzzleInteract" type="Node" parent="Player"]
+script = ExtResource("3_j8vpw")
 
 [node name="PlayerHUD" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -50,7 +73,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 
 [node name="PuzzlePiece" parent="PuzzleMaster" instance=ExtResource("6_f7rnq")]
 layout_mode = 1
-offset_bottom = -0.383987
 
 [node name="GameMenu" type="Control" parent="."]
 process_mode = 3

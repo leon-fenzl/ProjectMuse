@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc2sybv8mjop3"]
 
-[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/BaseButton.tscn" id="1_nafpx"]
+[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="1_nafpx"]
 
 [node name="StartMenu" type="Node"]
 process_mode = 3
