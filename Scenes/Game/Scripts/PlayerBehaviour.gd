@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var input_dirs := Vector3.ZERO
 @onready var moveDirection := Vector3.ZERO
 @onready var cam = $Camera3D
+@onready var stepSound = $AudioStreamPlayer3D
 func _physics_process(delta: float) -> void:
 	# Gravidade
 	if not is_on_floor():
@@ -25,5 +26,9 @@ func _physics_process(delta: float) -> void:
 	input_dirs.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_dirs = input_dirs.rotated(Vector3.UP, cam.rotation.y).normalized()
 	moveDirection = input_dirs.normalized()*speed*delta
+	if moveDirection != Vector3.ZERO && is_on_floor() && !stepSound.playing:
+		stepSound.play()
+	if moveDirection == Vector3.ZERO:
+		stepSound.stop()
 	velocity = moveDirection + gravity + jumpVector
 	move_and_slide()
