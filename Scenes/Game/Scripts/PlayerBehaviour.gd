@@ -26,9 +26,10 @@ func _physics_process(delta: float) -> void:
 	input_dirs.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_dirs = input_dirs.rotated(Vector3.UP, cam.rotation.y).normalized()
 	moveDirection = input_dirs.normalized()*speed*delta
-	if moveDirection != Vector3.ZERO && is_on_floor() && !stepSound.playing:
-		stepSound.play()
-	if moveDirection == Vector3.ZERO:
+	if moveDirection.length() > 0.2 || moveDirection.length() < -0.2:
+		if is_on_floor() && !stepSound.playing:
+			stepSound.play()
+	elif moveDirection.length() < 0.2 && moveDirection.length() > -0.2 && stepSound.playing:
 		stepSound.stop()
 	velocity = moveDirection + gravity + jumpVector
 	move_and_slide()
