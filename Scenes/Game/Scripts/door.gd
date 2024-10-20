@@ -15,7 +15,8 @@ func _ready() -> void:
 func Open_Door():
 	##Start opennig the door
 	OpeningDoor()
-	pass
+	##tocar audio
+	##get_node("AudioStreamPlayer").Play()
 	
 func OpeningDoor():
 	if time <= 1:

@@ -21,3 +21,5 @@ shape = SubResource("BoxShape3D_xepn8")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02734, 0.892877, 0.907218)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

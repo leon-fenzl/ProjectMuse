@@ -4,3 +4,5 @@
 
 [node name="BonesManager" type="Node"]
 script = ExtResource("1_ggimb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
