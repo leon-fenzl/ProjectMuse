@@ -7,6 +7,9 @@ extends CharacterBody3D
 @onready var moveDirection := Vector3.ZERO
 @onready var cam = $Camera3D
 @onready var stepSound = $AudioStreamPlayer3D
+@onready var floorObj :Node
+@onready var Concrete = "res://Sounds/SoundEffects/Passos 1.wav"
+@onready var Wood = "res://Sounds/SoundEffects/Passos 2.wav"
 func _physics_process(delta: float) -> void:
 	# Gravidade
 	if not is_on_floor():
@@ -28,8 +31,17 @@ func _physics_process(delta: float) -> void:
 	moveDirection = input_dirs.normalized()*speed*delta
 	if moveDirection.length() > 0.2 || moveDirection.length() < -0.2:
 		if is_on_floor() && !stepSound.playing:
+			FindFloor()
 			stepSound.play()
 	elif moveDirection.length() < 0.2 && moveDirection.length() > -0.2 && stepSound.playing:
 		stepSound.stop()
 	velocity = moveDirection + gravity + jumpVector
 	move_and_slide()
+func FindFloor():
+	if $RayCast3D.is_colliding():
+		floorObj = $RayCast3D.get_collider()
+	#	verifica o floorObj.is_in_group("ground metal wood etc")
+		if  floorObj.is_in_group("Concrete"):
+			stepSound.stream = load(Concrete)
+		elif floorObj.is_in_group("Wood"):
+			stepSound.stream = load(Wood)
