@@ -7,7 +7,7 @@ func _ready():
 
 func _on_body_entered(body: Node3D) -> void:
 	##Check if is Player
-	if body.get_node("%Player"):
+	if body.has_node("%Player"):
 		GetBone()
 		
 func GetBone():
