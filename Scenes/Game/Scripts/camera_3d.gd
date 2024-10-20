@@ -16,6 +16,8 @@ var targetPiece = null
 @onready var queryHit = null
 @onready var holdPosition := Vector3.ZERO
 
+@export var arrastar : AudioStream
+
 var hitResults 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and !Input.is_action_pressed("LMB"):
@@ -60,8 +62,11 @@ func DrawRay(DELTA:float):
 		queryHit.to = rayEnd
 		var hitResults = space.intersect_ray(queryHit)
 		if !hitResults.is_empty():
-			if hitResults.collider.is_in_group("pieces"):
+			if hitResults.collider.is_in_group("pieces") and targetPiece == null:
 				targetPiece = hitResults.collider
+				##Arrastar com som
+				get_node("AudioStreamPlayer").play(arrastar)
+			if targetPiece != null:
 				holdPosition = get_viewport().get_camera_3d().project_ray_normal(mousePos)
 				targetPiece.position.x = holdPosition.x
 				targetPiece.position.y = holdPosition.y

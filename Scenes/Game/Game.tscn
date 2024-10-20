@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=24 format=4 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_idkq2"]
 [ext_resource type="Texture2D" uid="uid://msdcf60m6vl7" path="res://Models/Museum_15442115_1122986464487913_7679120086886752232_n.png" id="1_s0h0d"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dse85b14lmcaa" path="res://Scenes/Game/Scenes/bones_manager.tscn" id="6_kjjqh"]
 [ext_resource type="Texture2D" uid="uid://wk35nf24ehul" path="res://Museum_007019001019.png" id="6_qfv85"]
 [ext_resource type="PackedScene" uid="uid://dyxin7c5pci0q" path="res://Scenes/Game/Scenes/locks.tscn" id="7_fy5me"]
+[ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="11_hfdv6"]
 [ext_resource type="AudioStream" uid="uid://bdidy8div3v8b" path="res://Sounds/SoundEffects/Parede Descendo.wav" id="15_flrjt"]
 [ext_resource type="PackedScene" path="res://Scenes/game_menu.tscn" id="18_jdbiy"]
 
@@ -103,6 +104,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.560136, 0.942667, -14.0106
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08936, 3.11809, -24.9721)
+
+[node name="Camera3D" parent="Player" index="1"]
+arrastar = ExtResource("11_hfdv6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera3D" index="1"]
+stream = ExtResource("11_hfdv6")
 
 [node name="puzzle_master" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 2.8, -17.3)
@@ -311,6 +318,7 @@ offset_right = -0.560059
 offset_bottom = -0.160004
 
 [node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
+visible = false
 
 [editable path="MuseumFinal"]
 [editable path="BonesManager"]
