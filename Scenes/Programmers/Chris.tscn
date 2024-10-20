@@ -57,8 +57,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="PuzzleMaster" parent="." instance=ExtResource("4_v1ogi")]
 
 [node name="PuzzlePiece" parent="PuzzleMaster" instance=ExtResource("5_sonjh")]
-layout_mode = 1
-offset_bottom = -0.383987
 
 [node name="GameMenu" type="Control" parent="."]
 process_mode = 3

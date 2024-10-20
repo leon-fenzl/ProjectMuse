@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://04envoemx5dl"]
+[gd_scene load_steps=7 format=3 uid="uid://04envoemx5dl"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/PlayerBehaviour.gd" id="1_ai877"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/camera_3d.gd" id="2_kr5n4"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/puzzle_interact.gd" id="3_0563u"]
+[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="4_f0kfq"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/FoyerMusic.gd" id="5_h0ki1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ohwu"]
 
@@ -26,3 +28,9 @@ yaw = Vector2(0, 360)
 
 [node name="PuzzleInteract" type="Node" parent="."]
 script = ExtResource("3_0563u")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_f0kfq")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("5_h0ki1")
