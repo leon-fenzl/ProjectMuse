@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dauvgvruduohm"
+path="res://.godot/imported/3 Game Play - Magnus Games Audio.wav-d14ef9458bc6a773d51f19094c605acc.sample"
+
+[deps]
+
+source_file="res://Sounds/BGSounds/3 Game Play - Magnus Games Audio.wav"
+dest_files=["res://.godot/imported/3 Game Play - Magnus Games Audio.wav-d14ef9458bc6a773d51f19094c605acc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
