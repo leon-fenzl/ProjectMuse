@@ -27,6 +27,7 @@ yaw = Vector2(0, 360)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+visible = false
 target_position = Vector3(0, 0, -2)
 
 [node name="PuzzleInteract" type="Node" parent="."]
