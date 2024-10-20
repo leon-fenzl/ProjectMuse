@@ -8,7 +8,8 @@ extends Node
 
 func GetBone():
 	##tocar audio
-	get_node("AudioStreamPlayer").play(coletavel)
+	get_node("AudioStreamPlayer").stream = load("res://Sounds/SoundEffects/Vitória Osso.wav")
+	get_node("AudioStreamPlayer").play()
 	
 	print("Pegou um osso")
 	actualBonesQuantity += 1
@@ -19,4 +20,5 @@ func CollectedAllBones():
 	print("Pegou todos os ossos")
 	##fim do jogo
 	##tocar audio
-	get_node("AudioStreamPlayer").play(vitoria)
+	get_node("AudioStreamPlayer").stream = load("res://Sounds/SoundEffects/Vitória Level.wav")
+	get_node("AudioStreamPlayer").play()

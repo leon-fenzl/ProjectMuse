@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=26 format=4 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_idkq2"]
-[ext_resource type="PackedScene" path="res://MuseumCollider.tscn" id="1_m4yh3"]
+[ext_resource type="PackedScene" uid="uid://cmw76mva6iabh" path="res://MuseumCollider.tscn" id="1_m4yh3"]
 [ext_resource type="Texture2D" uid="uid://msdcf60m6vl7" path="res://Models/Museum_15442115_1122986464487913_7679120086886752232_n.png" id="1_s0h0d"]
 [ext_resource type="PackedScene" uid="uid://ch42uc3ddb7l1" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="3_gn2nc"]
 [ext_resource type="PackedScene" uid="uid://c7x38j0epb5wj" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="4_6u137"]
@@ -61,6 +61,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ltqwi")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_25r1y"]
+size = Vector3(35.2109, 1, 17.3376)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5v6kt"]
+size = Vector3(27.0994, 1, 28.7651)
+
 [node name="Game" type="Node"]
 
 [node name="Museum" parent="." instance=ExtResource("1_m4yh3")]
@@ -89,13 +95,13 @@ vitoria = ExtResource("5_642hw")
 stream = ExtResource("4_sinha")
 
 [node name="BoneCollectable" parent="BonesManager" instance=ExtResource("3_gn2nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31961, 0.333677, -27.659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74948, -1.9809, -27.659)
 
 [node name="BoneCollectable2" parent="BonesManager" instance=ExtResource("4_6u137")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44601, 1.61243, -28.947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29018, -1.94647, -46.9746)
 
 [node name="BoneCollectable3" parent="BonesManager" instance=ExtResource("5_k25rg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.560136, 0.942667, -14.0106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9477, -2.20577, -51.3313)
 
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
 unique_name_in_owner = true
@@ -109,6 +115,7 @@ stream = ExtResource("11_hfdv6")
 
 [node name="puzzle_master" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 2.8, -17.3)
+visible = false
 collision_mask = 0
 locks = [NodePath("Locks"), null, null, null]
 solution = Array[int]([0])
@@ -166,6 +173,7 @@ shape = SubResource("BoxShape3D_0dpit")
 
 [node name="puzzle_master2" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 2.5, -34)
+visible = false
 collision_mask = 0
 locks = [NodePath("Locks")]
 solution = Array[int]([0])
@@ -220,6 +228,7 @@ shape = SubResource("BoxShape3D_0dpit")
 
 [node name="puzzle_master3" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3.1, -34.1)
+visible = false
 collision_mask = 0
 locks = [NodePath("Locks"), NodePath("Locks2"), NodePath("Locks3"), NodePath("Locks4")]
 solution = Array[int]([0])
@@ -315,6 +324,21 @@ offset_bottom = -0.160004
 
 [node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
 visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Wood"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94164, -3.30546, -47.1937)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_25r1y")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." groups=["Concrete"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94164, -3.30546, -25.1937)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.934814)
+shape = SubResource("BoxShape3D_5v6kt")
 
 [editable path="BonesManager"]
 [editable path="Player"]

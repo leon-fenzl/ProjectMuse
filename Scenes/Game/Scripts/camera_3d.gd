@@ -65,7 +65,7 @@ func DrawRay(DELTA:float):
 			if hitResults.collider.is_in_group("pieces") and targetPiece == null:
 				targetPiece = hitResults.collider
 				##Arrastar com som
-				get_node("AudioStreamPlayer").play(arrastar)
+				##get_node("AudioStreamPlayer").play(arrastar)
 			if targetPiece != null:
 				holdPosition = get_viewport().get_camera_3d().project_ray_normal(mousePos)
 				targetPiece.position.x = holdPosition.x
