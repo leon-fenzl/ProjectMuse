@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bpn1ccbrika8y"
+path="res://.godot/imported/Pegar Osso 1.wav-a8a69b7e2ed57fd43ee927d7176fbb93.sample"
+
+[deps]
+
+source_file="res://Sounds/SoundEffects/Pegar Osso 1.wav"
+dest_files=["res://.godot/imported/Pegar Osso 1.wav-a8a69b7e2ed57fd43ee927d7176fbb93.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
