@@ -52,7 +52,7 @@ func CamInputs():
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func DrawRay(DELTA:float):
 	if Input.is_action_pressed("LMB"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 		mousePos = get_viewport().get_mouse_position()
 		rayStart = get_viewport().get_camera_3d().project_ray_origin(mousePos)
 		rayEnd = get_viewport().get_camera_3d().project_position(mousePos,1000.0)
