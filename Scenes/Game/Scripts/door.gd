@@ -7,11 +7,9 @@ var time : float = 0
 ##@export var targetPosition : Vector3()
 
 func _ready() -> void:
-	pass # Replace with function body.
-	
+	pass # Replace with function body.	
 	##get the final position
 	markerPosition = get_node("Marker3D")
-	Open_Door()
 
 func Open_Door():
 	##Start opennig the door

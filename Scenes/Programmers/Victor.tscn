@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqdb6sw1r6mfi"]
+[gd_scene load_steps=6 format=3 uid="uid://dqdb6sw1r6mfi"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/door.gd" id="1_kjr6x"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/testUniqueName.gd" id="2_j4pr3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_15cx7"]
 
@@ -25,3 +26,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02734, 0.892877, 0.907218)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0394232, 3.64161)
+
+[node name="TesteBoladao" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42587, 0, -2.80729)
+script = ExtResource("2_j4pr3")
