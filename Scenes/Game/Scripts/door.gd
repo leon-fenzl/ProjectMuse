@@ -11,6 +11,7 @@ func _ready() -> void:
 	##get the final position
 	markerPosition = get_node("Marker3D")
 
+##Chamar essa funcao
 func Open_Door():
 	##Start opennig the door
 	OpeningDoor()

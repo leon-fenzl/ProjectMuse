@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch42uc3ddb7l1"]
+[gd_scene load_steps=5 format=3 uid="uid://dmf7d2yr0rr0v"]
 
-[ext_resource type="Script" path="res://Scenes/Game/Scripts/bone_collectable.gd" id="1_0gomv"]
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/bone_collectable.gd" id="1_4rfhm"]
+[ext_resource type="ArrayMesh" uid="uid://dvfrg76oxf7if" path="res://Mesh/Bone3.res" id="2_j81ia"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4kbf"]
 
@@ -8,14 +9,21 @@
 
 [node name="BoneCollectable" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99277, 1.61243, 0)
-script = ExtResource("1_0gomv")
+script = ExtResource("1_4rfhm")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_u4kbf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_vp3oe")
 skeleton = NodePath("")
+
+[node name="MeshOsso" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = ExtResource("2_j81ia")
+
+[node name="SomColeta" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

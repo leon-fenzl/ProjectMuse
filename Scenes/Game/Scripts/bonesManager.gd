@@ -11,3 +11,4 @@ func GetBone():
 
 func CollectedAllBones():
 	print("Pegou todos os ossos")
+	##fim do jogo

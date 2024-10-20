@@ -9,4 +9,5 @@ func _on_body_entered(body: Node3D) -> void:
 	##Check if is Player
 	if body.get_node("%Player"):
 		bonesMng.GetBone()
-		queue_free()
+		get_node("MeshOsso").queue_free()
+		##tocar audio
