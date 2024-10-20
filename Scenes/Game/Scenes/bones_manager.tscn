@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dse85b14lmcaa"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/bonesManager.gd" id="1_ggimb"]
+
+[node name="BonesManager" type="Node"]
+script = ExtResource("1_ggimb")
