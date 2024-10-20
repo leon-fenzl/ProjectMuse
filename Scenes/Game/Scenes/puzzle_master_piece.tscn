@@ -5,4 +5,4 @@
 [node name="puzzle_master_piece" type="CharacterBody3D" groups=["pieces"]]
 script = ExtResource("2_mu2vj")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." groups=["pieces"]]

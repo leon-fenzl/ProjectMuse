@@ -31,5 +31,5 @@ extends CharacterBody3D
 	#sprite.hframes = value.x
 	#sprite.vframes = value.y
 func FollowMouse(mousePos):
-	position.x = mousePos.x
-	position.y = mousePos.y
+	position.x += mousePos.x
+	position.y += mousePos.y

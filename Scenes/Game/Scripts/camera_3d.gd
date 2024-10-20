@@ -15,6 +15,8 @@ var targetPiece = null
 @onready var space = null
 @onready var queryHit = null
 @onready var holdPosition := Vector3.ZERO
+@onready var ray = $RayCast3D
+var hitResults 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and !Input.is_action_pressed("LMB"):
 		rotation.x -= event.relative.y*mouseSpeed*get_physics_process_delta_time()
@@ -23,31 +25,26 @@ func _input(event: InputEvent) -> void:
 		rotation.y = wrapf(rotation.y,deg_to_rad(yaw.x),deg_to_rad(yaw.y))
 func _physics_process(delta: float) -> void:
 	CamInputs()
-	DrawRay()
+	CapturePiece(delta)
 func CamInputs():
 	camInputs = Input.get_vector("camLeft","camRight","camUp","camDown").normalized()
 	rotation.x -= camInputs.y*ctrlSpeed*get_physics_process_delta_time()
 	rotation.x = clamp(rotation.x,deg_to_rad(pitch.x),deg_to_rad(pitch.y))
 	rotation.y -= camInputs.x*ctrlSpeed*get_physics_process_delta_time()
 	rotation.y = wrapf(rotation.y,deg_to_rad(yaw.x),deg_to_rad(yaw.y))
-func DrawRay():
+func CapturePiece(DELTA:float):
+	mousePos = get_viewport().get_mouse_position()
+	ray.global_position = get_viewport().get_camera_3d().project_position(mousePos,0.25)
 	if Input.is_action_pressed("LMB"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		mousePos = get_viewport().get_mouse_position()
-		rayStart = get_viewport().get_camera_3d().project_ray_origin(mousePos)
-		rayEnd = get_viewport().get_camera_3d().project_position(mousePos,1000.0)
-		space = get_world_3d().direct_space_state
-		queryHit = PhysicsRayQueryParameters3D.new()
-		ShootRay()
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		if ray.is_colliding() and ray.get_collider().is_in_group("pieces"):
+			if targetPiece == null:
+				targetPiece = ray.get_collider()
+		if targetPiece != null:
+			targetPiece.global_position.x = ray.global_position.x
+			targetPiece.global_position.y = ray.global_position.y
+			print(targetPiece.position)
 	if Input.is_action_just_released("LMB"):
+		targetPiece = null
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-func ShootRay():
-	queryHit.from = rayStart
-	queryHit.to = rayEnd
-	var hitResults = space.intersect_ray(queryHit)
-	if !hitResults.is_empty():
-		if hitResults.collider.is_in_group("pieces"):
-			targetPiece = hitResults.collider
-			holdPosition = global_position - targetPiece.global_position
-			targetPiece.position = get_viewport().get_camera_3d().project_local_ray_normal(mousePos)
 	
