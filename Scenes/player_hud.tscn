@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://0m4mpe212x62"]
+
+[node name="PlayerHUD" type="Control"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.497
+anchor_right = 0.502
+anchor_bottom = 0.503
+offset_left = 0.559937
+offset_top = 0.160004
+offset_right = -0.560059
+offset_bottom = -0.160004

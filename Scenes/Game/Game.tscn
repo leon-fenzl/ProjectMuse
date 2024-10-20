@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dse85b14lmcaa" path="res://Scenes/Game/Scenes/bones_manager.tscn" id="6_kjjqh"]
 [ext_resource type="Texture2D" uid="uid://wk35nf24ehul" path="res://Museum_007019001019.png" id="6_qfv85"]
 [ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/locks.tscn" id="7_fy5me"]
-[ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="7_nw2gi"]
-[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="8_jq53e"]
+[ext_resource type="PackedScene" uid="uid://m8ncnvkb1pxe" path="res://Scenes/game_menu.tscn" id="14_d8sc4"]
+[ext_resource type="PackedScene" uid="uid://0m4mpe212x62" path="res://Scenes/player_hud.tscn" id="14_qlndh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dpit"]
 size = Vector3(2.47009, 1.67798, 0.5)
@@ -268,90 +268,10 @@ transform = Transform3D(2.478, 0, 0, 0, 2.478, 0, 0, 0, 2.478, 0.768553, -0.7, 5
 mesh = SubResource("ArrayMesh_7m0gv")
 skeleton = NodePath("")
 
-[node name="PlayerHUD" type="Control" parent="."]
-custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PlayerHUD" parent="." instance=ExtResource("14_qlndh")]
 
-[node name="ColorRect" type="ColorRect" parent="PlayerHUD"]
-custom_minimum_size = Vector2(4, 4)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.497
-anchor_right = 0.502
-anchor_bottom = 0.503
-offset_left = 0.559937
-offset_top = 0.160004
-offset_right = -0.560059
-offset_bottom = -0.160004
-
-[node name="GameMenu" type="Control" parent="."]
-process_mode = 3
+[node name="GameMenu" parent="." instance=ExtResource("14_d8sc4")]
 visible = false
-custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_nw2gi")
-
-[node name="ColorRect" type="ColorRect" parent="GameMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.45098, 0.45098, 0.45098, 0.470588)
-
-[node name="BaseButton" parent="GameMenu" node_paths=PackedStringArray("targetMenu") instance=ExtResource("8_jq53e")]
-layout_mode = 1
-anchor_left = 0.056
-anchor_top = 0.296
-anchor_right = 0.222
-anchor_bottom = 0.358
-offset_left = -0.512001
-offset_top = 0.192001
-offset_right = 0.255981
-offset_bottom = 1.01599
-text = "Resume"
-behaviour = 1
-targetMenu = NodePath("..")
-
-[node name="BaseButton2" parent="GameMenu" instance=ExtResource("8_jq53e")]
-layout_mode = 1
-anchor_left = 0.056
-anchor_top = 0.494
-anchor_right = 0.222
-anchor_bottom = 0.557
-offset_left = -0.512001
-offset_top = -0.112
-offset_right = 0.255981
-offset_bottom = 0.0639648
-text = "Restart
-"
-behaviour = 2
-
-[node name="BaseButton3" parent="GameMenu" instance=ExtResource("8_jq53e")]
-layout_mode = 1
-anchor_left = 0.056
-anchor_top = 0.691
-anchor_right = 0.222
-anchor_bottom = 0.753
-offset_left = -0.512001
-offset_top = 0.231964
-offset_right = 0.255981
-offset_bottom = 1.056
-text = "Quit
-"
-behaviour = 4
 
 [editable path="MuseumFinal"]
 [editable path="Player"]

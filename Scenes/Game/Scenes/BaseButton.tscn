@@ -8,6 +8,9 @@ anchor_right = 0.181
 anchor_bottom = 0.063
 offset_right = 0.487991
 offset_bottom = 0.175999
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("1_iky3m")
 metadata/_edit_group_ = true
 
