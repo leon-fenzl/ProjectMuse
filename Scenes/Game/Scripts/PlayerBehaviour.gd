@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var floorObj :Node
 @onready var Concrete = "res://Sounds/SoundEffects/Passos 1.wav"
 @onready var Wood = "res://Sounds/SoundEffects/Passos 2.wav"
+
 func _physics_process(delta: float) -> void:
 	# Gravidade
 	if not is_on_floor():
@@ -44,4 +45,5 @@ func FindFloor():
 		if  floorObj.is_in_group("Concrete"):
 			stepSound.stream = load(Concrete)
 		elif floorObj.is_in_group("Wood"):
+			get_node("%AudioStreamPlayer3D2").restrictedArea = true
 			stepSound.stream = load(Wood)
