@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wbtq6ahs704y"
+path="res://.godot/imported/Vitória Level.wav-bc8e9b50c8095ad7e33501e7b6df145c.sample"
+
+[deps]
+
+source_file="res://Sounds/SoundEffects/Vitória Level.wav"
+dest_files=["res://.godot/imported/Vitória Level.wav-bc8e9b50c8095ad7e33501e7b6df145c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4ckqjtk8gvos"
+path="res://.godot/imported/Vitória Osso.wav-cd7b2e0d4968f400ba2a061c9b63957b.sample"
+
+[deps]
+
+source_file="res://Sounds/SoundEffects/Vitória Osso.wav"
+dest_files=["res://.godot/imported/Vitória Osso.wav-cd7b2e0d4968f400ba2a061c9b63957b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
