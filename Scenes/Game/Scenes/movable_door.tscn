@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://nrpg1rml7yng"]
+[gd_scene load_steps=6 format=3 uid="uid://nrpg1rml7yng"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/door.gd" id="1_q8567"]
+[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="2_w14f3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_15cx7"]
 
@@ -23,3 +24,4 @@ shape = SubResource("BoxShape3D_xepn8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02734, 0.892877, 0.907218)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_w14f3")

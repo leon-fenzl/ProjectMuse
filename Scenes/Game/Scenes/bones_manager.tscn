@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dse85b14lmcaa"]
+[gd_scene load_steps=3 format=3 uid="uid://dse85b14lmcaa"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/bonesManager.gd" id="1_ggimb"]
+[ext_resource type="AudioStream" uid="uid://brx2mxmxyn1aq" path="res://Sounds/BGSounds/Fase 1 - Primeiro Quadro - 2.wav" id="2_tw3ek"]
 
 [node name="BonesManager" type="Node"]
 script = ExtResource("1_ggimb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tw3ek")

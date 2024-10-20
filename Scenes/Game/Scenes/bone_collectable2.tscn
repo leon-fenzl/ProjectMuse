@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfg7fyimybtt1"]
+[gd_scene load_steps=5 format=3 uid="uid://c7x38j0epb5wj"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/bone_collectable.gd" id="1_i5fy8"]
 [ext_resource type="ArrayMesh" uid="uid://uy2oyyylkw2g" path="res://Mesh/Bone2.res" id="2_1rfi3"]
@@ -22,8 +22,6 @@ skeleton = NodePath("")
 [node name="MeshOsso" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = ExtResource("2_1rfi3")
-
-[node name="SomColeta" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

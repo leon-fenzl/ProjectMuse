@@ -1,23 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqdb6sw1r6mfi"]
+[gd_scene load_steps=8 format=3 uid="uid://dqdb6sw1r6mfi"]
 
-[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_d71u4"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/testUniqueName.gd" id="2_j4pr3"]
-[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="2_vf4pg"]
 [ext_resource type="MeshLibrary" uid="uid://bhvcmrh5kcn1c" path="res://Mesh/MeshLibraryTest1.tres" id="4_nryua"]
 [ext_resource type="PackedScene" uid="uid://nrpg1rml7yng" path="res://Scenes/Game/Scenes/movable_door.tscn" id="5_t2t0j"]
 [ext_resource type="PackedScene" uid="uid://ch42uc3ddb7l1" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="6_0gpxm"]
 [ext_resource type="PackedScene" uid="uid://dse85b14lmcaa" path="res://Scenes/Game/Scenes/bones_manager.tscn" id="8_hehg1"]
-[ext_resource type="PackedScene" uid="uid://bfg7fyimybtt1" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="8_ofet1"]
+[ext_resource type="PackedScene" uid="uid://c7x38j0epb5wj" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="8_ofet1"]
 [ext_resource type="PackedScene" uid="uid://dmf7d2yr0rr0v" path="res://Scenes/Game/Scenes/bone_collectable3.tscn" id="9_najfi"]
 
 [node name="Victor" type="Node"]
-
-[node name="Player" parent="." instance=ExtResource("1_d71u4")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40801, 1.83494, -3.6405)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
-stream = ExtResource("2_vf4pg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0394232, 3.64161)

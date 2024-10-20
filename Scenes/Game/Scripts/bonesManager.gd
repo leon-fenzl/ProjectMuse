@@ -5,7 +5,7 @@ extends Node
 
 func GetBone():
 	##tocar audio
-	##get_node("AudioStreamPlayer").Play()
+	get_node("AudioStreamPlayer").play()
 	
 	print("Pegou um osso")
 	actualBonesQuantity += 1
