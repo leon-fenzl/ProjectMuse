@@ -7,3 +7,4 @@ func _input(event):
 		self.visible = get_tree().paused
 	if get_tree().paused == true:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#tratlalalalalalala
