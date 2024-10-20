@@ -1,17 +1,17 @@
 [gd_scene load_steps=16 format=3 uid="uid://cn1l7xc1yxymr"]
 
-[ext_resource type="PackedScene" uid="uid://bfofybem44tda" path="res://museumFinal.tscn" id="1_6604d"]
+[ext_resource type="PackedScene" path="res://museumFinal.tscn" id="1_6604d"]
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_idkq2"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="3_gn2nc"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="4_6u137"]
+[ext_resource type="PackedScene" uid="uid://ch42uc3ddb7l1" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="3_gn2nc"]
+[ext_resource type="PackedScene" uid="uid://c7x38j0epb5wj" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="4_6u137"]
 [ext_resource type="PackedScene" uid="uid://nrpg1rml7yng" path="res://Scenes/Game/Scenes/movable_door.tscn" id="4_msfhc"]
 [ext_resource type="MeshLibrary" uid="uid://bhvcmrh5kcn1c" path="res://Mesh/MeshLibraryTest1.tres" id="5_2pac6"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/bone_collectable3.tscn" id="5_k25rg"]
+[ext_resource type="PackedScene" uid="uid://dmf7d2yr0rr0v" path="res://Scenes/Game/Scenes/bone_collectable3.tscn" id="5_k25rg"]
 [ext_resource type="PackedScene" uid="uid://sr5vjokjeivh" path="res://Scenes/Game/Scenes/puzzle_master.tscn" id="5_rrasj"]
 [ext_resource type="PackedScene" uid="uid://c7yv7p5floq7r" path="res://Scenes/Game/Scenes/puzzle_master_piece.tscn" id="6_f7rnq"]
 [ext_resource type="PackedScene" uid="uid://dse85b14lmcaa" path="res://Scenes/Game/Scenes/bones_manager.tscn" id="6_kjjqh"]
 [ext_resource type="Texture2D" uid="uid://wk35nf24ehul" path="res://Museum_007019001019.png" id="6_qfv85"]
-[ext_resource type="PackedScene" uid="uid://dyxin7c5pci0q" path="res://Scenes/Game/Scenes/locks.tscn" id="7_fy5me"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/locks.tscn" id="7_fy5me"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="7_nw2gi"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="8_jq53e"]
 
@@ -40,15 +40,18 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="BonesManager" parent="." instance=ExtResource("6_kjjqh")]
 unique_name_in_owner = true
 
-[node name="BoneCollectable" parent="." instance=ExtResource("3_gn2nc")]
+[node name="BoneCollectable" parent="BonesManager" instance=ExtResource("3_gn2nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31961, 0.333677, -27.659)
 
-[node name="BoneCollectable2" parent="." instance=ExtResource("4_6u137")]
+[node name="BoneCollectable2" parent="BonesManager" instance=ExtResource("4_6u137")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44601, 1.61243, -28.947)
 
-[node name="BoneCollectable3" parent="." instance=ExtResource("5_k25rg")]
+[node name="BoneCollectable3" parent="BonesManager" instance=ExtResource("5_k25rg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.560136, 0.942667, -14.0106)
 
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 4.81162, -3.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08936, 3.11809, -24.9721)
 
 [node name="puzzle_master" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 2.8, -17.3)
@@ -207,6 +210,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744908, 0.0615816, 0.19999
 shape = SubResource("BoxShape3D_0dpit")
 
 [node name="MovableDoor" parent="puzzle_master3" instance=ExtResource("4_msfhc")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -2.4, 5.21538)
 
 [node name="MeshInstance3D" parent="puzzle_master3/MovableDoor" index="0"]
@@ -300,6 +304,7 @@ text = "Quit
 "
 behaviour = 4
 
+[editable path="Player"]
 [editable path="puzzle_master/puzzle_master_piece"]
 [editable path="puzzle_master/puzzle_master_piece2"]
 [editable path="puzzle_master/puzzle_master_piece3"]
