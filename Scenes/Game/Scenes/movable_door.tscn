@@ -10,7 +10,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xepn8"]
 
 [node name="MovableDoor" type="StaticBody3D"]
-transform = Transform3D(-0.559193, 0, 0.829038, 0, 1, 0, -0.829038, 0, -0.559193, 0, 2.005, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_15cx7")
 script = ExtResource("1_q8567")
 
