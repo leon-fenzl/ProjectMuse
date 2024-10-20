@@ -15,7 +15,7 @@ var targetPiece = null
 @onready var space = null
 @onready var queryHit = null
 @onready var holdPosition := Vector3.ZERO
-@onready var ray = $RayCast3D
+
 var hitResults 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and !Input.is_action_pressed("LMB"):

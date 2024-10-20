@@ -26,8 +26,8 @@ ctrlSpeed = 1.5
 pitch = Vector2(-90, 90)
 yaw = Vector2(0, 360)
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, -2, 0)
+[node name="Site" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -2)
 
 [node name="PuzzleInteract" type="Node" parent="."]
 script = ExtResource("3_slahx")
@@ -40,5 +40,5 @@ unique_name_in_owner = true
 volume_db = -30.0
 script = ExtResource("5_cprp8")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="Feet" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)

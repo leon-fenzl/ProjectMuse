@@ -39,8 +39,8 @@ func _physics_process(delta: float) -> void:
 	velocity = moveDirection + gravity + jumpVector
 	move_and_slide()
 func FindFloor():
-	if $RayCast3D.is_colliding():
-		floorObj = $RayCast3D.get_collider()
+	if $Feet.is_colliding():
+		floorObj = $Feet.get_collider()
 	#	verifica o floorObj.is_in_group("ground metal wood etc")
 		if  floorObj.is_in_group("Concrete"):
 			stepSound.stream = load(Concrete)
