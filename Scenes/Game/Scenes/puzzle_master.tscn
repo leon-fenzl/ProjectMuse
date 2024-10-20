@@ -1,20 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://sr5vjokjeivh"]
+[gd_scene load_steps=2 format=3 uid="uid://sr5vjokjeivh"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/PuzzleMaster.gd" id="1_8jggb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_smm17"]
-
-[node name="PuzzleMaster" type="Control"]
-clip_contents = true
-custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.004
-offset_bottom = 0.239929
+[node name="puzzle_master" type="StaticBody3D"]
 script = ExtResource("1_8jggb")
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-position = Vector2(16, 16)
-shape = SubResource("CircleShape2D_smm17")
-target_position = Vector2(0, 0)
-max_results = 10

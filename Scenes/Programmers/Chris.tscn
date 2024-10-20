@@ -5,7 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://bhvcmrh5kcn1c" path="res://Mesh/MeshLibraryTest1.tres" id="3_mfjlm"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/FoyerMusic.gd" id="3_vjgss"]
 [ext_resource type="PackedScene" uid="uid://sr5vjokjeivh" path="res://Scenes/Game/Scenes/puzzle_master.tscn" id="4_v1ogi"]
-[ext_resource type="PackedScene" uid="uid://c7yv7p5floq7r" path="res://Scenes/Game/Scenes/puzzle_piece.tscn" id="5_sonjh"]
+[ext_resource type="PackedScene" uid="uid://c7yv7p5floq7r" path="res://Scenes/Game/Scenes/puzzle_master_piece.tscn" id="5_sonjh"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="6_g2i7x"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="7_uuy7o"]
 

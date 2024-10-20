@@ -20,7 +20,7 @@ shape = SubResource("CapsuleShape3D_4ohwu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("2_kr5n4")
 mouseSpeed = 0.2
-ctrlSpeed = 0.2
+ctrlSpeed = 1.5
 pitch = Vector2(-90, 90)
 yaw = Vector2(0, 360)
 

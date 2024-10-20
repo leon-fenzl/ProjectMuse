@@ -1,11 +1,35 @@
-extends TextureRect
-@onready var mouseOver := false
-@onready var mousePos = null
-func _physics_process(delta: float) -> void:
-	if mouseOver == true:
-		position.x = (get_global_mouse_position().x-64.0)
-		position.y = (get_global_mouse_position().y-64.0)
-func _on_mouse_entered() -> void:
-	mouseOver = true
-func _on_mouse_exited() -> void:
-	mouseOver = false
+@tool
+extends CharacterBody3D
+#@export var texture : Texture2D:
+	#get:
+		#return texture
+	#set(value):
+		#if value != texture:
+			#texture = value
+			#UpdateSprite(texture)
+#@export var split : Vector2:
+	#get:
+		#return split
+	#set(value):
+		#if value != split:
+			#split = value
+			#UpdateFrames(split)
+#@export var cell : int:
+	#get:
+		#return cell
+	#set(value):
+		#if value != cell:
+			#cell = value
+			#UpdateCell(cell)
+#@onready var sprite = $Sprite3D
+#@onready var mousePos = null
+#func UpdateSprite(value):
+	#sprite.texture = value
+#func UpdateCell(value):
+	#sprite.frame = value
+#func UpdateFrames(value):
+	#sprite.hframes = value.x
+	#sprite.vframes = value.y
+func FollowMouse(mousePos):
+	position.x = mousePos.x
+	position.y = mousePos.y

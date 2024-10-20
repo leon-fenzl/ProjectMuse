@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7yv7p5floq7r"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/PuzzlePiece.gd" id="2_mu2vj"]
+
+[node name="puzzle_master_piece" type="CharacterBody3D" groups=["pieces"]]
+script = ExtResource("2_mu2vj")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
