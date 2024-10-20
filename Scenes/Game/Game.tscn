@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=4 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_idkq2"]
+[ext_resource type="PackedScene" path="res://MuseumCollider.tscn" id="1_m4yh3"]
 [ext_resource type="Texture2D" uid="uid://msdcf60m6vl7" path="res://Models/Museum_15442115_1122986464487913_7679120086886752232_n.png" id="1_s0h0d"]
-[ext_resource type="PackedScene" uid="uid://dydn8dbjp1gbm" path="res://Models/Museum.glb" id="1_xmvkc"]
 [ext_resource type="PackedScene" uid="uid://ch42uc3ddb7l1" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="3_gn2nc"]
 [ext_resource type="PackedScene" uid="uid://c7x38j0epb5wj" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="4_6u137"]
 [ext_resource type="PackedScene" uid="uid://nrpg1rml7yng" path="res://Scenes/Game/Scenes/movable_door.tscn" id="4_msfhc"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxin7c5pci0q" path="res://Scenes/Game/Scenes/locks.tscn" id="7_fy5me"]
 [ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="11_hfdv6"]
 [ext_resource type="AudioStream" uid="uid://bdidy8div3v8b" path="res://Sounds/SoundEffects/Parede Descendo.wav" id="15_flrjt"]
-[ext_resource type="PackedScene" path="res://Scenes/game_menu.tscn" id="18_jdbiy"]
+[ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/game_menu.tscn" id="18_jdbiy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dpit"]
 size = Vector3(2.47009, 1.67798, 0.5)
@@ -63,12 +63,8 @@ shadow_mesh = SubResource("ArrayMesh_ltqwi")
 
 [node name="Game" type="Node"]
 
-[node name="MuseumFinal" parent="." instance=ExtResource("1_xmvkc")]
-transform = Transform3D(2.478, 0, 0, 0, 2.478, 0, 0, 0, 2.478, -13.8, 0, 0)
-
-[node name="G-Object_019" parent="MuseumFinal" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19312, -4.4866, -9.63607)
-visible = false
+[node name="Museum" parent="." instance=ExtResource("1_m4yh3")]
+transform = Transform3D(3.3, 0, 0, 0, 3.3, 0, 0, 0, 3.3, -15, -3.4, -9.6)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1, 0, 0)
@@ -320,7 +316,6 @@ offset_bottom = -0.160004
 [node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
 visible = false
 
-[editable path="MuseumFinal"]
 [editable path="BonesManager"]
 [editable path="Player"]
 [editable path="puzzle_master3/MovableDoor"]

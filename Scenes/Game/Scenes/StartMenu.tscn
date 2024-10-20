@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc2sybv8mjop3"]
+[gd_scene load_steps=6 format=3 uid="uid://cc2sybv8mjop3"]
 
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://PLAY_1.png" id="1_iabt3"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="1_nafpx"]
 [ext_resource type="Texture2D" uid="uid://bdebbnlnjfjxm" path="res://PLAY_ICON.png" id="3_dfsub"]
+[ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_i7ynb"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://QUIT_ICON.png" id="4_mvpbn"]
 
 [node name="StartMenu" type="Node"]
@@ -30,6 +31,10 @@ offset_top = 122.88
 offset_right = -0.320068
 offset_bottom = 3.23996
 icon = ExtResource("3_dfsub")
+click = ExtResource("4_i7ynb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BaseButton"]
+stream = ExtResource("4_i7ynb")
 
 [node name="BaseButton2" parent="." instance=ExtResource("1_nafpx")]
 anchor_left = 0.894
@@ -42,3 +47,7 @@ offset_right = 0.0
 offset_bottom = 0.320007
 icon = ExtResource("4_mvpbn")
 behaviour = 4
+click = ExtResource("4_i7ynb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BaseButton2"]
+stream = ExtResource("4_i7ynb")

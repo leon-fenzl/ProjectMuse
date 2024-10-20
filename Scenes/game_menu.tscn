@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://m8ncnvkb1pxe"]
+[gd_scene load_steps=8 format=3 uid="uid://h8x26iys3i3h"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="1_fvb2o"]
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://PLAY_1.png" id="2_nbl12"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="2_pa8dj"]
 [ext_resource type="Texture2D" uid="uid://d2nvc5272xrqy" path="res://RESUME_ICON.png" id="4_cnjmw"]
+[ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="5_ofsrr"]
 [ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://RESTART_ICON.png" id="5_u5yc2"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://QUIT_ICON.png" id="6_6xgbd"]
 
@@ -31,7 +32,7 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="BaseButton" parent="." node_paths=PackedStringArray("targetMenu") instance=ExtResource("2_pa8dj")]
+[node name="BaseButton" parent="BGMenu" node_paths=PackedStringArray("targetMenu") instance=ExtResource("2_pa8dj")]
 layout_mode = 1
 anchor_left = 0.056
 anchor_top = 0.296
@@ -43,9 +44,12 @@ offset_right = 0.255981
 offset_bottom = 1.01599
 icon = ExtResource("4_cnjmw")
 behaviour = 1
-targetMenu = NodePath("..")
+targetMenu = NodePath("../..")
+click = ExtResource("5_ofsrr")
 
-[node name="BaseButton2" parent="." instance=ExtResource("2_pa8dj")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton"]
+
+[node name="BaseButton2" parent="BGMenu" instance=ExtResource("2_pa8dj")]
 layout_mode = 1
 anchor_left = 0.056
 anchor_top = 0.494
@@ -57,8 +61,11 @@ offset_right = 0.255981
 offset_bottom = 0.0639648
 icon = ExtResource("5_u5yc2")
 behaviour = 2
+click = ExtResource("5_ofsrr")
 
-[node name="BaseButton3" parent="." instance=ExtResource("2_pa8dj")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton2"]
+
+[node name="BaseButton3" parent="BGMenu" instance=ExtResource("2_pa8dj")]
 layout_mode = 1
 anchor_left = 0.056
 anchor_top = 0.691
@@ -70,3 +77,6 @@ offset_right = 0.255981
 offset_bottom = 1.056
 icon = ExtResource("6_6xgbd")
 behaviour = 4
+click = ExtResource("5_ofsrr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton3"]
