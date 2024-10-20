@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dj0bpgwaykiau"
+path.s3tc="res://.godot/imported/Museum_cc5320302f6c32590a1d13626aab4d16.png-943f963be6fc4cf516afdfd084d0c6d9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "fd26fa007f000474c033b55abc9f2ac9"
+}
+
+[deps]
+
+source_file="res://Models/Museum_cc5320302f6c32590a1d13626aab4d16.png"
+dest_files=["res://.godot/imported/Museum_cc5320302f6c32590a1d13626aab4d16.png-943f963be6fc4cf516afdfd084d0c6d9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

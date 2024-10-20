@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=20 format=4 uid="uid://cn1l7xc1yxymr"]
 
-[ext_resource type="PackedScene" path="res://museumFinal.tscn" id="1_6604d"]
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_idkq2"]
+[ext_resource type="Texture2D" uid="uid://msdcf60m6vl7" path="res://Models/Museum_15442115_1122986464487913_7679120086886752232_n.png" id="1_s0h0d"]
+[ext_resource type="PackedScene" uid="uid://dydn8dbjp1gbm" path="res://Models/Museum.glb" id="1_xmvkc"]
 [ext_resource type="PackedScene" uid="uid://ch42uc3ddb7l1" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="3_gn2nc"]
 [ext_resource type="PackedScene" uid="uid://c7x38j0epb5wj" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="4_6u137"]
 [ext_resource type="PackedScene" uid="uid://nrpg1rml7yng" path="res://Scenes/Game/Scenes/movable_door.tscn" id="4_msfhc"]
@@ -18,10 +19,52 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dpit"]
 size = Vector3(2.47009, 1.67798, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j1rd"]
+resource_name = "*"
+cull_mode = 2
+albedo_texture = ExtResource("1_s0h0d")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ltqwi"]
+_surfaces = [{
+"aabb": AABB(0, 0, -1.63142, 0.160665, 3, 1.63142),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAEAAQADAAAAAAAFAAQABAACAAAAAQAHAAYABgADAAEAAQACAAQABAAHAAEABgAHAAQABAAFAAYABgAFAAAAAAADAAYA"),
+"name": "*",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD//wAAAAD//wAAAAAAAAAAAAAAAAAA/////wAAAAAAAAAA//8AAAAA/////wAA////////AAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7m0gv"]
+resource_name = "Museum_G-Object_019"
+_surfaces = [{
+"aabb": AABB(0, 0, -1.63142, 0.160665, 3, 1.63142),
+"attribute_data": PackedByteArray("AUU4Yv26AAAAADhiLUPchS1DAAD//9yFAUXchQFFAAAAANyFLUM4YtG8AAD//zhi/brchQFFYROIEtyF/bo4Yv26YROIEjhi0bw4YtG8YRN27Thi0bzchS1DYRN27dyF"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAAGAAMAAwAJAAAAAgARAA4ADgAIAAIABQAXABQAFAALAAUABAAHAA0ADQAWAAQAEgAVAAwADAAPABIAEwAQAAEAAQAKABMA"),
+"material": SubResource("StandardMaterial3D_0j1rd"),
+"name": "*",
+"primitive": 3,
+"uv_scale": Vector4(45.07, 43.6709, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAA//8AAP//AAD/vwAA//8AAP+///8AAAAA/////wAAAAD/////AAAAAP+/AAAAAAAA//8AAAAAAAD//wAAAAAAAP+//////wAA////////AAD/v/////8AAP+/AAAAAP//AIAAAAAA/////wAAAAD///+/AAD/////AIAAAP//////vwAA//////+/////////AID/////////v/////////+///8AAP//AID//wAA////////AAD///+//3///////3//f////3////9//z//fwAA/3////9//z//f////3///////3//fwAA/3////9//z//f////3///////3//f////3///////3//fwAA/3////9//z//fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ltqwi")
+
 [node name="Game" type="Node"]
 
-[node name="Museum" parent="." instance=ExtResource("1_6604d")]
-transform = Transform3D(2.478, 0, 0, 0, 2.478, 2.64109e-14, 0, -2.64109e-14, 2.478, -13.8, 0, 0)
+[node name="MuseumFinal" parent="." instance=ExtResource("1_xmvkc")]
+transform = Transform3D(2.478, 0, 0, 0, 2.478, 0, 0, 0, 2.478, -13.8, 0, 0)
+
+[node name="G-Object_019" parent="MuseumFinal" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19312, -4.4866, -9.63607)
+visible = false
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1, 0, 0)
@@ -215,9 +258,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -2.4, 5.21538)
 
 [node name="MeshInstance3D" parent="puzzle_master3/MovableDoor" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
+visible = false
 
 [node name="Marker3D" parent="puzzle_master3/MovableDoor" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02734, -7.82029, 0.907217)
+
+[node name="G-Object_021" type="MeshInstance3D" parent="puzzle_master3/MovableDoor"]
+transform = Transform3D(2.478, 0, 0, 0, 2.478, 0, 0, 0, 2.478, 0.768553, -0.7, 5.00645)
+mesh = SubResource("ArrayMesh_7m0gv")
+skeleton = NodePath("")
 
 [node name="PlayerHUD" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -304,6 +353,7 @@ text = "Quit
 "
 behaviour = 4
 
+[editable path="MuseumFinal"]
 [editable path="Player"]
 [editable path="puzzle_master/puzzle_master_piece"]
 [editable path="puzzle_master/puzzle_master_piece2"]
