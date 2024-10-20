@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://dqdb6sw1r6mfi"]
+[gd_scene load_steps=5 format=3 uid="uid://dqdb6sw1r6mfi"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Scripts/door.gd" id="1_kjr6x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_15cx7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_um54v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xepn8"]
 
 [node name="Victor" type="Node"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_15cx7")
+script = ExtResource("1_kjr6x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_um54v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_xepn8")
+
+[node name="Marker3D" type="Marker3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02734, 0.892877, 0.907218)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0394232, 3.64161)
