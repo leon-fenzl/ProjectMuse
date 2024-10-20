@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgedygjbc44fg"]
+[gd_scene load_steps=7 format=3 uid="uid://cgedygjbc44fg"]
 
 [ext_resource type="PackedScene" uid="uid://cjkxc0p33o25r" path="res://Scenes/Programmers/PlayerChris.tscn" id="1_do06v"]
 [ext_resource type="MeshLibrary" uid="uid://bhvcmrh5kcn1c" path="res://Mesh/MeshLibraryTest1.tres" id="3_mfjlm"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c7yv7p5floq7r" path="res://Scenes/Game/Scenes/puzzle_master_piece.tscn" id="5_sonjh"]
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/game_menu.gd" id="6_g2i7x"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/Scenes/BaseButton.tscn" id="7_uuy7o"]
-
-[sub_resource type="MeshLibrary" id="MeshLibrary_y0lbk"]
 
 [node name="Game" type="Node"]
 
@@ -35,10 +33,7 @@ offset_top = 0.160004
 offset_right = -0.560059
 offset_bottom = -0.160004
 
-[node name="RestrictedGridMap" type="GridMap" parent="."]
-mesh_library = SubResource("MeshLibrary_y0lbk")
-
-[node name="MuseumGridMap" type="GridMap" parent="." groups=["museum"]]
+[node name="MuseumGridMap" type="GridMap" parent="." groups=["Concrete"]]
 mesh_library = ExtResource("3_mfjlm")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
@@ -118,3 +113,7 @@ offset_bottom = 1.056
 text = "Quit
 "
 behaviour = 4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Wood"]]
+transform = Transform3D(17.2949, 0, 0, 0, 1, 0, 0, 0, 17.8813, 0, 0, -17.8321)
+use_collision = true
