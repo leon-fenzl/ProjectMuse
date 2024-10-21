@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/Scripts/PuzzlePiece.gd" id="2_mu2vj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkdgl"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="puzzle_master_piece" type="CharacterBody3D" groups=["pieces"]]
 collision_layer = 4

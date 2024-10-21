@@ -52,7 +52,7 @@ func CamInputs():
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func DrawRay(DELTA:float):
 	if Input.is_action_pressed("LMB"):
-		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 		mousePos = get_viewport().get_mouse_position()
 		rayStart = get_viewport().get_camera_3d().project_ray_origin(mousePos)
 		rayEnd = get_viewport().get_camera_3d().project_position(mousePos,1000.0)
@@ -64,12 +64,12 @@ func DrawRay(DELTA:float):
 		if !hitResults.is_empty():
 			if hitResults.collider.is_in_group("pieces") and targetPiece == null:
 				targetPiece = hitResults.collider
-				##Arrastar com som
-				##get_node("AudioStreamPlayer").play(arrastar)
+				#Arrastar com som
+				#get_node("AudioStreamPlayer").play()
 			if targetPiece != null:
-				holdPosition = get_viewport().get_camera_3d().project_ray_normal(mousePos)
-				targetPiece.position.x = holdPosition.x
-				targetPiece.position.y = holdPosition.y
+				holdPosition = get_viewport().get_camera_3d().project_position(mousePos,1)
+				targetPiece.global_position.x = holdPosition.x
+				targetPiece.global_position.y = holdPosition.y
 	if Input.is_action_just_released("LMB"):
 		targetPiece = null
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

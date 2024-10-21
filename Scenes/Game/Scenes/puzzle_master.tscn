@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxin7c5pci0q" path="res://Scenes/Game/Scenes/locks.tscn" id="4_nuqso"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_au5vp"]
-size = Vector3(2.47009, 1.67798, 0.5)
+size = Vector3(2.47009, 1.67798, 1)
 
 [node name="puzzle_master" type="StaticBody3D"]
 script = ExtResource("1_8jggb")
