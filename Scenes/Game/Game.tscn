@@ -1,243 +1,104 @@
-[gd_scene load_steps=22 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=13 format=3 uid="uid://cn1l7xc1yxymr"]
 
-[ext_resource type="PackedScene" uid="uid://cjcjp5lvjsu7k" path="res://museum final meshes.tscn" id="1_543ad"]
-[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Scenes/Player.tscn" id="1_idkq2"]
-[ext_resource type="Texture2D" uid="uid://msdcf60m6vl7" path="res://Models/Museum_15442115_1122986464487913_7679120086886752232_n.png" id="1_s0h0d"]
-[ext_resource type="Material" uid="uid://olaciii0o2am" path="res://Mat_BlankCanvas.tres" id="2_hfr0h"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/bone_collectable1.tscn" id="3_gn2nc"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/bone_collectable2.tscn" id="4_6u137"]
-[ext_resource type="PackedScene" uid="uid://nrpg1rml7yng" path="res://Scenes/Game/Scenes/movable_door.tscn" id="4_msfhc"]
-[ext_resource type="AudioStream" uid="uid://b4ckqjtk8gvos" path="res://Sounds/SoundEffects/Vitória Osso.wav" id="4_sinha"]
-[ext_resource type="AudioStream" uid="uid://wbtq6ahs704y" path="res://Sounds/SoundEffects/Vitória Level.wav" id="5_4q212"]
-[ext_resource type="AudioStream" uid="uid://ld8vsequbgew" path="res://Sounds/BGSounds/Game Fim.wav" id="5_642hw"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Scenes/bone_collectable3.tscn" id="5_k25rg"]
-[ext_resource type="PackedScene" uid="uid://sr5vjokjeivh" path="res://Scenes/Game/Scenes/puzzle_master.tscn" id="5_rrasj"]
-[ext_resource type="PackedScene" uid="uid://dse85b14lmcaa" path="res://Scenes/Game/Scenes/bones_manager.tscn" id="6_kjjqh"]
-[ext_resource type="Texture2D" uid="uid://dm70mhv05q0ou" path="res://Museum_2125__41774_zoom.png" id="11_pp27m"]
-[ext_resource type="Texture2D" uid="uid://d0hncrlqtol6s" path="res://Museum_5860a7fce1a0d8f24850374ba67ad340.png" id="13_dwlxb"]
-[ext_resource type="Texture2D" uid="uid://bnqnt1qso50iw" path="res://Museum_2dd7c6c1-cf6a-49a8-be39-82bf6064403f.png" id="14_fq514"]
-[ext_resource type="AudioStream" uid="uid://bdidy8div3v8b" path="res://Sounds/SoundEffects/Parede Descendo.wav" id="15_flrjt"]
-[ext_resource type="PackedScene" path="res://Scenes/game_menu.tscn" id="18_jdbiy"]
+[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
+[ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
+[ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
+[ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
+[ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
+[ext_resource type="PackedScene" uid="uid://6w0vef3xwj7g" path="res://Scenes/Game/piece.tscn" id="6_cij0a"]
+[ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="18_jdbiy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j1rd"]
-resource_name = "*"
-cull_mode = 2
-albedo_texture = ExtResource("1_s0h0d")
-roughness = 0.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_euknr"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ltqwi"]
-_surfaces = [{
-"aabb": AABB(0, 0, -1.63142, 0.160665, 3, 1.63142),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAACAAEAAQADAAAAAAAFAAQABAACAAAAAQAHAAYABgADAAEAAQACAAQABAAHAAEABgAHAAQABAAFAAYABgAFAAAAAAADAAYA"),
-"name": "*",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAD//wAAAAD//wAAAAAAAAAAAAAAAAAA/////wAAAAAAAAAA//8AAAAA/////wAA////////AAD//wAA//8AAA==")
-}]
-blend_shape_mode = 0
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0wwh"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7m0gv"]
-resource_name = "Museum_G-Object_019"
-_surfaces = [{
-"aabb": AABB(0, 0, -1.63142, 0.160665, 3, 1.63142),
-"attribute_data": PackedByteArray("AUU4Yv26AAAAADhiLUPchS1DAAD//9yFAUXchQFFAAAAANyFLUM4YtG8AAD//zhi/brchQFFYROIEtyF/bo4Yv26YROIEjhi0bw4YtG8YRN27Thi0bzchS1DYRN27dyF"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAAGAAMAAwAJAAAAAgARAA4ADgAIAAIABQAXABQAFAALAAUABAAHAA0ADQAWAAQAEgAVAAwADAAPABIAEwAQAAEAAQAKABMA"),
-"material": SubResource("StandardMaterial3D_0j1rd"),
-"name": "*",
-"primitive": 3,
-"uv_scale": Vector4(45.07, 43.6709, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AAD//wAA//8AAP//AAD/vwAA//8AAP+///8AAAAA/////wAAAAD/////AAAAAP+/AAAAAAAA//8AAAAAAAD//wAAAAAAAP+//////wAA////////AAD/v/////8AAP+/AAAAAP//AIAAAAAA/////wAAAAD///+/AAD/////AIAAAP//////vwAA//////+/////////AID/////////v/////////+///8AAP//AID//wAA////////AAD///+//3///////3//f////3////9//z//fwAA/3////9//z//f////3///////3//fwAA/3////9//z//f////3///////3//f////3///////3//fwAA/3////9//z//fwAA")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ltqwi")
+[sub_resource type="BoxMesh" id="BoxMesh_mhk3j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm5dc"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bi6js"]
+size = Vector3(50, 1, 50)
 
 [node name="Game" type="Node"]
 
-[node name="MuseumCollider" parent="." instance=ExtResource("1_543ad")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -15, 0, 0)
-metadata/_edit_group_ = true
+[node name="PuzzleSolver" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("1_wilwx")]
+locks = [null, null, null]
+targetInteractableRef = NodePath("../Door")
 
-[node name="G-Object_093" parent="MuseumCollider" index="79"]
-surface_material_override/2 = ExtResource("2_hfr0h")
+[node name="Lock" parent="PuzzleSolver" instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1, 0)
+solverRef = NodePath("..")
 
-[node name="G-Object_094" parent="MuseumCollider" index="80"]
-surface_material_override/3 = ExtResource("2_hfr0h")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleSolver/Lock"]
+shape = SubResource("BoxShape3D_euknr")
 
-[node name="G-Object_101" parent="MuseumCollider" index="89"]
-surface_material_override/2 = ExtResource("2_hfr0h")
+[node name="Piece" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, 5.9, 0)
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+
+[node name="Piece2" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00199997, 5.9, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 1
+
+[node name="Piece3" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.302, 5.9, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 2
+
+[node name="Piece4" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, 4.6, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 3
+
+[node name="Piece5" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00200021, 4.6, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 4
+
+[node name="Piece6" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.302, 4.6, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 5
+
+[node name="Piece7" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, 3.3, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 6
+
+[node name="Piece8" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00200021, 3.3, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 7
+
+[node name="Piece9" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.302, 3.3, 0)
+piecetype = 1
+texture = ExtResource("3_1feaw")
+split = Vector2(3, 3)
+frame = 8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="BonesManager" parent="." instance=ExtResource("6_kjjqh")]
-unique_name_in_owner = true
-coletavel = ExtResource("4_sinha")
-vitoria = ExtResource("5_642hw")
-
-[node name="AudioStreamPlayer" parent="BonesManager" index="0"]
-stream = ExtResource("4_sinha")
-
-[node name="BoneCollectable" parent="BonesManager" instance=ExtResource("3_gn2nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31961, 0.333677, -27.659)
-
-[node name="BoneCollectable2" parent="BonesManager" instance=ExtResource("4_6u137")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44601, 1.61243, -28.947)
-
-[node name="BoneCollectable3" parent="BonesManager" instance=ExtResource("5_k25rg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.560136, 0.942667, -14.0106)
-
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88936, 2.91809, -25.0721)
-
-[node name="puzzle_master" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 3.3, -21.9)
-collision_layer = 0
-collision_mask = 4
-locks = [NodePath("Locks"), NodePath("Locks2"), NodePath("Locks3"), NodePath("Locks4")]
-solution = Array[int]([0, 1, 2, 3])
-vitoria = ExtResource("5_4q212")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" parent="puzzle_master" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0337982, 0.0341182, 0)
-
-[node name="puzzle_master_piece" parent="puzzle_master" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.400809, 0)
-img = ExtResource("11_pp27m")
-
-[node name="puzzle_master_piece2" parent="puzzle_master" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, -0.499191, 0)
-img = ExtResource("11_pp27m")
-
-[node name="puzzle_master_piece3" parent="puzzle_master" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.499191, 0)
-img = ExtResource("11_pp27m")
-
-[node name="puzzle_master_piece4" parent="puzzle_master" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.400809, 0)
-img = ExtResource("11_pp27m")
-
-[node name="Locks" parent="puzzle_master" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.375, 0.2)
-
-[node name="Locks2" parent="puzzle_master" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.672063, 0.421127, 0.199999)
-
-[node name="Locks3" parent="puzzle_master" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68911, -0.446429, 0.204884)
-
-[node name="Locks4" parent="puzzle_master" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.756705, -0.448463, 0.199999)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="puzzle_master"]
-
-[node name="puzzle_master2" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 3.1, -41)
-collision_mask = 0
-locks = [NodePath("Locks"), NodePath("Locks2"), NodePath("Locks3"), NodePath("Locks4")]
-solution = Array[int]([0, 1, 2, 3])
-vitoria = ExtResource("5_4q212")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" parent="puzzle_master2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114955, 0.0110102, 0)
-
-[node name="puzzle_master_piece" parent="puzzle_master2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.600809, 0)
-img = ExtResource("13_dwlxb")
-
-[node name="puzzle_master_piece2" parent="puzzle_master2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -0.899191, 0)
-img = ExtResource("13_dwlxb")
-
-[node name="puzzle_master_piece3" parent="puzzle_master2" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.500809, 0)
-img = ExtResource("13_dwlxb")
-
-[node name="puzzle_master_piece4" parent="puzzle_master2" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -0.899191, 0)
-img = ExtResource("13_dwlxb")
-
-[node name="Locks" parent="puzzle_master2" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64491, 0.561582, 0.200001)
-
-[node name="Locks2" parent="puzzle_master2" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35509, 0.561582, 0.200001)
-
-[node name="Locks3" parent="puzzle_master2" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74491, -0.838418, 0.200001)
-
-[node name="Locks4" parent="puzzle_master2" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35509, -0.738418, 0.200001)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="puzzle_master2"]
-
-[node name="puzzle_master3" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("5_rrasj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.3, 3.1, -37.8)
-collision_mask = 0
-locks = [NodePath("Locks"), NodePath("Locks2"), NodePath("Locks3"), NodePath("Locks4")]
-solution = Array[int]([0])
-vitoria = ExtResource("5_4q212")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" parent="puzzle_master3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 0.6, 0.2)
-
-[node name="puzzle_master_piece" parent="puzzle_master3" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.00081, 0.2)
-img = ExtResource("14_fq514")
-
-[node name="puzzle_master_piece2" parent="puzzle_master3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.399191, 0.2)
-img = ExtResource("14_fq514")
-
-[node name="puzzle_master_piece3" parent="puzzle_master3" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, -0.399191, 0.2)
-img = ExtResource("14_fq514")
-
-[node name="puzzle_master_piece4" parent="puzzle_master3" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2.00081, 0.2)
-img = ExtResource("14_fq514")
-
-[node name="Locks" parent="puzzle_master3" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84491, 1.96158, 0.399999)
-
-[node name="Locks2" parent="puzzle_master3" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15509, 1.96158, 0.399999)
-
-[node name="Locks3" parent="puzzle_master3" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84491, -0.338418, 0.399999)
-
-[node name="Locks4" parent="puzzle_master3" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05509, -0.238418, 0.399999)
-
-[node name="MovableDoor" parent="puzzle_master3" instance=ExtResource("4_msfhc")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, -2.4, 9.41538)
-
-[node name="MeshInstance3D" parent="puzzle_master3/MovableDoor" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
-visible = false
-
-[node name="Marker3D" parent="puzzle_master3/MovableDoor" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02734, -7.82029, 0.907217)
-
-[node name="AudioStreamPlayer" parent="puzzle_master3/MovableDoor" index="3"]
-stream = ExtResource("15_flrjt")
-
-[node name="G-Object_021" type="MeshInstance3D" parent="puzzle_master3/MovableDoor"]
-transform = Transform3D(2.478, 0, 0, 0, 2.478, 0, 0, 0, 2.478, 0.768553, -0.7, 5.00645)
-mesh = SubResource("ArrayMesh_7m0gv")
-skeleton = NodePath("")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="puzzle_master3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 15)
 
 [node name="PlayerHUD" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -264,22 +125,23 @@ offset_bottom = -0.160004
 [node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
 visible = false
 
-[editable path="MuseumCollider"]
-[editable path="BonesManager"]
-[editable path="Player"]
-[editable path="puzzle_master"]
-[editable path="puzzle_master/puzzle_master_piece"]
-[editable path="puzzle_master/puzzle_master_piece2"]
-[editable path="puzzle_master/puzzle_master_piece3"]
-[editable path="puzzle_master/puzzle_master_piece4"]
-[editable path="puzzle_master2"]
-[editable path="puzzle_master2/puzzle_master_piece"]
-[editable path="puzzle_master2/puzzle_master_piece2"]
-[editable path="puzzle_master2/puzzle_master_piece3"]
-[editable path="puzzle_master2/puzzle_master_piece4"]
-[editable path="puzzle_master3"]
-[editable path="puzzle_master3/puzzle_master_piece"]
-[editable path="puzzle_master3/puzzle_master_piece2"]
-[editable path="puzzle_master3/puzzle_master_piece3"]
-[editable path="puzzle_master3/puzzle_master_piece4"]
-[editable path="puzzle_master3/MovableDoor"]
+[node name="Door" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_6gbm8")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+shape = SubResource("BoxShape3D_w0wwh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+mesh = SubResource("BoxMesh_mhk3j")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_mask = 31
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_qm5dc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_bi6js")
