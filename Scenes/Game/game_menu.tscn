@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://h8x26iys3i3h"]
 
 [ext_resource type="Script" path="res://Scripts/game_menu.gd" id="1_fvb2o"]
-[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://PLAY_1.png" id="2_nbl12"]
+[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="2_nbl12"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/BaseButton.tscn" id="2_pa8dj"]
-[ext_resource type="Texture2D" uid="uid://d2nvc5272xrqy" path="res://RESUME_ICON.png" id="4_cnjmw"]
+[ext_resource type="Texture2D" uid="uid://d2nvc5272xrqy" path="res://Sprites/RESUME_ICON.png" id="4_cnjmw"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="5_ofsrr"]
-[ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://RESTART_ICON.png" id="5_u5yc2"]
-[ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://QUIT_ICON.png" id="6_6xgbd"]
+[ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://Sprites/RESTART_ICON.png" id="5_u5yc2"]
+[ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="6_6xgbd"]
 
 [node name="GameMenu" type="Control"]
 process_mode = 3
