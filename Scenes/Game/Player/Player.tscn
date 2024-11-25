@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://04envoemx5dl"]
+[gd_scene load_steps=7 format=3 uid="uid://04envoemx5dl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerBehaviour.gd" id="1_ai877"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="2_kr5n4"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/FoyerMusic.gd" id="5_h0ki1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_grqad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvbcw"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -20,6 +22,7 @@ shape = SubResource("CapsuleShape3D_grqad")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+current = true
 script = ExtResource("2_kr5n4")
 mouseSpeed = 0.2
 ctrlSpeed = 1.5
@@ -30,6 +33,13 @@ yaw = Vector2(0, 360)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
 target_position = Vector3(0, 0, -2)
 collision_mask = 28
+
+[node name="AreaDetection" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/AreaDetection"]
+shape = SubResource("BoxShape3D_uvbcw")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_f0kfq")
@@ -42,3 +52,21 @@ script = ExtResource("5_h0ki1")
 
 [node name="Feet" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
+
+[node name="Layer_HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Layer_HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Layer_HUD/Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Pressione F para focar no Puzzle"
+
+[connection signal="body_entered" from="Camera3D/AreaDetection" to="." method="_on_area_detection_body_entered"]
+[connection signal="body_exited" from="Camera3D/AreaDetection" to="." method="_on_area_detection_body_exited"]

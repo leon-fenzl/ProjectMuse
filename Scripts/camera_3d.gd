@@ -16,25 +16,40 @@ func _ready() -> void:
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		rotation.x -= event.relative.y*mouseSpeed*get_physics_process_delta_time()
-		rotation.x = clamp(rotation.x,deg_to_rad(pitch.x),deg_to_rad(pitch.y))
-		rotation.y -= event.relative.x*mouseSpeed*get_physics_process_delta_time()
-		rotation.y = wrapf(rotation.y,deg_to_rad(yaw.x),deg_to_rad(yaw.y))
+	match Utilities.gameMode:
+		Utilities.GAMEMODE.PLAYER:
+			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			if event is InputEventMouseMotion:
+				rotation.x -= event.relative.y*mouseSpeed*get_physics_process_delta_time()
+				rotation.x = clamp(rotation.x,deg_to_rad(pitch.x),deg_to_rad(pitch.y))
+				rotation.y -= event.relative.x*mouseSpeed*get_physics_process_delta_time()
+				rotation.y = wrapf(rotation.y,deg_to_rad(yaw.x),deg_to_rad(yaw.y))
+		Utilities.GAMEMODE.PUZZLE:
+			if Input.mouse_mode != Input.MOUSE_MODE_CONFINED:
+				Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 func _physics_process(delta: float) -> void:
-	CamInputs()
-	if Input.is_action_pressed("LMB"):
-		if ray.is_colliding():
-			hitTarget = ray.get_collider()
-		if currentTarget != null and currentTarget == ray.get_collider():
-			MoveRayTarget(currentTarget)
-		if currentTarget != ray.get_collider():
-			ClearRayTarget(currentTarget)
-	if Input.is_action_just_pressed("LMB"):
-		if  hitTarget != null and hitTarget.is_in_group("pieces") and currentTarget == null:
-			currentTarget = hitTarget
-	if Input.is_action_just_released("LMB"):
-		currentTarget = null
+		match Utilities.gameMode:
+			Utilities.GAMEMODE.PLAYER:
+				if current != true:
+					current = true
+				CamInputs()
+			Utilities.GAMEMODE.PUZZLE:
+				if current != false:
+					current = false
+				CamInputs()
+	#if Input.is_action_pressed("LMB"):
+		#if ray.is_colliding():
+			#hitTarget = ray.get_collider()
+		#if currentTarget != null and currentTarget == ray.get_collider():
+			#MoveRayTarget(currentTarget)
+		#if currentTarget != ray.get_collider():
+			#ClearRayTarget(currentTarget)
+	#if Input.is_action_just_pressed("LMB"):
+		#if  hitTarget != null and hitTarget.is_in_group("pieces") and currentTarget == null:
+			#currentTarget = hitTarget
+	#if Input.is_action_just_released("LMB"):
+		#currentTarget = null
 func MoveRayTarget(node:Node):
 	if node.movetype != Pieces.MOVETYPE.DOMOVE:
 		node.movetype = Pieces.MOVETYPE.DOMOVE

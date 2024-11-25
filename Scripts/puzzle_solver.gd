@@ -1,5 +1,6 @@
-extends Node
-class_name PuzzleSolver
+class_name PuzzleSolver extends StaticBody3D
+
+@export var puzzleCamera : Node
 @export var locks:Array[Area3D]
 @export var vitoria : AudioStream
 @export var targetInteractableRef : NodePath
@@ -8,6 +9,14 @@ var solution : int
 var solved : bool = false
 var index : int = 0
 
+func _physics_process(delta: float) -> void:
+		match Utilities.gameMode:
+			Utilities.GAMEMODE.PUZZLE:
+				if puzzleCamera.current != false:
+					puzzleCamera.current = false
+			Utilities.GAMEMODE.PUZZLE:
+				if puzzleCamera.current != true:
+					puzzleCamera.current = true
 func SumpUp():
 	if solution>= 0 and solution<=locks.size():
 		solution += 1
