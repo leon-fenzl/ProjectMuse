@@ -57,16 +57,45 @@ target_position = Vector3(0, -2, 0)
 
 [node name="Control" type="Control" parent="Layer_HUD"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Layer_HUD/Control"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 520.0
+offset_top = 312.0
+offset_right = -511.0
+offset_bottom = -385.0
 text = "Pressione F para focar no Puzzle"
+
+[node name="Possíveis sons" type="Label" parent="Layer_HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 177.0
+offset_right = -1023.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Possíveis sons:
+Chão terra
+Chão Porcelanato
+Chão Madeira
+Chão pedra
+parede
+arrsto de peç dura
+clique de menu UI
+som de porta abrindo
+porta fechando?
+vidro?"
 
 [connection signal="body_entered" from="Camera3D/AreaDetection" to="." method="_on_area_detection_body_entered"]
 [connection signal="body_exited" from="Camera3D/AreaDetection" to="." method="_on_area_detection_body_exited"]
