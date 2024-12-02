@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=17 format=3 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
@@ -29,6 +29,15 @@ size = Vector3(50, 1, 50)
 albedo_color = Color(0.768489, 0.317202, 0.163598, 1)
 
 [node name="Game" type="Node"]
+
+[node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ux2fh")
+volume_db = -10.0
+autoplay = true
+bus = &"music"
 
 [node name="PuzzleSolver" parent="." node_paths=PackedStringArray("puzzleCamera", "locks") instance=ExtResource("1_wilwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
@@ -147,9 +156,6 @@ offset_top = 0.160004
 offset_right = -0.560059
 offset_bottom = -0.160004
 
-[node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
-visible = false
-
 [node name="Door" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4.7)
 script = ExtResource("4_6gbm8")
@@ -174,9 +180,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 13.3, 0)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_ux2fh")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
