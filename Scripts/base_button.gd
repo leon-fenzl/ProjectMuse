@@ -11,6 +11,7 @@ func _on_button_down() -> void:
 	
 	match behaviour:
 		BEHAVIOUR.START:
+			await  $AudioStreamPlayer.finished
 			get_tree().change_scene_to_file("res://Scenes/Game/Game.tscn")
 		BEHAVIOUR.RESUME:
 			get_tree().paused = !get_tree().paused
@@ -21,4 +22,5 @@ func _on_button_down() -> void:
 		BEHAVIOUR.CHANGEMENU:
 			targetMenu.visible = get_tree().paused
 		BEHAVIOUR.QUIT:
+			await $"../BaseButton2/AudioStreamPlayer".finished
 			get_tree().quit()

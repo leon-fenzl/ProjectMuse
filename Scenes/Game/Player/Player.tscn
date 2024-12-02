@@ -44,10 +44,12 @@ shape = SubResource("BoxShape3D_uvbcw")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_f0kfq")
 volume_db = 20.0
+bus = &"music"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 volume_db = -30.0
+bus = &"music"
 script = ExtResource("5_h0ki1")
 
 [node name="Feet" type="RayCast3D" parent="."]

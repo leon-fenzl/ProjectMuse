@@ -12,13 +12,13 @@ func _ready() -> void:
 	rng.randomize()
 	chosenInt = rng.randi_range(0, 1)
 	audio.stream = load(array[chosenInt])
-	audio.play()
+	#audio.play()
 
 func _physics_process(delta: float) -> void:
 	if restrictedArea == true:
 		if !audio.playing:
 			audio.stream = load(array[3])
-			audio.play()
+			#audio.play()
 	else:
 		if !audio.playing:
 			var x = chosenInt
@@ -26,4 +26,4 @@ func _physics_process(delta: float) -> void:
 				rng.randomize()
 				chosenInt = rng.randi_range(0, 1)
 			audio.stream = load(array[chosenInt])
-			audio.play()
+			#audio.play()
