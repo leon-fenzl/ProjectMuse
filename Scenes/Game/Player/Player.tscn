@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://04envoemx5dl"]
+[gd_scene load_steps=8 format=3 uid="uid://04envoemx5dl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerBehaviour.gd" id="1_ai877"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="2_kr5n4"]
+[ext_resource type="Script" path="res://Scenes/Game/Player/player_audio_controller.gd" id="2_xne2e"]
 [ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="4_f0kfq"]
 [ext_resource type="Script" path="res://Scripts/FoyerMusic.gd" id="5_h0ki1"]
 
@@ -9,13 +10,18 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvbcw"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playeraudio")]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_ai877")
 speed = 500.0
 jumpForce = 1200.0
+playeraudio = NodePath("PlayerAudioController")
 metadata/_edit_group_ = true
+
+[node name="PlayerAudioController" type="Node" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("2_xne2e")
+parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_grqad")

@@ -3,6 +3,9 @@ enum BEHAVIOUR{START,RESUME,RESTART,CHANGEMENU,QUIT}
 @export var behaviour : BEHAVIOUR= BEHAVIOUR.START
 @export var targetMenu : Node = null
 @export var click : AudioStream
+func _ready() -> void:
+		if behaviour == BEHAVIOUR.RESUME && targetMenu == null:
+			targetMenu = $"../.."
 func _on_button_down() -> void:
 	get_node("AudioStreamPlayer").stream = load("res://Sounds/SoundEffects/Click.wav")
 	get_node("AudioStreamPlayer").play()
@@ -11,8 +14,6 @@ func _on_button_down() -> void:
 			await  $AudioStreamPlayer.finished
 			get_tree().change_scene_to_file("res://Scenes/Game/Game.tscn")
 		BEHAVIOUR.RESUME:
-			if targetMenu == null:
-				targetMenu = $"../.."
 			get_tree().paused = !get_tree().paused
 			targetMenu.visible = get_tree().paused
 		BEHAVIOUR.RESTART:

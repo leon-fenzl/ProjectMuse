@@ -7,7 +7,8 @@ class_name PlayerBehaviour
 @onready var jumpVector := Vector3.ZERO
 @onready var input_dirs := Vector3.ZERO
 @onready var moveDirection := Vector3.ZERO
-var onFocus :bool=false
+@export var playeraudio : PlayerAudioController 
+var onFocus : bool = false
 var currentPuzzle : Node
 @onready var cam :=$Camera3D
 #@onready var stepSound = $AudioStreamPlayer3D
@@ -33,6 +34,12 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 		Utilities.GAMEMODE.PUZZLE:
 			pass
+			
+		#match audiotype:
+			#AUDIOTYPE.GROUND:
+				#IF current audio != newaUDIO:
+					#CURRENTAUDIO = NEWAUDIO
+				#CURRENTAUDIO PLAY
 func Gravity(DELTA:float):
 	if !is_on_floor():
 		gravity += gravity_Direction * DELTA
