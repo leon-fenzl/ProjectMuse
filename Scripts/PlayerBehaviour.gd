@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 			Gravity(delta)
 			MovePlayer(delta)
 			#if moveDirection.length() > 0.2 || moveDirection.length() < -0.2:
-				#if is_on_floor() && !stepSound.playing:
+				#if is_on_floor(): && !stepSound.playing:
 					#FindFloor()
 					#stepSound.play()
 			#elif moveDirection.length() < 0.2 && moveDirection.length() > -0.2 && stepSound.playing:

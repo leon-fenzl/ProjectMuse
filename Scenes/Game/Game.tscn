@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=16 format=3 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
 [ext_resource type="PackedScene" uid="uid://6w0vef3xwj7g" path="res://Scenes/Game/piece.tscn" id="6_cij0a"]
+[ext_resource type="AudioStream" uid="uid://brx2mxmxyn1aq" path="res://Sounds/BGSounds/Fase 1 - Primeiro Quadro - 2.wav" id="8_ux2fh"]
 [ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="18_jdbiy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_euknr"]
@@ -164,3 +165,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 13.3, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ux2fh")
+volume_db = -10.0
+autoplay = true
+bus = &"music"
