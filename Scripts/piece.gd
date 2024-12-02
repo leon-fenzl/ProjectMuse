@@ -2,14 +2,17 @@ extends CharacterBody3D
 class_name Pieces
 enum PIECETYPE{NOTSOLID,SOLID}
 @export var piecetype :PIECETYPE=PIECETYPE.NOTSOLID
-enum MOVETYPE{DONTMOVE,DOMOVE}
+enum MOVETYPE{DOMOVE,DONTMOVE}
 @export var movetype :MOVETYPE=MOVETYPE.DONTMOVE
 @export_group("Settings Sprite")
 var sprite : Sprite3D = Sprite3D.new()
-var moveDirection := Vector3.ZERO
-var direction := Vector2.ZERO
-var fps : float
-var underay : bool = false
+@export var cam : Camera3D
+@export var speed : float = 100.0
+@onready var input_dirs := Vector3.ZERO
+@onready var moveDirection := Vector3.ZERO
+#var direction := Vector2.ZERO
+#var fps : float
+#var underay : bool = false
 @export var texture :Texture2D:
 	get():
 		return texture
@@ -39,20 +42,21 @@ func _ready() -> void:
 		PIECETYPE.SOLID:
 			return
 func _physics_process(delta: float) -> void:
-	fps = Engine.get_frames_per_second()
-	if Input.is_action_just_released("LMB"):
-		if movetype != MOVETYPE.DONTMOVE:
-			movetype = MOVETYPE.DONTMOVE
+	#fps = Engine.get_frames_per_second()
+	#if Input.is_action_just_released("LMB"):
+		#if movetype != MOVETYPE.DONTMOVE:
+			#movetype = MOVETYPE.DONTMOVE
 	match piecetype:
 		PIECETYPE.NOTSOLID:
 			return
 		PIECETYPE.SOLID:
 			match movetype:
-				MOVETYPE.DONTMOVE:
-					velocity = Vector3.ZERO
 				MOVETYPE.DOMOVE:
-					moveDirection = Vector3(direction.x,direction.y,position.z)
-					velocity = (moveDirection - position)/delta
+					Move_Piece(delta)
+					velocity = moveDirection
+					move_and_slide()
+				MOVETYPE.DONTMOVE:
+					pass
 	move_and_slide()
 func Update_Texture(value):
 	sprite.texture = value
@@ -66,3 +70,14 @@ func DrawCol(value):
 	$".".add_child(value)
 func Construct_Object_Ingame():
 	$".".add_child(sprite)
+func Move_Piece(DELTA:float):
+	input_dirs.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_dirs.y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
+	input_dirs = input_dirs.rotated(Vector3.UP, cam.rotation.y).normalized()
+	moveDirection = input_dirs.normalized() * speed * DELTA
+func Activate():
+	if movetype != MOVETYPE.DOMOVE:
+		movetype = MOVETYPE.DOMOVE
+func Deactivate():
+	if movetype != MOVETYPE.DONTMOVE:
+		movetype = MOVETYPE.DONTMOVE

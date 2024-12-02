@@ -1,5 +1,5 @@
-class_name PuzzleSolver extends StaticBody3D
-
+class_name PuzzleSolver 
+extends StaticBody3D
 @export var puzzleCamera : Node
 @export var locks:Array[Area3D]
 @export var vitoria : AudioStream

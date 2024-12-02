@@ -64,6 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Layer_HUD/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,6 +73,8 @@ offset_left = 520.0
 offset_top = 312.0
 offset_right = -511.0
 offset_bottom = -385.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Pressione F para focar no Puzzle"
 
 [node name="Possíveis sons" type="Label" parent="Layer_HUD/Control"]

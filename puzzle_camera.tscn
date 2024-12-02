@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://biqdf5xtp1t2l"]
+
+[ext_resource type="Script" path="res://puzzle_camera.gd" id="1_f478u"]
+
+[node name="PuzzleCamera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.16598)
+script = ExtResource("1_f478u")
