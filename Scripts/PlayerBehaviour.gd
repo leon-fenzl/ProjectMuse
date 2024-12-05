@@ -16,6 +16,12 @@ var currentPuzzle : Node
 static var location :Vector3
 #@onready var Concrete = "res://Sounds/SoundEffects/Passos 1.wav"
 #@onready var Wood = "res://Sounds/SoundEffects/Passos 2.wav"
+@onready var floor_ray := $Feet
+@onready var floor_group
+@onready var audio_stream_player_steps: AudioStreamPlayer = $AudioStreamPlayerSteps
+const concrete = preload("res://Sounds/SoundEffects/Passos 1.wav")
+const wood = preload("res://Sounds/SoundEffects/Passos 2.wav")
+@onready var floor_name
 
 func _physics_process(delta: float) -> void:
 	GameModeChecker()
@@ -24,7 +30,8 @@ func _physics_process(delta: float) -> void:
 			Jump(delta)
 			Gravity(delta)
 			MovePlayer(delta)
-			#if moveDirection.length() > 0.2 || moveDirection.length() < -0.2:
+			if moveDirection.length() > 0.2 || moveDirection.length() < -0.2:
+				FindFloor()
 				#if is_on_floor(): && !stepSound.playing:
 					#FindFloor()
 					#stepSound.play()
@@ -82,3 +89,24 @@ func  Focus():
 func Unfocus():
 	$Layer_HUD/Control/Label.visible = !$Layer_HUD/Control/Label.visible
 	onFocus = false
+	
+func FindFloor():
+	if floor_ray.is_colliding():
+		floor_group = floor_ray.get_collider()
+		floor_name = floor_group.name
+		
+		match floor_name:
+			"Ground":
+				if audio_stream_player_steps.stream.resource_path != wood.resource_path:
+					print("wood")
+					audio_stream_player_steps.stop()
+					audio_stream_player_steps.stream = wood
+					audio_stream_player_steps.play()
+			"Ground2":
+				if audio_stream_player_steps.stream.resource_path != concrete.resource_path:
+					print("concrete")
+					audio_stream_player_steps.stop()
+					audio_stream_player_steps.stream = concrete
+					audio_stream_player_steps.play()
+
+	

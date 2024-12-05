@@ -20,7 +20,7 @@ size = Vector3(4.5, 4.7, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_mhk3j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qm5dc"]
-size = Vector3(50, 1, 50)
+size = Vector3(50, 1.05627, 50)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bi6js"]
 size = Vector3(50, 1, 50)
@@ -167,14 +167,27 @@ shape = SubResource("BoxShape3D_w0wwh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
 mesh = SubResource("BoxMesh_mhk3j")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-collision_mask = 31
+[node name="Ground" type="StaticBody3D" parent="." groups=["wood"]]
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_qm5dc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_bi6js")
+surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
+
+[node name="Ground2" type="StaticBody3D" parent="." groups=["concrete"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2865, 0, 0)
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0281372, 0)
+shape = SubResource("BoxShape3D_qm5dc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2"]
+layers = 3
 mesh = SubResource("BoxMesh_bi6js")
 surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
 
