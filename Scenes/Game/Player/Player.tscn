@@ -11,7 +11,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvbcw"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playeraudio")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playeraudio") groups=["ground", "wood"]]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_ai877")

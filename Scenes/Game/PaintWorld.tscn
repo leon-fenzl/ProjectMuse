@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsxebt5u505g3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jfa6t"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="PaintWorld" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_jfa6t")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PaintWorld"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

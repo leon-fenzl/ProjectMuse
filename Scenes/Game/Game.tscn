@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=19 format=3 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
+[ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="1_qt27j"]
 [ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
 [ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://puzzle_camera.tscn" id="2_ho5ji"]
+[ext_resource type="PackedScene" uid="uid://bsxebt5u505g3" path="res://Scenes/Game/PaintWorld.tscn" id="2_mx1sw"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
@@ -29,6 +31,11 @@ size = Vector3(50, 1, 50)
 albedo_color = Color(0.768489, 0.317202, 0.163598, 1)
 
 [node name="Game" type="Node"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_qt27j")
+spawnPosition = Vector3(0, 2, -5)
+paintScenes = Array[PackedScene]([ExtResource("2_mx1sw")])
 
 [node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
 visible = false
