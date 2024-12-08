@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=21 format=3 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="1_qt27j"]
@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://puzzle_camera.tscn" id="2_ho5ji"]
 [ext_resource type="PackedScene" uid="uid://bsxebt5u505g3" path="res://Scenes/Game/PaintWorld.tscn" id="2_mx1sw"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
+[ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="3_cjblc"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
 [ext_resource type="PackedScene" uid="uid://6w0vef3xwj7g" path="res://Scenes/Game/piece.tscn" id="6_cij0a"]
 [ext_resource type="AudioStream" uid="uid://brx2mxmxyn1aq" path="res://Sounds/BGSounds/Fase 1 - Primeiro Quadro - 2.wav" id="8_ux2fh"]
+[ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_7mbdc"]
 [ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="18_jdbiy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_euknr"]
@@ -37,14 +39,17 @@ script = ExtResource("1_qt27j")
 spawnPosition = Vector3(0, 2, -5)
 paintScenes = Array[PackedScene]([ExtResource("2_mx1sw")])
 
-[node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
-visible = false
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("3_cjblc")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("8_ux2fh")
-volume_db = -10.0
+volume_db = 5.0
 autoplay = true
 bus = &"music"
+
+[node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
+visible = false
 
 [node name="PuzzleSolver" parent="." node_paths=PackedStringArray("puzzleCamera", "locks") instance=ExtResource("1_wilwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
@@ -134,6 +139,11 @@ frame = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleSolver"]
 shape = SubResource("BoxShape3D_wkh4m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PuzzleSolver"]
+stream = ExtResource("10_7mbdc")
+volume_db = 5.0
+bus = &"sfx"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
