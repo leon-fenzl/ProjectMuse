@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://wv3jisocn4lg"]
+
+[ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="1_sr1qu"]
+[ext_resource type="PackedScene" uid="uid://bsxebt5u505g3" path="res://Scenes/Game/PaintWorld.tscn" id="2_pp1so"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_sr1qu")
+spawnPosition = Vector3(0, 2, -5)
+paintScenes = Array[PackedScene]([ExtResource("2_pp1so")])

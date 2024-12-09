@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=20 format=3 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
-[ext_resource type="Script" path="res://Scenes/Game/game_manager.gd" id="1_qt27j"]
 [ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
+[ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://game_manager.tscn" id="1_yxang"]
 [ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://puzzle_camera.tscn" id="2_ho5ji"]
-[ext_resource type="PackedScene" uid="uid://bsxebt5u505g3" path="res://Scenes/Game/PaintWorld.tscn" id="2_mx1sw"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
 [ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="3_cjblc"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
@@ -34,10 +33,7 @@ albedo_color = Color(0.768489, 0.317202, 0.163598, 1)
 
 [node name="Game" type="Node"]
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_qt27j")
-spawnPosition = Vector3(0, 2, -5)
-paintScenes = Array[PackedScene]([ExtResource("2_mx1sw")])
+[node name="GameManager" parent="." instance=ExtResource("1_yxang")]
 
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource("3_cjblc")
@@ -50,6 +46,9 @@ bus = &"music"
 
 [node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
 visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
 
 [node name="PuzzleSolver" parent="." node_paths=PackedStringArray("puzzleCamera", "locks") instance=ExtResource("1_wilwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
@@ -145,33 +144,8 @@ stream = ExtResource("10_7mbdc")
 volume_db = 5.0
 bus = &"sfx"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 15)
-
-[node name="PlayerHUD" type="Control" parent="."]
-custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="PlayerHUD"]
-custom_minimum_size = Vector2(4, 4)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.497
-anchor_right = 0.502
-anchor_bottom = 0.503
-offset_left = 0.559937
-offset_top = 0.160004
-offset_right = -0.560059
-offset_bottom = -0.160004
 
 [node name="Door" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4.7)
@@ -207,6 +181,3 @@ shape = SubResource("BoxShape3D_qm5dc")
 layers = 3
 mesh = SubResource("BoxMesh_bi6js")
 surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 13.3, 0)

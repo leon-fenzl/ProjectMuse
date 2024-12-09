@@ -115,5 +115,18 @@ som de porta abrindo
 porta fechando?
 vidro?"
 
+[node name="ColorRect" type="ColorRect" parent="Layer_HUD/Control"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.497
+anchor_right = 0.502
+anchor_bottom = 0.503
+offset_left = 0.559937
+offset_top = 0.160004
+offset_right = -0.560059
+offset_bottom = -0.160004
+
 [connection signal="body_entered" from="Camera3D/AreaDetection" to="." method="_on_area_detection_body_entered"]
 [connection signal="body_exited" from="Camera3D/AreaDetection" to="." method="_on_area_detection_body_exited"]
