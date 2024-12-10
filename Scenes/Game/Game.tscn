@@ -181,3 +181,5 @@ shape = SubResource("BoxShape3D_qm5dc")
 layers = 3
 mesh = SubResource("BoxMesh_bi6js")
 surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
+
+[node name="Test" type="Node" parent="."]
