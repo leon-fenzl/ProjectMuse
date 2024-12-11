@@ -75,8 +75,8 @@ func Move_Piece(DELTA:float):
 	input_dirs.y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	input_dirs = input_dirs.rotated(Vector3.UP, cam.rotation.y).normalized()
 	moveDirection = input_dirs.normalized() * speed * DELTA
-	if input_dirs != Vector3.ZERO && !$"../PuzzleSolver/AudioStreamPlayer".playing:
-		$"../PuzzleSolver/AudioStreamPlayer".play()
+	if input_dirs != Vector3.ZERO && !$"../AudioStreamPlayer".playing:
+		$"../AudioStreamPlayer".play()
 func Activate():
 	if movetype != MOVETYPE.DOMOVE:
 		movetype = MOVETYPE.DOMOVE

@@ -10,6 +10,5 @@ func _on_body_entered(body: Node3D) -> void:
 		solver.SumpUp()
 func _on_body_exited(body: Node3D) -> void:
 	if body == targetPiece:
-		print("hi")
 		#check = false
 		solver.SumpDown()
