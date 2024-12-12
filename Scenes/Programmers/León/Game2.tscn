@@ -1,0 +1,152 @@
+[gd_scene load_steps=22 format=3 uid="uid://cn2s25861xrtq"]
+
+[ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://game_manager.tscn" id="1_dbe40"]
+[ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="2_uva67"]
+[ext_resource type="AudioStream" uid="uid://brx2mxmxyn1aq" path="res://Sounds/BGSounds/Fase 1 - Primeiro Quadro - 2.wav" id="3_y1lxb"]
+[ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="4_l3dwo"]
+[ext_resource type="PackedScene" uid="uid://upwyl7ahe4ls" path="res://Scenes/Programmers/León/Puzzle.tscn" id="5_0pvia"]
+[ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://puzzle_camera.tscn" id="6_34ary"]
+[ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="7_vo7cx"]
+[ext_resource type="PackedScene" uid="uid://6w0vef3xwj7g" path="res://Scenes/Game/piece.tscn" id="8_gv6fs"]
+[ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="9_w1x4n"]
+[ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_n5875"]
+[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="11_nhq8i"]
+[ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="12_ew2na"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wkh4m"]
+size = Vector3(5.9, 5.4, 1.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_euknr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e70et"]
+size = Vector3(4.5, 0.4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sxiu"]
+size = Vector3(0.5, 5.4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm5dc"]
+size = Vector3(50, 1.05627, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bi6js"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnpbj"]
+albedo_color = Color(0.768489, 0.317202, 0.163598, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0o0uq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0mu3i"]
+
+[node name="Game2" type="Node"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_dbe40")]
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("2_uva67")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("3_y1lxb")
+volume_db = 5.0
+autoplay = true
+bus = &"music"
+
+[node name="GameMenu" parent="." instance=ExtResource("4_l3dwo")]
+visible = false
+
+[node name="Puzzles" type="Node" parent="."]
+
+[node name="Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "targetInteractable") instance=ExtResource("5_0pvia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, 0)
+collision_mask = 2
+puzzleCamera = NodePath("PuzzleCamera")
+locks = [NodePath("Lock")]
+targetInteractable = NodePath("../../Door")
+
+[node name="PuzzleCamera" parent="Puzzles/Puzzle" instance=ExtResource("6_34ary")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.166)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+shape = SubResource("BoxShape3D_wkh4m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Puzzle"]
+stream = ExtResource("10_n5875")
+volume_db = 5.0
+bus = &"sfx"
+
+[node name="Lock" parent="Puzzles/Puzzle" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("7_vo7cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -1.4, 0)
+targetPiece = NodePath("../Piece")
+solverRef = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Lock"]
+shape = SubResource("BoxShape3D_euknr")
+
+[node name="Piece" parent="Puzzles/Puzzle" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("8_gv6fs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, 1.2, 0)
+piecetype = 1
+cam = NodePath("../PuzzleCamera")
+adStream = NodePath("../AudioStreamPlayer")
+texture = ExtResource("9_w1x4n")
+split = Vector2(3, 3)
+
+[node name="Frame" type="StaticBody3D" parent="Puzzles/Puzzle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+shape = SubResource("BoxShape3D_e70et")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_e70et")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+shape = SubResource("BoxShape3D_3sxiu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+shape = SubResource("BoxShape3D_3sxiu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
+
+[node name="Player" parent="." instance=ExtResource("11_nhq8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 15)
+
+[node name="Ground" type="StaticBody3D" parent="." groups=["wood"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_qm5dc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_bi6js")
+surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
+
+[node name="Ground2" type="StaticBody3D" parent="." groups=["concrete"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2865, 0, 0)
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0281372, 0)
+shape = SubResource("BoxShape3D_qm5dc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2"]
+layers = 3
+mesh = SubResource("BoxMesh_bi6js")
+surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
+
+[node name="Door" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4.7)
+script = ExtResource("12_ew2na")
+openPos = Vector3(0, 5, 0)
+lerpTime = 2.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+shape = SubResource("BoxShape3D_0o0uq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+mesh = SubResource("BoxMesh_0mu3i")
