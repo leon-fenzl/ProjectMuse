@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
-[ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://game_manager.tscn" id="1_yxang"]
-[ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://puzzle_camera.tscn" id="2_ho5ji"]
+[ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
+[ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://Scenes/puzzle_camera.tscn" id="2_ho5ji"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
 [ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="3_cjblc"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
