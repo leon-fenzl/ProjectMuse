@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://h8x26iys3i3h"]
+[gd_scene load_steps=10 format=3 uid="uid://h8x26iys3i3h"]
 
 [ext_resource type="Script" path="res://Scripts/game_menu.gd" id="1_fvb2o"]
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="2_nbl12"]
@@ -7,6 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="5_ofsrr"]
 [ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://Sprites/RESTART_ICON.png" id="5_u5yc2"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="6_6xgbd"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="8_33jwu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sevsp"]
+font_size = 21
+font_color = Color(0, 0, 0, 1)
 
 [node name="GameMenu" type="CanvasLayer"]
 process_mode = 3
@@ -72,3 +77,23 @@ behaviour = 4
 click = ExtResource("5_ofsrr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton3"]
+
+[node name="ResolutionLabel" type="Label" parent="."]
+offset_left = 985.0
+offset_top = 229.0
+offset_right = 1233.0
+offset_bottom = 293.0
+text = "Resoluções"
+label_settings = SubResource("LabelSettings_sevsp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(100, 25)
+offset_left = 1061.0
+offset_top = 284.0
+offset_right = 1161.0
+offset_bottom = 309.0
+script = ExtResource("8_33jwu")
+
+[connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_item_selected"]
