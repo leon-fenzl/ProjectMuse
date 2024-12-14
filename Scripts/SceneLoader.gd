@@ -14,6 +14,7 @@ func _init() -> void:
 func _ready() -> void:
 	Load_Scene(targetStringLocation)
 	print(get_tree().root.get_child(0))
+	print(GeneralConfig.selfRef)
 	
 ##Call this to load a new scene
 ##How to call SceneLoader.selfRef.Load_Scene("res://Scenes/Game/Game.tscn")
