@@ -12,7 +12,8 @@ func _on_button_down() -> void:
 	match behaviour:
 		BEHAVIOUR.START:
 			await  $AudioStreamPlayer.finished
-			get_tree().change_scene_to_file("res://Scenes/Game/Game.tscn")
+			SceneLoader.selfRef.Load_Scene("res://Scenes/Game/Game.tscn")
+			##get_tree().change_scene_to_file("res://Scenes/Game/Game.tscn")
 		BEHAVIOUR.RESUME:
 			get_tree().paused = !get_tree().paused
 			targetMenu.visible = get_tree().paused

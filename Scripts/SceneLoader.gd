@@ -16,6 +16,7 @@ func _ready() -> void:
 	print(get_tree().root.get_child(0))
 	
 ##Call this to load a new scene
+##How to call SceneLoader.selfRef.Load_Scene("res://Scenes/Game/Game.tscn")
 func Load_Scene(applyTargetStringLocation):
 	if isLoading:
 		return
