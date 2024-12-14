@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drhyortix0qr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1pbf"]
+
+[node name="Col_Piece" type="CollisionShape3D"]
+shape = SubResource("BoxShape3D_q1pbf")

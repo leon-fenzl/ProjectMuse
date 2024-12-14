@@ -19,7 +19,9 @@ static var location :Vector3
 const concrete = preload("res://Sounds/SoundEffects/Passos 1.wav")
 const wood = preload("res://Sounds/SoundEffects/Passos 2.wav")
 @onready var floor_name
-
+static var playerRef : Node
+func _init() -> void:
+	playerRef = self
 func _physics_process(delta: float) -> void:
 	GameModeChecker()
 	match Utilities.gameMode:
@@ -73,13 +75,6 @@ func Jump(DELTA:float):
 		jumpVector -= transform.basis.y * jumpForce * DELTA
 	if is_on_floor() && jumpVector != -get_floor_normal():
 		jumpVector = -get_floor_normal() * DELTA
-func _on_area_detection_body_entered(body: Node3D) -> void:
-	Focus()
-	if currentPuzzle == null:
-		currentPuzzle = body
-func _on_area_detection_body_exited(body: Node3D) -> void:
-	Unfocus()
-	currentPuzzle = null
 func GameModeChecker():
 	if Input.is_action_just_pressed("Switch")  && onFocus == true:
 		if Utilities.gameMode != Utilities.GAMEMODE.PUZZLE:
@@ -88,18 +83,10 @@ func GameModeChecker():
 			Utilities.gameMode = Utilities.GAMEMODE.PLAYER
 	else:
 		return
-func  Focus():
-	$Layer_HUD/Control/Label.visible = !$Layer_HUD/Control/Label.visible
-	onFocus = true
-func Unfocus():
-	$Layer_HUD/Control/Label.visible = !$Layer_HUD/Control/Label.visible
-	onFocus = false
-	
 func FindFloor():
 	if floor_ray.is_colliding():
 		floor_group = floor_ray.get_collider()
 		floor_name = floor_group.name
-		
 		match floor_name:
 			"Ground":
 				if audio_stream_player_steps.stream.resource_path != wood.resource_path:

@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://upwyl7ahe4ls"]
+
+[ext_resource type="Script" path="res://Scripts/PuzzleSystem.gd" id="1_hqyen"]
+
+[node name="Puzzle" type="Area3D"]
+script = ExtResource("1_hqyen")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 520.0
+offset_top = 312.0
+offset_right = -511.0
+offset_bottom = -385.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pressione F para focar no Puzzle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

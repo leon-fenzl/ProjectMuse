@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6w0vef3xwj7g"]
 
 [ext_resource type="Script" path="res://Scripts/piece.gd" id="1_0rqig"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q1pbf"]
+[ext_resource type="PackedScene" uid="uid://drhyortix0qr" path="res://col_piece.tscn" id="2_th0pb"]
 
 [node name="Piece" type="CharacterBody3D" groups=["pieces"]]
 collision_layer = 4
@@ -13,5 +12,4 @@ platform_on_leave = 2
 script = ExtResource("1_0rqig")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_q1pbf")
+[node name="Col_Piece" parent="." instance=ExtResource("2_th0pb")]

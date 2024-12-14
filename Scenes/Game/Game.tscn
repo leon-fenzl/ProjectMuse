@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
-[ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://game_manager.tscn" id="1_yxang"]
-[ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://puzzle_camera.tscn" id="2_ho5ji"]
+[ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
+[ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://Scenes/puzzle_camera.tscn" id="2_ho5ji"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
 [ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="3_cjblc"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
@@ -54,15 +54,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 input_ray_pickable = false
 puzzleCamera = NodePath("PuzzleCamera")
-locks = [null, null, null]
+locks = [NodePath("Lock")]
 targetInteractableRef = NodePath("../Door")
 metadata/_edit_group_ = true
 
 [node name="PuzzleCamera" parent="PuzzleSolver" instance=ExtResource("2_ho5ji")]
 
-[node name="Lock" parent="PuzzleSolver" instance=ExtResource("5_2isnb")]
+[node name="Lock" parent="PuzzleSolver" node_paths=PackedStringArray("targetPiece") instance=ExtResource("5_2isnb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -1.3, 0)
-solverRef = NodePath("..")
+targetPiece = NodePath("../Piece2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleSolver/Lock"]
 shape = SubResource("BoxShape3D_euknr")
@@ -79,62 +79,6 @@ cam = NodePath("../PuzzleCamera")
 texture = ExtResource("3_1feaw")
 split = Vector2(3, 3)
 frame = 1
-
-[node name="Piece3" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.302, 1.3, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 2
-
-[node name="Piece4" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, 0, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 3
-
-[node name="Piece5" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00200021, 0, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 4
-
-[node name="Piece6" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.302, 0, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 5
-
-[node name="Piece7" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, -1.3, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 6
-
-[node name="Piece8" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00200021, -1.3, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 7
-
-[node name="Piece9" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.302, -1.3, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleSolver"]
 shape = SubResource("BoxShape3D_wkh4m")
