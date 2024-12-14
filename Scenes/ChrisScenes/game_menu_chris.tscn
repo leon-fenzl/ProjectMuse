@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://xcl7goqugc7g"]
+
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/game_menu_chis.gd" id="1_7t2vv"]
+[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="2_121eg"]
+[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/BaseButton.tscn" id="3_r3k2a"]
+[ext_resource type="Texture2D" uid="uid://d2nvc5272xrqy" path="res://Sprites/RESUME_ICON.png" id="4_7ihje"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/base_button_chris.gd" id="5_kxcys"]
+[ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://Sprites/RESTART_ICON.png" id="6_e7kvm"]
+[ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="7_q1xoq"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="8_cc5yg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wssrg"]
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_7t2vv")
+
+[node name="BGMenu" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_121eg")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="BaseButton" parent="BGMenu" instance=ExtResource("3_r3k2a")]
+layout_mode = 1
+anchor_left = 0.056
+anchor_top = 0.296
+anchor_right = 0.222
+anchor_bottom = 0.358
+offset_left = -0.512001
+offset_top = 0.192001
+offset_right = 0.255981
+offset_bottom = 1.01599
+icon = ExtResource("4_7ihje")
+script = ExtResource("5_kxcys")
+behaviour = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton"]
+
+[node name="BaseButton2" parent="BGMenu" instance=ExtResource("3_r3k2a")]
+layout_mode = 1
+anchor_left = 0.056
+anchor_top = 0.494
+anchor_right = 0.222
+anchor_bottom = 0.557
+offset_left = -0.512001
+offset_top = -0.112
+offset_right = 0.255981
+offset_bottom = 0.0639648
+icon = ExtResource("6_e7kvm")
+script = ExtResource("5_kxcys")
+behaviour = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton2"]
+
+[node name="BaseButton3" parent="BGMenu" instance=ExtResource("3_r3k2a")]
+layout_mode = 1
+anchor_left = 0.056
+anchor_top = 0.691
+anchor_right = 0.222
+anchor_bottom = 0.753
+offset_left = -0.512001
+offset_top = 0.231964
+offset_right = 0.255981
+offset_bottom = 1.056
+icon = ExtResource("7_q1xoq")
+script = ExtResource("5_kxcys")
+behaviour = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton3"]
+
+[node name="ResolutionLabel" type="Label" parent="BGMenu"]
+layout_mode = 0
+offset_left = 985.0
+offset_top = 229.0
+offset_right = 1233.0
+offset_bottom = 293.0
+text = "Resoluções"
+label_settings = SubResource("LabelSettings_wssrg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="BGMenu"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 0
+offset_left = 1061.0
+offset_top = 284.0
+offset_right = 1161.0
+offset_bottom = 309.0
+script = ExtResource("8_cc5yg")
+
+[connection signal="item_selected" from="BGMenu/OptionButton" to="BGMenu/OptionButton" method="_on_item_selected"]

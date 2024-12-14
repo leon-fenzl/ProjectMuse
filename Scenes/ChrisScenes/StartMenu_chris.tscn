@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccsclt5rbwoj2"]
+
+[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_ygcne"]
+[ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/BaseButton.tscn" id="2_pmd2i"]
+[ext_resource type="Texture2D" uid="uid://bdebbnlnjfjxm" path="res://Sprites/PLAY_ICON.png" id="3_bme25"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/base_button_chris.gd" id="4_e55s3"]
+[ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_q7epj"]
+[ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="5_idpbc"]
+[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="6_w4mcn"]
+
+[node name="StartMenu" type="Node"]
+process_mode = 3
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGMenu" type="TextureRect" parent="Control"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ygcne")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_group_ = true
+
+[node name="BaseButton" parent="Control" instance=ExtResource("2_pmd2i")]
+layout_mode = 1
+anchor_left = 0.444
+anchor_top = 0.467
+anchor_right = 0.544
+anchor_bottom = 0.533
+offset_left = -0.320007
+offset_top = -220.24
+offset_right = -0.320007
+offset_bottom = -216.76
+icon = ExtResource("3_bme25")
+script = ExtResource("4_e55s3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/BaseButton"]
+stream = ExtResource("4_q7epj")
+bus = &"sfx"
+
+[node name="BaseButton2" parent="Control" instance=ExtResource("2_pmd2i")]
+layout_mode = 1
+anchor_left = 0.894
+anchor_top = 0.911
+anchor_right = 1.0
+anchor_bottom = 0.994
+offset_left = -0.320068
+offset_top = 8.07996
+offset_right = 0.0
+offset_bottom = 0.320007
+icon = ExtResource("5_idpbc")
+script = ExtResource("4_e55s3")
+behaviour = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/BaseButton2"]
+stream = ExtResource("4_q7epj")
+bus = &"sfx"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w4mcn")
+volume_db = 5.0
+autoplay = true
+bus = &"music"
