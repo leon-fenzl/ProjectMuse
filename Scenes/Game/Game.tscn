@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=49 format=3 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
-[ext_resource type="PackedScene" uid="uid://chh7e2pc4jpev" path="res://Scenes/Game/puzzle_solver.tscn" id="1_wilwx"]
 [ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
 [ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://Scenes/puzzle_camera.tscn" id="2_ho5ji"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
@@ -9,14 +8,253 @@
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
 [ext_resource type="PackedScene" uid="uid://6w0vef3xwj7g" path="res://Scenes/Game/piece.tscn" id="6_cij0a"]
+[ext_resource type="PackedScene" uid="uid://upwyl7ahe4ls" path="res://Scenes/Programmers/León/Puzzle.tscn" id="7_ckkm8"]
 [ext_resource type="AudioStream" uid="uid://brx2mxmxyn1aq" path="res://Sounds/BGSounds/Fase 1 - Primeiro Quadro - 2.wav" id="8_ux2fh"]
 [ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_7mbdc"]
+[ext_resource type="PackedScene" uid="uid://cde53xasybw5x" path="res://mesh_piece.tscn" id="12_mqbq2"]
+[ext_resource type="ArrayMesh" uid="uid://bwqep63y4g6kl" path="res://Mesh/Piece.obj" id="13_s7e60"]
 [ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="18_jdbiy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_euknr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kuy6n"]
+size = Vector3(5.9, 5.4, 1.8)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wkh4m"]
-size = Vector3(4.5, 4.7, 0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcrli"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2alxw"]
+parameter_name = "PaintTexture"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_q63gp"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_qqjiv"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5r64q"]
+parameter_name = "Specular"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_p0juu"]
+parameter_name = "Metal"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_dhu55"]
+parameter_name = "Rough"
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_2dqoq"]
+parameter_name = "OffseToCell"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_tkklu"]
+parameter_name = "ScaleToSlices"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3m0wn"]
+expanded_output_ports = [0]
+source = 5
+texture = ExtResource("3_1feaw")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6xp6q"]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShader" id="VisualShader_ooo33"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform float ScaleToSlices;
+uniform vec2 OffseToCell = vec2(1.000000, 1.000000);
+uniform sampler2D PaintTexture : repeat_disable;
+uniform float Metal;
+uniform float Rough;
+uniform float Specular;
+
+
+
+void fragment() {
+// Input:9
+	vec2 n_out9p0 = UV;
+
+
+// FloatParameter:34
+	float n_out34p0 = ScaleToSlices;
+
+
+// VectorOp:27
+	vec2 n_out27p0 = n_out9p0 * vec2(n_out34p0);
+
+
+// Vector2Parameter:33
+	vec2 n_out33p0 = OffseToCell;
+
+
+// VectorOp:28
+	vec2 n_out28p0 = n_out27p0 + n_out33p0;
+
+
+	vec4 n_out8p0;
+// Texture2D:8
+	n_out8p0 = texture(PaintTexture, n_out28p0);
+
+
+// FloatParameter:31
+	float n_out31p0 = Metal;
+
+
+// FloatParameter:32
+	float n_out32p0 = Rough;
+
+
+// FloatParameter:30
+	float n_out30p0 = Specular;
+
+
+// Output:0
+	ALBEDO = vec3(n_out8p0.xyz);
+	METALLIC = n_out31p0;
+	ROUGHNESS = n_out32p0;
+	SPECULAR = n_out30p0;
+
+
+}
+"
+graph_offset = Vector2(-122.286, 277.87)
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(400, 120)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_3m0wn")
+nodes/fragment/8/position = Vector2(160, 120)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_6xp6q")
+nodes/fragment/9/position = Vector2(-580, 140)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture2DParameter_2alxw")
+nodes/fragment/12/position = Vector2(-240, 340)
+nodes/fragment/27/node = SubResource("VisualShaderNodeVectorOp_q63gp")
+nodes/fragment/27/position = Vector2(-240, 120)
+nodes/fragment/28/node = SubResource("VisualShaderNodeVectorOp_qqjiv")
+nodes/fragment/28/position = Vector2(-40, 120)
+nodes/fragment/30/node = SubResource("VisualShaderNodeFloatParameter_5r64q")
+nodes/fragment/30/position = Vector2(120, 780)
+nodes/fragment/31/node = SubResource("VisualShaderNodeFloatParameter_p0juu")
+nodes/fragment/31/position = Vector2(120, 380)
+nodes/fragment/32/node = SubResource("VisualShaderNodeFloatParameter_dhu55")
+nodes/fragment/32/position = Vector2(120, 580)
+nodes/fragment/33/node = SubResource("VisualShaderNodeVec2Parameter_2dqoq")
+nodes/fragment/33/position = Vector2(-580, 600)
+nodes/fragment/34/node = SubResource("VisualShaderNodeFloatParameter_tkklu")
+nodes/fragment/34/position = Vector2(-580, 400)
+nodes/fragment/connections = PackedInt32Array(12, 0, 8, 2, 9, 0, 27, 0, 27, 0, 28, 0, 28, 0, 8, 0, 8, 0, 0, 0, 30, 0, 0, 4, 32, 0, 0, 3, 31, 0, 0, 2, 33, 0, 28, 1, 34, 0, 27, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6cbn"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4he3"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0, 0)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csp11"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0.33, 0)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d77ft"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0.65, 0)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_av6o4"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0, 0.33)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3uch"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0.33, 0.33)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rynh1"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0.65, 0.33)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s5xv1"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0, 0.65)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijudf"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0.325, 0.65)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgtls"]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0.65, 0.65)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjri6"]
+size = Vector3(4.5, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nhhsu"]
+size = Vector3(4.5, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2gea4"]
+size = Vector3(4.5, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtxey"]
+size = Vector3(0.5, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lyvw0"]
+size = Vector3(0.5, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s3qwv"]
+size = Vector3(5, 5, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0wwh"]
 
@@ -50,50 +288,231 @@ visible = false
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
 
-[node name="PuzzleSolver" parent="." node_paths=PackedStringArray("puzzleCamera", "locks") instance=ExtResource("1_wilwx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
-input_ray_pickable = false
+[node name="Puzzles" type="Node" parent="."]
+
+[node name="Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "targetInteractable") instance=ExtResource("7_ckkm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, -8.98972)
+collision_mask = 2
 puzzleCamera = NodePath("PuzzleCamera")
-locks = [NodePath("Lock")]
-targetInteractableRef = NodePath("../Door")
-metadata/_edit_group_ = true
+locks = [NodePath("Locks/Lock"), NodePath("Locks/Lock2"), NodePath("Locks/Lock3"), NodePath("Locks/Lock4"), NodePath("Locks/Lock5"), NodePath("Locks/Lock6"), NodePath("Locks/Lock7"), NodePath("Locks/Lock8")]
+targetInteractable = NodePath("../../Door")
 
-[node name="PuzzleCamera" parent="PuzzleSolver" instance=ExtResource("2_ho5ji")]
+[node name="PuzzleCamera" parent="Puzzles/Puzzle" instance=ExtResource("2_ho5ji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.166)
 
-[node name="Lock" parent="PuzzleSolver" node_paths=PackedStringArray("targetPiece") instance=ExtResource("5_2isnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -1.3, 0)
-targetPiece = NodePath("../Piece2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+shape = SubResource("BoxShape3D_kuy6n")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleSolver/Lock"]
-shape = SubResource("BoxShape3D_euknr")
-
-[node name="Piece" parent="PuzzleSolver" instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.298, 1.3, 0)
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-
-[node name="Piece2" parent="PuzzleSolver" node_paths=PackedStringArray("cam") instance=ExtResource("6_cij0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00199997, 1.3, 0)
-piecetype = 1
-cam = NodePath("../PuzzleCamera")
-texture = ExtResource("3_1feaw")
-split = Vector2(3, 3)
-frame = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleSolver"]
-shape = SubResource("BoxShape3D_wkh4m")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PuzzleSolver"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Puzzle"]
 stream = ExtResource("10_7mbdc")
 volume_db = 5.0
 bus = &"sfx"
+
+[node name="Locks" type="Node" parent="Puzzles/Puzzle"]
+
+[node name="Lock" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 5.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece2")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock2" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece3")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock2"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock3" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece4")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock3"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock4" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 4.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece5")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock4"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock5" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece6")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock5"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock6" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece7")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock6"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock7" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 3.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece8")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock7"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Lock8" parent="Puzzles/Puzzle/Locks" node_paths=PackedStringArray("targetPiece", "solverRef") instance=ExtResource("5_2isnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.6, -8.98972)
+targetPiece = NodePath("../../Pieces/Piece9")
+solverRef = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Locks/Lock8"]
+shape = SubResource("BoxShape3D_mcrli")
+
+[node name="Pieces" type="Node" parent="Puzzles/Puzzle"]
+
+[node name="Piece" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995658, 5.6, -8.98972)
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_q4he3")
+
+[node name="Piece2" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00199997, 5.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece2" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_csp11")
+
+[node name="Piece3" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.002, 5.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece3" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_d77ft")
+
+[node name="Piece4" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.998, 4.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece4" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_av6o4")
+
+[node name="Piece5" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00200009, 4.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece5" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_i3uch")
+
+[node name="Piece6" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.002, 4.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece6" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_rynh1")
+
+[node name="Piece7" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.998, 3.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece7" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_s5xv1")
+
+[node name="Piece8" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00199997, 3.6, -8.98972)
+disable_mode = 1
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece8" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_ijudf")
+
+[node name="Piece9" parent="Puzzles/Puzzle/Pieces" node_paths=PackedStringArray("cam", "adStream") instance=ExtResource("6_cij0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.002, 3.6, -8.98972)
+piecetype = 1
+cam = NodePath("../../PuzzleCamera")
+adStream = NodePath("../../AudioStreamPlayer")
+
+[node name="Mesh_Piece" parent="Puzzles/Puzzle/Pieces/Piece9" instance=ExtResource("12_mqbq2")]
+mesh = ExtResource("13_s7e60")
+surface_material_override/1 = SubResource("ShaderMaterial_lgtls")
+
+[node name="Frame" type="StaticBody3D" parent="Puzzles/Puzzle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, 0)
+shape = SubResource("BoxShape3D_jjri6")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Puzzle/Frame/CollisionShape3D"]
+mesh = SubResource("BoxMesh_nhhsu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+shape = SubResource("BoxShape3D_jjri6")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Puzzle/Frame/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_2gea4")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
+shape = SubResource("BoxShape3D_jtxey")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Puzzle/Frame/CollisionShape3D3"]
+mesh = SubResource("BoxMesh_lyvw0")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+shape = SubResource("BoxShape3D_jtxey")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzles/Puzzle/Frame/CollisionShape3D4"]
+mesh = SubResource("BoxMesh_lyvw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Puzzle/Frame"]
+transform = Transform3D(0.96, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.500001)
+mesh = SubResource("BoxMesh_s3qwv")
 
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 15)
 
 [node name="Door" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -12.2)
 script = ExtResource("4_6gbm8")
+openPos = Vector3(0, 5, 0)
+lerpTime = 2.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
