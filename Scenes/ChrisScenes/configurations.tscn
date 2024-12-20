@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvfxsjuov6fl3"]
 
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_xp08t"]
-[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="2_gjupo"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/option_button_chris.gd" id="2_gjupo"]
 [ext_resource type="Script" path="res://Scripts/base_button.gd" id="3_mupoo"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_5iuw4"]
 

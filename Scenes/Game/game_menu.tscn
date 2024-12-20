@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://Sprites/RESTART_ICON.png" id="5_u5yc2"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="6_6xgbd"]
 [ext_resource type="PackedScene" uid="uid://bvfxsjuov6fl3" path="res://Scenes/ChrisScenes/configurations.tscn" id="8_2f0cf"]
-[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="8_33jwu"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/option_button_chris.gd" id="8_33jwu"]
 [ext_resource type="PackedScene" uid="uid://cgq4ymorrmhgi" path="res://Scenes/ChrisScenes/Config.tscn" id="9_y4lwi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sevsp"]

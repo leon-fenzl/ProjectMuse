@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/base_button_chris.gd" id="5_kxcys"]
 [ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://Sprites/RESTART_ICON.png" id="6_e7kvm"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="7_q1xoq"]
-[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="8_cc5yg"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/option_button_chris.gd" id="8_cc5yg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wssrg"]
 font_size = 21

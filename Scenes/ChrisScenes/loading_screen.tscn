@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://chxxey7ijnbe"]
+
+[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_ggswl"]
+[ext_resource type="Texture2D" uid="uid://bsfvuyssnmy52" path="res://Sprites/LoadingSpinner.png" id="2_cb8jh"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/loading_icon.gd" id="3_urnqf"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+
+[node name="BGMenu" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ggswl")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(644, 363)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_cb8jh")
+script = ExtResource("3_urnqf")
