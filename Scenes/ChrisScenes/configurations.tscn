@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvfxsjuov6fl3"]
+
+[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_xp08t"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="2_gjupo"]
+[ext_resource type="Script" path="res://Scripts/base_button.gd" id="3_mupoo"]
+[ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_5iuw4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qb4qo"]
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[node name="Configurations" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xp08t")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResolutionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 985.0
+offset_top = 229.0
+offset_right = 1233.0
+offset_bottom = 293.0
+text = "Resoluções"
+label_settings = SubResource("LabelSettings_qb4qo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -78.0
+offset_right = -120.0
+offset_bottom = -53.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("2_gjupo")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("next_ui")]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.156
+anchor_bottom = 0.139
+offset_right = -191.68
+offset_bottom = -92.08
+action_mode = 0
+text = "Back"
+script = ExtResource("3_mupoo")
+behaviour = 5
+next_ui = NodePath("..")
+click = ExtResource("4_5iuw4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("4_5iuw4")
+bus = &"sfx"
+
+[connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_item_selected"]
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

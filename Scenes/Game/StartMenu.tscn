@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc2sybv8mjop3"]
+[gd_scene load_steps=10 format=3 uid="uid://cc2sybv8mjop3"]
 
 [ext_resource type="Script" path="res://Scenes/Game/general_config.gd" id="1_2akb4"]
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_iabt3"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_i7ynb"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="4_mvpbn"]
 [ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="6_b24ji"]
+[ext_resource type="PackedScene" uid="uid://dhx2i0yvvqfli" path="res://Scenes/ChrisScenes/credits_control.tscn" id="8_slypn"]
+[ext_resource type="PackedScene" uid="uid://bvfxsjuov6fl3" path="res://Scenes/ChrisScenes/configurations.tscn" id="8_tkwrw"]
 
 [node name="StartMenu" type="Node"]
 process_mode = 3
@@ -70,6 +72,52 @@ click = ExtResource("4_i7ynb")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/BaseButton2"]
 stream = ExtResource("4_i7ynb")
 bus = &"sfx"
+
+[node name="BaseButton3" parent="Control" node_paths=PackedStringArray("next_ui") instance=ExtResource("1_nafpx")]
+layout_mode = 1
+anchor_left = 0.444
+anchor_top = 0.467
+anchor_right = 0.544
+anchor_bottom = 0.533
+offset_left = -0.320007
+offset_top = 78.76
+offset_right = -0.320007
+offset_bottom = 82.24
+text = "CREDITS"
+behaviour = 6
+next_ui = NodePath("../CreditsControl")
+click = ExtResource("4_i7ynb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/BaseButton3"]
+stream = ExtResource("4_i7ynb")
+bus = &"sfx"
+
+[node name="BaseButton4" parent="Control" node_paths=PackedStringArray("next_ui") instance=ExtResource("1_nafpx")]
+layout_mode = 1
+anchor_left = 0.444
+anchor_top = 0.467
+anchor_right = 0.544
+anchor_bottom = 0.533
+offset_left = -0.320007
+offset_top = 142.76
+offset_right = -0.320007
+offset_bottom = 146.24
+text = "SETTINGS"
+behaviour = 6
+next_ui = NodePath("../Configurations")
+click = ExtResource("4_i7ynb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/BaseButton4"]
+stream = ExtResource("4_i7ynb")
+bus = &"sfx"
+
+[node name="CreditsControl" parent="Control" instance=ExtResource("8_slypn")]
+visible = false
+layout_mode = 1
+
+[node name="Configurations" parent="Control" instance=ExtResource("8_tkwrw")]
+visible = false
+layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_b24ji")

@@ -9,7 +9,6 @@ func _init() -> void:
 func _ready() -> void:
 	selfRef = self
 	var screen_size = DisplayServer.screen_get_size()
-	print(screen_size)
 	get_window().set_size(screen_size)
 	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	

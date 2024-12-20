@@ -1,7 +1,9 @@
 extends Button
-enum BEHAVIOUR{START,RESUME,RESTART,CHANGEMENU,QUIT}
+enum BEHAVIOUR{START,RESUME,RESTART,CHANGEMENU,QUIT,BACK,NEXT_UI}
 @export var behaviour : BEHAVIOUR= BEHAVIOUR.START
 @export var targetMenu : Node = null
+@export var next_ui: Control
+
 @export var click : AudioStream
 func _ready() -> void:
 		if behaviour == BEHAVIOUR.RESUME && targetMenu == null:
@@ -25,3 +27,7 @@ func _on_button_down() -> void:
 		BEHAVIOUR.QUIT:
 			await $"../BaseButton2/AudioStreamPlayer".finished
 			get_tree().quit()
+		BEHAVIOUR.NEXT_UI:
+			next_ui.visible = true
+		BEHAVIOUR.BACK:
+			next_ui.visible = false

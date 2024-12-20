@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgq4ymorrmhgi"]
+
+[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_4qa61"]
+[ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="2_ga81v"]
+[ext_resource type="Script" path="res://Scripts/base_button.gd" id="3_j10vu"]
+[ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_n84hd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2i55"]
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[node name="Config" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4qa61")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResolutionLabel" type="Label" parent="."]
+visible = false
+offset_left = 985.0
+offset_top = 229.0
+offset_right = 1233.0
+offset_bottom = 293.0
+text = "Resoluções"
+label_settings = SubResource("LabelSettings_h2i55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+visible = false
+custom_minimum_size = Vector2(100, 25)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -78.0
+offset_right = -120.0
+offset_bottom = -53.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("2_ga81v")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("next_ui")]
+visible = false
+custom_minimum_size = Vector2(200, 100)
+anchors_preset = -1
+anchor_right = 0.156
+anchor_bottom = 0.139
+offset_right = -191.68
+offset_bottom = -92.08
+action_mode = 0
+text = "Back"
+script = ExtResource("3_j10vu")
+behaviour = 5
+next_ui = NodePath("..")
+click = ExtResource("4_n84hd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("4_n84hd")
+bus = &"sfx"
+
+[connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_item_selected"]
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

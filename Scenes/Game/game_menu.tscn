@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://h8x26iys3i3h"]
+[gd_scene load_steps=12 format=3 uid="uid://h8x26iys3i3h"]
 
 [ext_resource type="Script" path="res://Scripts/game_menu.gd" id="1_fvb2o"]
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="2_nbl12"]
@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="5_ofsrr"]
 [ext_resource type="Texture2D" uid="uid://duevc2ulpel3b" path="res://Sprites/RESTART_ICON.png" id="5_u5yc2"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="6_6xgbd"]
+[ext_resource type="PackedScene" uid="uid://bvfxsjuov6fl3" path="res://Scenes/ChrisScenes/configurations.tscn" id="8_2f0cf"]
 [ext_resource type="Script" path="res://Scenes/ChrisScenes/option_button_chris.gd" id="8_33jwu"]
+[ext_resource type="PackedScene" uid="uid://cgq4ymorrmhgi" path="res://Scenes/ChrisScenes/Config.tscn" id="9_y4lwi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sevsp"]
 font_size = 21
@@ -69,16 +71,41 @@ anchor_top = 0.691
 anchor_right = 0.222
 anchor_bottom = 0.753
 offset_left = -0.512001
-offset_top = 0.231964
+offset_top = 95.162
 offset_right = 0.255981
-offset_bottom = 1.056
+offset_bottom = 95.9861
 icon = ExtResource("6_6xgbd")
 behaviour = 4
 click = ExtResource("5_ofsrr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton3"]
 
+[node name="BaseButton4" parent="BGMenu" node_paths=PackedStringArray("next_ui") instance=ExtResource("2_pa8dj")]
+layout_mode = 1
+anchor_left = 0.056
+anchor_top = 0.691
+anchor_right = 0.222
+anchor_bottom = 0.753
+offset_left = 0.32
+offset_top = -0.744995
+offset_right = 1.08798
+offset_bottom = 0.0791016
+text = "Config"
+behaviour = 6
+next_ui = NodePath("../Configurations")
+click = ExtResource("5_ofsrr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGMenu/BaseButton4"]
+
+[node name="Configurations" parent="BGMenu" instance=ExtResource("8_2f0cf")]
+visible = false
+layout_mode = 1
+
+[node name="Config" parent="." instance=ExtResource("9_y4lwi")]
+visible = false
+
 [node name="ResolutionLabel" type="Label" parent="."]
+visible = false
 offset_left = 985.0
 offset_top = 229.0
 offset_right = 1233.0
@@ -89,6 +116,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="."]
+visible = false
 custom_minimum_size = Vector2(100, 25)
 offset_left = 1061.0
 offset_top = 284.0
