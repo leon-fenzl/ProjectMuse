@@ -1,4 +1,4 @@
 [gd_scene format=3 uid="uid://cde53xasybw5x"]
 
-[node name="Mesh_Piece" type="MeshInstance3D"]
+[node name="Piece_Paint" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

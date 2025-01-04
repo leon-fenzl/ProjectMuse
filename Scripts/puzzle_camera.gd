@@ -17,8 +17,9 @@ func _physics_process(delta: float) -> void:
 			Utilities.GAMEMODE.PLAYER:
 				pass
 			Utilities.GAMEMODE.PUZZLE:
-				MouseRaySelection()
-				SelectNodes()
+				if current == true:
+					MouseRaySelection()
+					SelectNodes()
 func MouseRaySelection():
 	mousePos = get_viewport().get_mouse_position()
 	query = PhysicsRayQueryParameters3D.new()
@@ -38,3 +39,4 @@ func SelectNodes():
 				hitTarget = null 
 		if hitTarget != null:
 			hitTarget.Activate()
+		print(hitTarget.name)

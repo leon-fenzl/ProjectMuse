@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba1g72v1klhx0"]
+
+[ext_resource type="Script" path="res://Scripts/piece.gd" id="1_rrmch"]
+[ext_resource type="PackedScene" uid="uid://kjtiuxuo768" path="res://Scenes/Game/Piece Settings/piece_shape.tscn" id="2_ur4hw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ml2wf"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="New_Piece" type="CharacterBody3D" groups=["pieces"]]
+script = ExtResource("1_rrmch")
+metadata/_edit_group_ = true
+
+[node name="Piece_Shape" parent="." instance=ExtResource("2_ur4hw")]
+shape = SubResource("BoxShape3D_ml2wf")

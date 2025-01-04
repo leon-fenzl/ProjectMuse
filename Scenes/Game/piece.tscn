@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6w0vef3xwj7g"]
 
-[ext_resource type="Script" path="res://Scripts/piece.gd" id="1_0rqig"]
+[ext_resource type="Script" path="res://Scripts/oldpiece.gd" id="1_0rqig"]
 [ext_resource type="PackedScene" uid="uid://drhyortix0qr" path="res://col_piece.tscn" id="2_th0pb"]
 
 [node name="Piece" type="CharacterBody3D" groups=["pieces"]]

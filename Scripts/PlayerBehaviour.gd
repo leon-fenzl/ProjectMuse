@@ -10,7 +10,8 @@ class_name PlayerBehaviour
 @export var playeraudio : PlayerAudioController 
 var onFocus : bool = false
 var currentPuzzle : Node
-@onready var cam :=$Camera3D
+@onready var playerCam := $Camera3D
+@onready var paintCam := $Camera3D
 @onready var floorObj :Node
 static var location :Vector3
 @onready var floor_ray := $Feet
@@ -20,34 +21,27 @@ const concrete = preload("res://Sounds/SoundEffects/Passos 1.wav")
 const wood = preload("res://Sounds/SoundEffects/Passos 2.wav")
 @onready var floor_name
 static var playerRef : Node
+@export var current := false
 func _init() -> void:
 	playerRef = self
 func _physics_process(delta: float) -> void:
-	GameModeChecker()
-	match Utilities.gameMode:
-		Utilities.GAMEMODE.PLAYER:
-			Jump(delta)
-			Gravity(delta)
-			MovePlayer(delta)
-			#if moveDirection.length() > 0.2 || moveDirection.length() < -0.2:
-				#FindFloor()
-			#else:
-				#audio_stream_player_steps.stop()
-				#if is_on_floor(): && !stepSound.playing:
-					#FindFloor()
-					#stepSound.play()
-			#elif moveDirection.length() < 0.2 && moveDirection.length() > -0.2 && stepSound.playing:
-				#stepSound.stop()
-			velocity = moveDirection + gravity + jumpVector
-			move_and_slide()
-		Utilities.GAMEMODE.PUZZLE:
-			pass
-			
-		#match audiotype:
-			#AUDIOTYPE.GROUND:
-				#IF current audio != newaUDIO:
-					#CURRENTAUDIO = NEWAUDIO
-				#CURRENTAUDIO PLAY
+	if current == true:
+		GameModeChecker()
+		match Utilities.gameMode:
+			Utilities.GAMEMODE.PLAYER:
+				Jump(delta)
+				Gravity(delta)
+				MovePlayer(delta)
+				velocity = moveDirection + gravity + jumpVector
+				move_and_slide()
+				if input_dirs != Vector3.ZERO:
+					FindFloor()
+					if  !audio_stream_player_steps.playing:
+						audio_stream_player_steps.play()
+				elif input_dirs == Vector3.ZERO && audio_stream_player_steps.playing:
+					audio_stream_player_steps.stop()
+			Utilities.GAMEMODE.PUZZLE:
+				pass
 func Gravity(DELTA:float):
 	if !is_on_floor():
 		gravity += gravity_Direction * DELTA
@@ -57,14 +51,8 @@ func Gravity(DELTA:float):
 func MovePlayer(DELTA:float):
 	input_dirs.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_dirs.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_dirs = input_dirs.rotated(Vector3.UP, cam.rotation.y).normalized()
+	input_dirs = input_dirs.rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	moveDirection = input_dirs.normalized() * speed * DELTA
-	if input_dirs != Vector3.ZERO:
-		FindFloor()
-		if  !audio_stream_player_steps.playing:
-			audio_stream_player_steps.play()
-	elif input_dirs == Vector3.ZERO && audio_stream_player_steps.playing:
-		audio_stream_player_steps.stop()
 func Jump(DELTA:float):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		jumpVector += transform.basis.y * jumpForce * DELTA
@@ -79,8 +67,12 @@ func GameModeChecker():
 	if Input.is_action_just_pressed("Switch")  && onFocus == true:
 		if Utilities.gameMode != Utilities.GAMEMODE.PUZZLE:
 			Utilities.gameMode = Utilities.GAMEMODE.PUZZLE
+			playerCam.current = false
+			paintCam.current = true
 		else:
 			Utilities.gameMode = Utilities.GAMEMODE.PLAYER
+			playerCam.current = true
+			paintCam.current = false
 	else:
 		return
 func FindFloor():

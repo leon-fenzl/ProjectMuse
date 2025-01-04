@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PuzzleSystem.gd" id="1_hqyen"]
 
-[node name="Puzzle" type="Area3D"]
+[node name="Area_Puzzle" type="Area3D"]
 script = ExtResource("1_hqyen")
 
 [node name="Control" type="Control" parent="."]

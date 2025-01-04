@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_ggswl"]
 [ext_resource type="Texture2D" uid="uid://bsfvuyssnmy52" path="res://Sprites/LoadingSpinner.png" id="2_cb8jh"]
-[ext_resource type="Script" path="res://Scenes/ChrisScenes/loading_icon.gd" id="3_urnqf"]
+[ext_resource type="Script" path="res://Scripts/loading_icon.gd" id="3_urnqf"]
 
 [node name="LoadingScreen" type="CanvasLayer"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerBehaviour.gd" id="1_ai877"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="2_kr5n4"]
-[ext_resource type="Script" path="res://Scenes/Game/Player/player_audio_controller.gd" id="2_xne2e"]
+[ext_resource type="Script" path="res://Scripts/player_audio_controller.gd" id="2_xne2e"]
 [ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="4_f0kfq"]
 [ext_resource type="Script" path="res://Scripts/FoyerMusic.gd" id="5_h0ki1"]
 [ext_resource type="AudioStream" uid="uid://b15rawijd0fan" path="res://Sounds/SoundEffects/Passos 1.wav" id="6_nt1tv"]
@@ -29,7 +29,6 @@ shape = SubResource("CapsuleShape3D_grqad")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-current = true
 script = ExtResource("2_kr5n4")
 mouseSpeed = 0.2
 ctrlSpeed = 1.5

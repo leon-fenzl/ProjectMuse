@@ -1,0 +1,141 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=3 uid="uid://b5e5bto20fu54"]
+
+[ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="1_tqb1s"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2alxw"]
+parameter_name = "PaintTexture"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_q63gp"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_qqjiv"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5r64q"]
+parameter_name = "Specular"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_p0juu"]
+parameter_name = "Metal"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_dhu55"]
+parameter_name = "Rough"
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_2dqoq"]
+parameter_name = "OffseToCell"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_tkklu"]
+parameter_name = "ScaleToSlices"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3m0wn"]
+expanded_output_ports = [0]
+source = 5
+texture = ExtResource("1_tqb1s")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6xp6q"]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShader" id="VisualShader_ooo33"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform float ScaleToSlices;
+uniform vec2 OffseToCell = vec2(1.000000, 1.000000);
+uniform sampler2D PaintTexture : repeat_disable;
+uniform float Metal;
+uniform float Rough;
+uniform float Specular;
+
+
+
+void fragment() {
+// Input:9
+	vec2 n_out9p0 = UV;
+
+
+// FloatParameter:34
+	float n_out34p0 = ScaleToSlices;
+
+
+// VectorOp:27
+	vec2 n_out27p0 = n_out9p0 * vec2(n_out34p0);
+
+
+// Vector2Parameter:33
+	vec2 n_out33p0 = OffseToCell;
+
+
+// VectorOp:28
+	vec2 n_out28p0 = n_out27p0 + n_out33p0;
+
+
+	vec4 n_out8p0;
+// Texture2D:8
+	n_out8p0 = texture(PaintTexture, n_out28p0);
+
+
+// FloatParameter:31
+	float n_out31p0 = Metal;
+
+
+// FloatParameter:32
+	float n_out32p0 = Rough;
+
+
+// FloatParameter:30
+	float n_out30p0 = Specular;
+
+
+// Output:0
+	ALBEDO = vec3(n_out8p0.xyz);
+	METALLIC = n_out31p0;
+	ROUGHNESS = n_out32p0;
+	SPECULAR = n_out30p0;
+
+
+}
+"
+graph_offset = Vector2(-122.286, 277.87)
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(400, 120)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_3m0wn")
+nodes/fragment/8/position = Vector2(160, 120)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_6xp6q")
+nodes/fragment/9/position = Vector2(-580, 140)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture2DParameter_2alxw")
+nodes/fragment/12/position = Vector2(-240, 340)
+nodes/fragment/27/node = SubResource("VisualShaderNodeVectorOp_q63gp")
+nodes/fragment/27/position = Vector2(-240, 120)
+nodes/fragment/28/node = SubResource("VisualShaderNodeVectorOp_qqjiv")
+nodes/fragment/28/position = Vector2(-40, 120)
+nodes/fragment/30/node = SubResource("VisualShaderNodeFloatParameter_5r64q")
+nodes/fragment/30/position = Vector2(120, 780)
+nodes/fragment/31/node = SubResource("VisualShaderNodeFloatParameter_p0juu")
+nodes/fragment/31/position = Vector2(120, 380)
+nodes/fragment/32/node = SubResource("VisualShaderNodeFloatParameter_dhu55")
+nodes/fragment/32/position = Vector2(120, 580)
+nodes/fragment/33/node = SubResource("VisualShaderNodeVec2Parameter_2dqoq")
+nodes/fragment/33/position = Vector2(-580, 600)
+nodes/fragment/34/node = SubResource("VisualShaderNodeFloatParameter_tkklu")
+nodes/fragment/34/position = Vector2(-580, 400)
+nodes/fragment/connections = PackedInt32Array(12, 0, 8, 2, 9, 0, 27, 0, 27, 0, 28, 0, 28, 0, 8, 0, 8, 0, 0, 0, 30, 0, 0, 4, 32, 0, 0, 3, 31, 0, 0, 2, 33, 0, 28, 1, 34, 0, 27, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6cbn"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
+[resource]
+render_priority = 0
+shader = SubResource("VisualShader_ooo33")
+shader_parameter/ScaleToSlices = 0.33
+shader_parameter/OffseToCell = Vector2(0, 0)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/Specular = 2.0
+shader_parameter/PaintTexture = SubResource("CompressedTexture2D_x6cbn")
