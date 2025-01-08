@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=44 format=4 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
@@ -13,28 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://ba1g72v1klhx0" path="res://Scenes/Game/Piece Settings/new_piece.tscn" id="12_4wc3v"]
 [ext_resource type="PackedScene" uid="uid://cde53xasybw5x" path="res://Scenes/Game/Piece Settings/Piece_Paint.tscn" id="12_mqbq2"]
 [ext_resource type="MeshLibrary" uid="uid://dst037v06mao0" path="res://Mesh/MLib_Museu2.tres" id="14_llems"]
+[ext_resource type="MeshLibrary" uid="uid://cbgtgajdfdfjo" path="res://Mesh/MLib_Frame.tres" id="15_shxcm"]
 [ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="18_jdbiy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kuy6n"]
-size = Vector3(3.1, 3.5, 1.8)
-
-[sub_resource type="BoxMesh" id="BoxMesh_s3qwv"]
-size = Vector3(4.5, 4.5, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jjri6"]
-size = Vector3(3.1, 0.5, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nhhsu"]
-size = Vector3(3, 0.5, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2gea4"]
-size = Vector3(3, 0.5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jtxey"]
-size = Vector3(0.5, 3, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lyvw0"]
-size = Vector3(0.5, 3, 1)
+size = Vector3(3.75, 2.75, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_675yj"]
 _surfaces = [{
@@ -202,11 +185,29 @@ shader_parameter/PaintTexture = SubResource("CompressedTexture2D_1hy2q")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obtvb"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_s3qwv"]
+size = Vector3(4.5, 4.5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjri6"]
+size = Vector3(3.1, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nhhsu"]
+size = Vector3(3, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2gea4"]
+size = Vector3(3, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtxey"]
+size = Vector3(0.5, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lyvw0"]
+size = Vector3(0.5, 3, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0wwh"]
-size = Vector3(7.7, 3.9, 1)
+size = Vector3(4, 4, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mhk3j"]
-size = Vector3(7.65, 4, 1)
+size = Vector3(4, 4, 0.52)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qm5dc"]
 size = Vector3(50, 1.05627, 50)
@@ -218,12 +219,15 @@ size = Vector3(50, 1, 50)
 albedo_color = Color(0.768489, 0.317202, 0.163598, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7o72h"]
-vertices = PackedVector3Array(-1.58275, -1.55, -15.5, -1.58275, -1.55, -14.75, 1.66725, -1.55, -14.75, 1.66725, -1.55, -15.5, -5.58275, -1.55, -2.75, -5.58275, -1.55, -13.25, -11.3328, -1.55, -13, -11.3328, -1.55, -3, -3.08275, -1.55, -2, -3.33275, -1.55, -0.5, 3.16725, -1.55, -0.5, 3.16725, -1.55, -2.25, 3.66725, -1.55, -2.75, 5.66725, -1.55, -2.75, 5.66725, -1.55, -13.25, -3.58275, -1.55, -2.75, 11.1672, -1.55, -2.75, 11.1672, -1.55, -13.25, -3.33275, -1.55, 4.5, 3.16725, -1.55, 4.5, -3.08275, -1.55, 6, 3.41725, -1.55, 6.75, -3.58275, -1.55, 6.75, -3.08275, -1.55, 18.75, 3.16725, -1.55, 19, 3.41725, -1.55, 17, -3.33275, -1.55, 17, 7.16725, -1.55, 17.25, 7.16725, -1.55, 6.75, -7.33275, -1.55, 7, -7.33275, -1.55, 17, -3.33275, -1.55, 37, -0.83275, -1.55, 37.5, 3.16725, -1.55, 37.25)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(11, 8, 12), PackedInt32Array(12, 8, 15), PackedInt32Array(12, 15, 5), PackedInt32Array(12, 5, 14), PackedInt32Array(15, 4, 5), PackedInt32Array(14, 17, 13), PackedInt32Array(13, 17, 16), PackedInt32Array(9, 10, 18), PackedInt32Array(18, 10, 19), PackedInt32Array(20, 18, 19), PackedInt32Array(20, 19, 22), PackedInt32Array(22, 19, 21), PackedInt32Array(23, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(21, 28, 25), PackedInt32Array(25, 28, 27), PackedInt32Array(26, 30, 29), PackedInt32Array(22, 21, 29), PackedInt32Array(29, 21, 26), PackedInt32Array(26, 21, 25), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 24), PackedInt32Array(24, 31, 23)]
+vertices = PackedVector3Array(-11.214, -1.55, -0.214, -4.714, -1.55, -0.214, -4.464, -1.55, -2.714, -11.214, -1.55, -7.214, 2.536, -1.55, -2.714, 2.536, -1.55, -7.214, 4.786, -1.55, -2.464, 4.786, -1.55, -0.214, 11.286, -1.55, -0.214, 11.286, -1.55, -7.214, 2.286, -1.55, 1.286, 2.536, -1.55, 1.786, 3.286, -1.55, 1.786, 3.286, -1.55, -1.214, -3.214, -1.55, 7.286, -3.464, -1.55, 2.536, -4.714, -1.55, 2.286, -3.214, -1.55, -1.214, -2.464, -1.55, 1.286, -11.214, -1.55, 7.286, -2.714, -1.55, 2.036, 4.786, -1.55, 2.286, 3.286, -1.55, 2.286, 3.286, -1.55, 7.286, 11.286, -1.55, 7.286, 2.286, -1.55, 2.786, -2.464, -1.55, 2.786)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(6, 4, 5), PackedInt32Array(8, 7, 6), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 5), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 10), PackedInt32Array(10, 17, 13), PackedInt32Array(14, 19, 16), PackedInt32Array(16, 19, 0), PackedInt32Array(20, 15, 18), PackedInt32Array(18, 15, 17), PackedInt32Array(0, 1, 16), PackedInt32Array(15, 20, 14), PackedInt32Array(23, 22, 21), PackedInt32Array(21, 7, 8), PackedInt32Array(23, 21, 24), PackedInt32Array(24, 21, 8), PackedInt32Array(11, 12, 22), PackedInt32Array(11, 22, 25), PackedInt32Array(25, 22, 23), PackedInt32Array(14, 20, 26), PackedInt32Array(26, 25, 14), PackedInt32Array(14, 25, 23)]
 
 [node name="Game" type="Node"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_yxang")]
+
+[node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
+visible = false
 
 [node name="Test" type="Node" parent="."]
 
@@ -236,16 +240,10 @@ volume_db = 5.0
 autoplay = true
 bus = &"music"
 
-[node name="GameMenu" parent="." instance=ExtResource("18_jdbiy")]
-visible = false
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
-
 [node name="Puzzles" type="Node" parent="."]
 
 [node name="Area_Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "targetInteractable") instance=ExtResource("7_ckkm8")]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -3.05, 0.2, 20.3147)
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -1.95, 0, -7.06469)
 collision_mask = 2
 input_ray_pickable = false
 puzzleCamera = NodePath("PuzzleCamera")
@@ -259,48 +257,8 @@ volume_db = 5.0
 bus = &"sfx"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 shape = SubResource("BoxShape3D_kuy6n")
-
-[node name="Frame" type="StaticBody3D" parent="Puzzles/Area_Puzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Area_Puzzle/Frame"]
-transform = Transform3D(0.96, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.600001)
-mesh = SubResource("BoxMesh_s3qwv")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle/Frame"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, 0)
-shape = SubResource("BoxShape3D_jjri6")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Area_Puzzle/Frame/CollisionShape3D"]
-mesh = SubResource("BoxMesh_nhhsu")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Puzzles/Area_Puzzle/Frame"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-shape = SubResource("BoxShape3D_jjri6")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Area_Puzzle/Frame/CollisionShape3D2"]
-mesh = SubResource("BoxMesh_2gea4")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Puzzles/Area_Puzzle/Frame"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
-shape = SubResource("BoxShape3D_jtxey")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Area_Puzzle/Frame/CollisionShape3D3"]
-mesh = SubResource("BoxMesh_lyvw0")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Puzzles/Area_Puzzle/Frame"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0)
-shape = SubResource("BoxShape3D_jtxey")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzles/Area_Puzzle/Frame/CollisionShape3D4"]
-mesh = SubResource("BoxMesh_lyvw0")
 
 [node name="PuzzleCamera" parent="Puzzles/Area_Puzzle" instance=ExtResource("2_ho5ji")]
 transform = Transform3D(2, 0, -2.78182e-08, 0, 2, 0, 2.78182e-08, 0, 2, 0, 0, 3)
@@ -340,8 +298,20 @@ solverRef = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle/Lock3"]
 shape = SubResource("BoxShape3D_obtvb")
 
+[node name="GM_Frame" type="GridMap" parent="Puzzles/Area_Puzzle"]
+transform = Transform3D(2, 0, -2.13163e-14, 0, 2, 0, 2.13163e-14, 0, 2, 1.46082e-14, 0, -1.37062)
+mesh_library = ExtResource("15_shxcm")
+cell_size = Vector3(0.25, 0.25, 0.25)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(-131076, 0, 327681, -196604, 0, 393217, -196607, 0, 393216, -131073, 0, 393216, 196612, 0, 458753, 262140, 0, 262145, 262143, 0, 262144, 196609, 0, 262144, 4, 0, 458752, 65532, 0, 458752)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
 [node name="Area_Puzzle2" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "targetInteractable") instance=ExtResource("7_ckkm8")]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -7.1, 0.2, 11.9147)
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -5.9, 0.2, 7.08005)
 collision_mask = 2
 input_ray_pickable = false
 puzzleCamera = NodePath("PuzzleCamera")
@@ -436,12 +406,15 @@ solverRef = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle2/Lock3"]
 shape = SubResource("BoxShape3D_obtvb")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
+
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 35.7)
 current = true
 
 [node name="Door" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 18.0242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8.026)
 script = ExtResource("4_6gbm8")
 openPos = Vector3(0, 5, 0)
 lerpTime = 2.0
@@ -451,19 +424,6 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_w0wwh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
-mesh = SubResource("BoxMesh_mhk3j")
-
-[node name="Door2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.92424)
-script = ExtResource("4_6gbm8")
-openPos = Vector3(0, 5, 0)
-lerpTime = 2.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2"]
-shape = SubResource("BoxShape3D_w0wwh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Door2"]
 mesh = SubResource("BoxMesh_mhk3j")
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["wood"]]
@@ -494,20 +454,6 @@ layers = 3
 mesh = SubResource("BoxMesh_bi6js")
 surface_material_override/0 = SubResource("StandardMaterial3D_jnpbj")
 
-[node name="GM_Ceilling" type="GridMap" parent="."]
-physics_interpolation_mode = 2
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
-visible = false
-mesh_library = ExtResource("14_llems")
-cell_center_x = false
-cell_center_y = false
-cell_center_z = false
-collision_mask = 29
-data = {
-"cells": PackedInt32Array(-65536, 65529, 6, 131071, 18, 9, 65537, 18, 1048585, 131071, 16, 11, 131071, 14, 11, 131071, 12, 11, 131071, 10, 11, 65537, 10, 655371, 65537, 12, 655371, 65537, 14, 655371, 65537, 16, 655371, 65537, 8, 655369, 131071, 8, 655369, 131071, 6, 655369, 131071, 4, 655369, 65537, 4, 655369, 65537, 6, 655369, 65537, 2, 655371, 65537, 0, 655371, 131071, 0, 11, 131071, 2, 11, 131069, 65534, 1048587, 131067, 65532, 11, 65541, 65532, 655371, 65539, 65530, 1441803, 65537, 65530, 1441803, 131071, 65530, 1441803, 131069, 65530, 1441803, 65539, 65534, 1048587, 65539, 65532, 1048586, 65537, 65532, 1048586, 131071, 65532, 1048586, 131069, 65532, 1048586, 131071, 65534, 1048586, 65537, 65534, 1048586, 65541, 65534, 1048585, 65541, 65530, 655369, 131067, 65534, 9, 131067, 65530, 1441801, 131069, 8, 9, 131069, 4, 1441801, 65539, 8, 1048585, 65539, 4, 655369, 65539, 6, 655371, 131069, 6, 11)
-}
-metadata/_editor_floor_ = Vector3(0, -1, 0)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_7o72h")
 
@@ -518,9 +464,9 @@ cell_center_y = false
 cell_center_z = false
 collision_mask = 31
 data = {
-"cells": PackedInt32Array(65535, 19, 5, 1, 19, 4, -65536, 65529, 6, 2, 19, 1048576, 65534, 19, 0, 65532, 9, 0, 65532, 3, 1441792, 4, 3, 655360, 65532, 8, 1441804, 65532, 6, 1441804, 65532, 4, 1441804, 4, 4, 1441804, 4, 6, 1441804, 65533, 9, 655372, 65534, 10, 1048588, 65534, 12, 1048588, 65534, 14, 1048588, 65534, 16, 1048588, 65534, 18, 1048588, 2, 18, 1048588, 2, 16, 1048588, 2, 14, 1048588, 2, 12, 1048588, 2, 10, 1048588, 65534, 9, 655360, 2, 9, 1441792, 3, 9, 655372, 4, 9, 1048576, 4, 8, 1441804, 3, 3, 655372, 65533, 3, 655372, 2, 2, 1048588, 2, 0, 1048588, 65534, 2, 1048588, 65534, 0, 1048588, 3, 65535, 12, 5, 65535, 12, 6, 65534, 1441804, 6, 65532, 1441804, 6, 65530, 1441804, 5, 65529, 655372, 3, 65529, 655372, 1, 65529, 655372, 65535, 65529, 655372, 65533, 65529, 655372, 65531, 65529, 655372, 65530, 65530, 1048588, 65530, 65532, 1048588, 65530, 65534, 1048588, 65533, 65535, 12, 65531, 65535, 12)
+"cells": PackedInt32Array(1, 4, 4, 65535, 4, 5, 3, 4, 12, 65533, 4, 12, 65531, 4, 12, 5, 4, 12, 65535, 65532, 12, 5, 65532, 12, 65533, 65532, 12, 65531, 65532, 12, 6, 65533, 1441804, 6, 65535, 1441804, 6, 1, 1441804, 6, 3, 1441804, 65530, 3, 1441804, 65530, 1, 1441804, 65530, 65533, 1441804, 6, 4, 1048576, 6, 65532, 655360, 65530, 65532, 1441792, 65530, 4, 0, 65535, 65535, 12, 1, 65535, 12, 2, 0, 1441804, 65534, 0, 1048588, 0, 1, 12, 65530, 65535, 1441804, 1, 65532, 12, 131075, 4, 12, 131077, 4, 12, 131078, 3, 1441804, 131078, 1, 1441804, 131078, 65535, 1441804, 131078, 65533, 1441804, 131077, 65532, 655372, 131075, 65532, 655372, 131073, 65532, 655372, 196607, 65532, 655372, 196605, 65532, 655372, 196603, 65532, 655372, 196602, 65533, 1048588, 196602, 65535, 1048588, 196602, 1, 1048588, 196602, 3, 1048588, 196603, 4, 12, 196605, 4, 12, 196607, 4, 12, 131073, 4, 12)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="GM_Floor" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("14_llems")
@@ -529,9 +475,22 @@ cell_center_y = false
 cell_center_z = false
 collision_mask = 31
 data = {
-"cells": PackedInt32Array(-1, 8, 6, -1, 10, 6, -1, 12, 6, -1, 14, 6, -1, 16, 6, -1, 18, 6, -65535, 18, 6, -65535, 16, 6, -65535, 14, 6, -65535, 12, 6, -65535, 10, 6, -65535, 8, 6, -1, 6, 6, -65535, 6, 6, -65535, 4, 6, -1, 4, 6, -3, 4, 6, -3, 6, 6, -3, 8, 6, -65533, 8, 6, -65533, 6, 6, -65533, 4, 6, -65535, 2, 1441798, -65535, 0, 1441798, -1, 0, 1441798, -1, 2, 1441798, -5, 65534, 6, -3, 65534, 6, -1, 65534, 6, -65535, 65534, 6, -65533, 65534, 6, -65531, 65534, 6, -65531, 65532, 6, -65531, 65530, 6, -65533, 65530, 6, -65533, 65532, 6, -65535, 65532, 6, -65535, 65530, 6, -1, 65530, 6, -1, 65532, 6, -3, 65532, 6, -3, 65530, 6, -5, 65530, 6, -5, 65532, 6)
+"cells": PackedInt32Array(-1, 1, 6, -1, 65535, 6, -1, 65533, 6, -3, 65533, 6, -3, 65535, 6, -3, 1, 6, -1, 3, 6, -3, 3, 6, -65535, 3, 6, -65535, 1, 6, -65535, 65535, 6, -65535, 65533, 6, -65533, 65533, 6, -65533, 65535, 6, -65533, 1, 6, -65533, 3, 6, -5, 65533, 6, -5, 65535, 6, -5, 1, 6, -5, 3, 6, -65531, 3, 6, -65531, 1, 6, -65531, 65535, 6, -65531, 65533, 6)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="GM_Ceilling" type="GridMap" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+mesh_library = ExtResource("14_llems")
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+collision_mask = 29
+data = {
+"cells": PackedInt32Array(131071, 3, 1048587, 65537, 3, 1048587, 65541, 1, 655371, 65541, 65535, 655371, 131067, 1, 11, 131067, 65535, 11, 131071, 65533, 1441803, 65537, 65533, 1441803, 65539, 65533, 1441803, 131069, 65533, 1441803, 131069, 3, 1048587, 65539, 3, 1048587, 65541, 65533, 655369, 65541, 3, 1048585, 131067, 3, 9, 131067, 65533, 1441801, 131069, 1, 1441802, 131069, 65535, 1441802, 131071, 65535, 1441802, 131071, 1, 1441802, 65537, 1, 1441802, 65537, 65535, 1441802, 65539, 65535, 1441802, 65539, 1, 1441802)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [editable path="Puzzles/Area_Puzzle/New_Piece"]
 [editable path="Puzzles/Area_Puzzle2/New_Piece"]

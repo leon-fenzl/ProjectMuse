@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqc4rtrk8ou5l"
-path="res://.godot/imported/MuseuPieces.glb-b1fc384abe6c952beb67555186c7e9d5.scn"
+uid="uid://e3x3wr26xmjf"
+path="res://.godot/imported/CenteredMuseuPieces.glb-2413e3f4049c049cc29754ca0b71d1e5.scn"
 
 [deps]
 
-source_file="res://Mesh/MuseuPieces.glb"
-dest_files=["res://.godot/imported/MuseuPieces.glb-b1fc384abe6c952beb67555186c7e9d5.scn"]
+source_file="res://Mesh/glb/CenteredMuseuPieces.glb"
+dest_files=["res://.godot/imported/CenteredMuseuPieces.glb-2413e3f4049c049cc29754ca0b71d1e5.scn"]
 
 [params]
 
