@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvfxsjuov6fl3"]
+[gd_scene load_steps=7 format=3 uid="uid://bvfxsjuov6fl3"]
 
 [ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_xp08t"]
 [ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/option_button_chris.gd" id="2_gjupo"]
 [ext_resource type="Script" path="res://Scripts/base_button.gd" id="3_mupoo"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_5iuw4"]
+[ext_resource type="Script" path="res://Scripts/volume_sliders.gd" id="5_iyv01"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qb4qo"]
 font_size = 21
@@ -74,6 +75,65 @@ click = ExtResource("4_5iuw4")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource("4_5iuw4")
 bus = &"sfx"
+
+[node name="MasterVol" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 294.0
+offset_right = 730.0
+offset_bottom = 310.0
+max_value = 1.99
+step = 0.001
+script = ExtResource("5_iyv01")
+
+[node name="Label" type="Label" parent="MasterVol"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = -34.0
+offset_right = 181.0
+offset_bottom = -11.0
+text = "Master"
+horizontal_alignment = 1
+
+[node name="MusicVol" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 361.0
+offset_right = 733.0
+offset_bottom = 377.0
+max_value = 1.99
+step = 0.001
+script = ExtResource("5_iyv01")
+bus_index = 1
+
+[node name="Label" type="Label" parent="MusicVol"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = -34.0
+offset_right = 181.0
+offset_bottom = -11.0
+text = "Music"
+horizontal_alignment = 1
+
+[node name="SFXVol" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 427.0
+offset_right = 730.0
+offset_bottom = 443.0
+max_value = 1.99
+step = 0.001
+script = ExtResource("5_iyv01")
+bus_index = 2
+
+[node name="Label" type="Label" parent="SFXVol"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = -34.0
+offset_right = 181.0
+offset_bottom = -11.0
+text = "SXF"
+horizontal_alignment = 1
 
 [connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_item_selected"]
 [connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
