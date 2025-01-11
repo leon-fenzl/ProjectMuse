@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/base_button_chris.gd" id="4_e55s3"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_q7epj"]
 [ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="5_idpbc"]
-[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="6_w4mcn"]
+[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/Menu&Pause.wav" id="6_w4mcn"]
 
 [node name="StartMenu" type="Node"]
 process_mode = 3

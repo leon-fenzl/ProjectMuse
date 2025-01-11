@@ -5,6 +5,7 @@ enum BEHAVIOUR{START,RESUME,RESTART,CHANGEMENU,QUIT,BACK,NEXT_UI}
 @export var next_ui: Control
 
 @export var click : AudioStream
+
 func _ready() -> void:
 		if behaviour == BEHAVIOUR.RESUME && targetMenu == null:
 			targetMenu = $"../.."

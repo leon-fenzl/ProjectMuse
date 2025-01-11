@@ -19,9 +19,12 @@ static var location :Vector3
 @onready var audio_stream_player_steps: AudioStreamPlayer = $AudioStreamPlayerSteps
 const concrete = preload("res://Sounds/SoundEffects/Passos 1.wav")
 const wood = preload("res://Sounds/SoundEffects/Passos 2.wav")
+const jump_Sound = preload("res://Sounds/SoundEffects/Pulo 1.wav")
 @onready var floor_name
 static var playerRef : Node
 @export var current := false
+@onready var bg_music = get_node("%AudioStreamPlayer3D2")
+
 func _init() -> void:
 	playerRef = self
 func _physics_process(delta: float) -> void:
@@ -34,11 +37,11 @@ func _physics_process(delta: float) -> void:
 				MovePlayer(delta)
 				velocity = moveDirection + gravity + jumpVector
 				move_and_slide()
-				if input_dirs != Vector3.ZERO:
+				if input_dirs != Vector3.ZERO && is_on_floor():
 					FindFloor()
 					if  !audio_stream_player_steps.playing:
 						audio_stream_player_steps.play()
-				elif input_dirs == Vector3.ZERO && audio_stream_player_steps.playing:
+				elif input_dirs == Vector3.ZERO && audio_stream_player_steps.playing && is_on_floor():
 					audio_stream_player_steps.stop()
 			Utilities.GAMEMODE.PUZZLE:
 				pass
@@ -56,6 +59,9 @@ func MovePlayer(DELTA:float):
 func Jump(DELTA:float):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		jumpVector += transform.basis.y * jumpForce * DELTA
+		audio_stream_player_steps.stop()
+		audio_stream_player_steps.stream = jump_Sound
+		audio_stream_player_steps.play()
 		await get_tree().create_timer(0.25).timeout
 		if Input.is_action_pressed("ui_accept") and !is_on_floor():
 			jumpVector -= transform.basis.y * jumpForce * DELTA
@@ -69,10 +75,14 @@ func GameModeChecker():
 			Utilities.gameMode = Utilities.GAMEMODE.PUZZLE
 			playerCam.current = false
 			paintCam.current = true
+			bg_music.restrictedArea = true
+			%AudioStreamPlayer3D2.stop()
 		else:
 			Utilities.gameMode = Utilities.GAMEMODE.PLAYER
 			playerCam.current = true
 			paintCam.current = false
+			bg_music.restrictedArea = false
+			%AudioStreamPlayer3D2.stop()
 	else:
 		return
 func FindFloor():
@@ -80,7 +90,7 @@ func FindFloor():
 		floor_group = floor_ray.get_collider()
 		floor_name = floor_group.name
 		match floor_name:
-			"Ground":
+			"GM_Floor":
 				if audio_stream_player_steps.stream.resource_path != wood.resource_path:
 					audio_stream_player_steps.stop()
 					audio_stream_player_steps.stream = wood

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://nrpg1rml7yng"]
 
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_q8567"]
-[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/1 - Museum Relax - GamePlay.wav" id="2_w14f3"]
+[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/Menu&Pause.wav" id="2_w14f3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_15cx7"]
 

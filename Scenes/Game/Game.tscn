@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://Scenes/puzzle_camera.tscn" id="2_ho5ji"]
 [ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
 [ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="3_cjblc"]
+[ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/Menu&Pause.wav" id="4_4r88f"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
 [ext_resource type="PackedScene" uid="uid://upwyl7ahe4ls" path="res://Scenes/Programmers/León/Area_Puzzle.tscn" id="7_ckkm8"]
-[ext_resource type="AudioStream" uid="uid://brx2mxmxyn1aq" path="res://Sounds/BGSounds/Fase 1 - Primeiro Quadro - 2.wav" id="8_ux2fh"]
 [ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_7mbdc"]
 [ext_resource type="PackedScene" uid="uid://ba1g72v1klhx0" path="res://Scenes/Game/Piece Settings/new_piece.tscn" id="12_4wc3v"]
 [ext_resource type="PackedScene" uid="uid://cde53xasybw5x" path="res://Scenes/Game/Piece Settings/Piece_Paint.tscn" id="12_mqbq2"]
@@ -235,9 +235,8 @@ visible = false
 script = ExtResource("3_cjblc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("8_ux2fh")
+stream = ExtResource("4_4r88f")
 volume_db = 5.0
-autoplay = true
 bus = &"music"
 
 [node name="Puzzles" type="Node" parent="."]
@@ -410,7 +409,7 @@ shape = SubResource("BoxShape3D_obtvb")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_idkq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 35.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 6.42535)
 current = true
 
 [node name="Door" type="StaticBody3D" parent="."]
