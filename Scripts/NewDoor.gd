@@ -5,6 +5,8 @@ var newState : Utilities.ITEM_STATE
 @export var openPos:=Vector3.ZERO
 var closedPos := Vector3.ZERO
 @export var lerpTime:float
+@export var door_Audio : AudioStreamPlayer3D
+
 func _ready() -> void:
 	Interaction()
 	openPos += position
@@ -18,10 +20,12 @@ func _physics_process(delta: float) -> void:
 func OpenDoor():
 	if position != openPos:
 		position = lerp(position, openPos, lerpTime * get_physics_process_delta_time())
+		door_Audio.play()
 	else: return
 func CloseDoor():
 	if position != closedPos:
 		position = lerp(position, closedPos, lerpTime * get_physics_process_delta_time())
+		door_Audio.play()
 	else: return
 func Interaction():
 	if state != newState:

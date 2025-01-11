@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=41 format=4 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/Menu&Pause.wav" id="4_4r88f"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
+[ext_resource type="AudioStream" uid="uid://bdidy8div3v8b" path="res://Sounds/SoundEffects/Parede Descendo.wav" id="6_welb7"]
 [ext_resource type="PackedScene" uid="uid://upwyl7ahe4ls" path="res://Scenes/Programmers/León/Area_Puzzle.tscn" id="7_ckkm8"]
 [ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_7mbdc"]
 [ext_resource type="PackedScene" uid="uid://ba1g72v1klhx0" path="res://Scenes/Game/Piece Settings/new_piece.tscn" id="12_4wc3v"]
@@ -233,11 +234,12 @@ shadow_enabled = true
 
 [node name="Puzzles" type="Node" parent="."]
 
-[node name="Door" type="StaticBody3D" parent="Puzzles"]
+[node name="Door" type="StaticBody3D" parent="Puzzles" node_paths=PackedStringArray("door_Audio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8.026)
 script = ExtResource("4_6gbm8")
 openPos = Vector3(0, 5, 0)
 lerpTime = 2.0
+door_Audio = NodePath("AudioStreamPlayer3D")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Door"]
@@ -246,11 +248,16 @@ shape = SubResource("BoxShape3D_w0wwh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Door"]
 mesh = SubResource("BoxMesh_mhk3j")
 
-[node name="MuseumDoor" type="StaticBody3D" parent="Puzzles"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Puzzles/Door"]
+stream = ExtResource("6_welb7")
+volume_db = 2.0
+
+[node name="MuseumDoor" type="StaticBody3D" parent="Puzzles" node_paths=PackedStringArray("door_Audio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500007, -0.5, 7.924)
 script = ExtResource("4_6gbm8")
 openPos = Vector3(0, 5, 0)
 lerpTime = 2.0
+door_Audio = NodePath("AudioStreamPlayer3D")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/MuseumDoor"]
@@ -258,6 +265,10 @@ shape = SubResource("BoxShape3D_2d8oe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/MuseumDoor"]
 mesh = SubResource("BoxMesh_qs88n")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Puzzles/MuseumDoor"]
+stream = ExtResource("6_welb7")
+volume_db = 2.0
 
 [node name="Area_Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "targetInteractable") instance=ExtResource("7_ckkm8")]
 transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, 2.5, 0, -7.06469)
@@ -269,7 +280,7 @@ targetInteractable = NodePath("../Door")
 metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle"]
-volume_db = 5.0
+volume_db = 3.0
 bus = &"sfx"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle"]
@@ -337,7 +348,7 @@ metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle2"]
 stream = ExtResource("10_7mbdc")
-volume_db = 5.0
+volume_db = 3.0
 bus = &"sfx"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle2"]

@@ -63,7 +63,7 @@ target_position = Vector3(0, -1.1, 0)
 
 [node name="AudioStreamPlayerSteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nt1tv")
-volume_db = 10.0
+volume_db = 5.0
 bus = &"sfx"
 
 [node name="Layer_HUD" type="CanvasLayer" parent="."]
