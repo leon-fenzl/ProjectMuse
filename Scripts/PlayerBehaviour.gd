@@ -20,7 +20,9 @@ static var location :Vector3
 @onready var floor_group
 @onready var audio_stream_player_steps: AudioStreamPlayer = $AudioStreamPlayerSteps
 const concrete = preload("res://Sounds/SoundEffects/Passos 1.wav")
+const concrete_Run = preload("res://Sounds/SoundEffects/Corrida 1.wav")
 const wood = preload("res://Sounds/SoundEffects/Passos 2.wav")
+const wood_Run = preload("res://Sounds/SoundEffects/Corrida 2.wav")
 const jump_Sound = preload("res://Sounds/SoundEffects/Pulo 1.wav")
 @onready var floor_name
 static var playerRef : Node
@@ -99,13 +101,19 @@ func FindFloor():
 		floor_name = floor_group.name
 		match floor_name:
 			"GM_Floor":
-				if audio_stream_player_steps.stream.resource_path != wood.resource_path:
+				if audio_stream_player_steps.stream.resource_path != wood.resource_path && speed == minSpeed:
 					audio_stream_player_steps.stop()
 					audio_stream_player_steps.stream = wood
+				if audio_stream_player_steps.stream.resource_path != wood_Run.resource_path && speed == maxSpeed:
+					audio_stream_player_steps.stop()
+					audio_stream_player_steps.stream = wood_Run
 			"Ground2":
-				if audio_stream_player_steps.stream.resource_path != concrete.resource_path:
+				if audio_stream_player_steps.stream.resource_path != concrete.resource_path && speed == minSpeed:
 					audio_stream_player_steps.stop()
 					audio_stream_player_steps.stream = concrete
+				elif audio_stream_player_steps.stream.resource_path != concrete_Run.resource_path && speed == maxSpeed:
+					audio_stream_player_steps.stop()
+					audio_stream_player_steps.stream = concrete_Run
 			"_":
 				audio_stream_player_steps.stop()
 				audio_stream_player_steps.stream = wood
