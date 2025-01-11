@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name PlayerBehaviour
-@export var speed := 100.0
+@export var maxSpeed := 500.0
+@export var minSpeed := 200.0
+var speed : float
 @export var jumpForce := 100.0
 @onready var gravity := Vector3.ZERO
 @onready var gravity_Direction = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
@@ -34,6 +36,7 @@ func _physics_process(delta: float) -> void:
 			Utilities.GAMEMODE.PLAYER:
 				Jump(delta)
 				Gravity(delta)
+				Run()
 				MovePlayer(delta)
 				velocity = moveDirection + gravity + jumpVector
 				move_and_slide()
@@ -56,6 +59,11 @@ func MovePlayer(DELTA:float):
 	input_dirs.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_dirs = input_dirs.rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	moveDirection = input_dirs.normalized() * speed * DELTA
+func Run():
+	if Input.is_action_just_pressed("run"):
+		speed = maxSpeed
+	if Input.is_action_just_released("run"):
+		speed = minSpeed
 func Jump(DELTA:float):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		jumpVector += transform.basis.y * jumpForce * DELTA
