@@ -269,7 +269,6 @@ targetInteractable = NodePath("../Door")
 metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle"]
-stream = ExtResource("10_7mbdc")
 volume_db = 5.0
 bus = &"sfx"
 

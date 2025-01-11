@@ -87,12 +87,14 @@ func GameModeChecker():
 			paintCam.current = true
 			bg_music.restrictedArea = true
 			%AudioStreamPlayer3D2.stop()
+			audio_stream_player_steps.stop()
 		else:
 			Utilities.gameMode = Utilities.GAMEMODE.PLAYER
 			playerCam.current = true
 			paintCam.current = false
 			bg_music.restrictedArea = false
 			%AudioStreamPlayer3D2.stop()
+			audio_stream_player_steps.stop()
 	else:
 		return
 func FindFloor():

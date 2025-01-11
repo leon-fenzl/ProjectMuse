@@ -11,6 +11,10 @@ enum MOVETYPE{DOMOVE,DONTMOVE}
 @onready var moveDirection := Vector3.ZERO
 var selected : bool = false
 @onready var colShape := $Piece_Shape
+var puzzle_Sfx = ["res://Sounds/SoundEffects/Arrastar Peça 1.wav", "res://Sounds/SoundEffects/Arrastar Peça 2.wav", "res://Sounds/SoundEffects/Arrastar Peça 3.wav", "res://Sounds/SoundEffects/Arrastar Peça 4.wav"]
+var chosen_Int: int = 0
+var rng = RandomNumberGenerator.new()
+
 func _ready() -> void:
 	match piecetype:
 		PIECETYPE.NOTSOLID:
@@ -51,7 +55,12 @@ func Deactivate():
 func AudioController():
 	if input_dirs.length() != 0.0 and !adStream.playing:
 		if !is_on_wall() || !is_on_floor()||!is_on_ceiling():
-			adStream.play()
+			var x = chosen_Int
+			while chosen_Int == x:
+				rng.randomize()
+				chosen_Int = rng.randi_range(0, 3)
+				adStream.stream = load(puzzle_Sfx[chosen_Int])
+				adStream.play()
 	if input_dirs.length() <= 0.0 and adStream.playing:
 		if !is_on_wall() || !is_on_floor()||!is_on_ceiling():
 			adStream.stop()
