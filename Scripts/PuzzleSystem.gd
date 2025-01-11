@@ -2,7 +2,7 @@ class_name PuzzleSystem
 extends Area3D
 @export var puzzleCamera : Camera3D
 @export var locks:Array[Area3D]
-@export var vitoria : AudioStream
+@export var vitoria : AudioStreamPlayer
 @export var targetInteractable : Node
 var solution : int
 var solved : bool = false
@@ -33,6 +33,7 @@ func SumpUp():
 		if targetInteractable != null:
 			targetInteractable.newState = Utilities.ITEM_STATE.ACTIVE
 			targetInteractable.Interaction()
+			vitoria.play()
 func SumpDown():
 	if solution>= 0 and solution<=locks.size():
 		solution -= 1

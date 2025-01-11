@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=42 format=4 uid="uid://cn1l7xc1yxymr"]
 
 [ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dhyssit1q1q1k" path="res://Scenes/Game/lock.tscn" id="5_2isnb"]
 [ext_resource type="AudioStream" uid="uid://bdidy8div3v8b" path="res://Sounds/SoundEffects/Parede Descendo.wav" id="6_welb7"]
 [ext_resource type="PackedScene" uid="uid://upwyl7ahe4ls" path="res://Scenes/Programmers/León/Area_Puzzle.tscn" id="7_ckkm8"]
+[ext_resource type="AudioStream" uid="uid://wbtq6ahs704y" path="res://Sounds/SoundEffects/Vitória Level.wav" id="8_5b6v5"]
 [ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_7mbdc"]
 [ext_resource type="PackedScene" uid="uid://ba1g72v1klhx0" path="res://Scenes/Game/Piece Settings/new_piece.tscn" id="12_4wc3v"]
 [ext_resource type="PackedScene" uid="uid://cde53xasybw5x" path="res://Scenes/Game/Piece Settings/Piece_Paint.tscn" id="12_mqbq2"]
@@ -270,16 +271,18 @@ mesh = SubResource("BoxMesh_qs88n")
 stream = ExtResource("6_welb7")
 volume_db = 2.0
 
-[node name="Area_Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "targetInteractable") instance=ExtResource("7_ckkm8")]
+[node name="Area_Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "vitoria", "targetInteractable") instance=ExtResource("7_ckkm8")]
 transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, 2.5, 0, -7.06469)
 collision_mask = 2
 input_ray_pickable = false
 puzzleCamera = NodePath("PuzzleCamera")
 locks = [NodePath("Lock"), NodePath("Lock2"), NodePath("Lock3")]
+vitoria = NodePath("AudioStreamPlayer")
 targetInteractable = NodePath("../Door")
 metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle"]
+stream = ExtResource("8_5b6v5")
 volume_db = 3.0
 bus = &"sfx"
 
@@ -338,12 +341,13 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Area_Puzzle2" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks") instance=ExtResource("7_ckkm8")]
+[node name="Area_Puzzle2" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "vitoria") instance=ExtResource("7_ckkm8")]
 transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -5.87868, 0, -7.06469)
 collision_mask = 2
 input_ray_pickable = false
 puzzleCamera = NodePath("PuzzleCamera")
 locks = [NodePath("Lock"), NodePath("Lock2"), NodePath("Lock3")]
+vitoria = NodePath("AudioStreamPlayer")
 metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle2"]
