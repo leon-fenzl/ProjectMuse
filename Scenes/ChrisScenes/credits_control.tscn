@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhx2i0yvvqfli"]
 
-[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_5ubkg"]
+[ext_resource type="Texture2D" uid="uid://ctdgdt40dhok0" path="res://Sprites/UI KIT/Fundo.png" id="1_64i7m"]
 [ext_resource type="Script" path="res://Scripts/base_button.gd" id="2_2rnt8"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="3_4d66m"]
 
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_5ubkg")
+texture = ExtResource("1_64i7m")
 expand_mode = 1
 stretch_mode = 4
 

@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvfxsjuov6fl3"]
+[gd_scene load_steps=11 format=3 uid="uid://bvfxsjuov6fl3"]
 
-[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_xp08t"]
+[ext_resource type="Texture2D" uid="uid://ctdgdt40dhok0" path="res://Sprites/UI KIT/Fundo.png" id="1_wmkcm"]
+[ext_resource type="Texture2D" uid="uid://cy5qerkjyhqbg" path="res://Sprites/UI KIT/Lettering_Settings.png" id="2_d8cbp"]
 [ext_resource type="Script" path="res://Scenes/ChrisScenes/ChrisScripts/option_button_chris.gd" id="2_gjupo"]
 [ext_resource type="Script" path="res://Scripts/base_button.gd" id="3_mupoo"]
+[ext_resource type="FontFile" uid="uid://dgvd12islhiye" path="res://Fonts/optimusprinceps/OptimusPrinceps.ttf" id="3_xecbr"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_5iuw4"]
+[ext_resource type="Texture2D" uid="uid://d34lnbuerrpyc" path="res://Sprites/UI KIT/X.png" id="5_84g42"]
 [ext_resource type="Script" path="res://Scripts/volume_sliders.gd" id="5_iyv01"]
+[ext_resource type="Texture2D" uid="uid://cx3ijpk82nbf7" path="res://Sprites/UI KIT/Barra.png" id="9_iqxr6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qb4qo"]
 font_size = 21
@@ -26,9 +30,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_xp08t")
+texture = ExtResource("1_wmkcm")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 470.0
+offset_right = 2518.0
+offset_bottom = 2048.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_d8cbp")
 
 [node name="ResolutionLabel" type="Label" parent="."]
 layout_mode = 0
@@ -36,6 +48,8 @@ offset_left = 985.0
 offset_top = 229.0
 offset_right = 1233.0
 offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("3_xecbr")
+theme_override_font_sizes/font_size = 64
 text = "Resoluções"
 label_settings = SubResource("LabelSettings_qb4qo")
 horizontal_alignment = 1
@@ -63,10 +77,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.156
 anchor_bottom = 0.139
-offset_right = -191.68
-offset_bottom = -92.08
+offset_left = 982.0
+offset_top = 52.0
+offset_right = 3391.32
+offset_bottom = 2519.92
+scale = Vector2(0.021, 0.021)
 action_mode = 0
-text = "Back"
+icon = ExtResource("5_84g42")
+flat = true
 script = ExtResource("3_mupoo")
 behaviour = 5
 next_ui = NodePath("..")
@@ -86,12 +104,25 @@ max_value = 1.99
 step = 0.001
 script = ExtResource("5_iyv01")
 
+[node name="TextureRect" type="TextureRect" parent="MasterVol"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = -46.0
+offset_right = 2594.0
+offset_bottom = 354.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_iqxr6")
+
 [node name="Label" type="Label" parent="MasterVol"]
 layout_mode = 0
-offset_left = 126.0
-offset_top = -34.0
-offset_right = 181.0
-offset_bottom = -11.0
+offset_left = 112.0
+offset_top = -42.0
+offset_right = 3559.0
+offset_bottom = 1046.0
+scale = Vector2(0.03, 0.03)
+theme_override_colors/font_color = Color(0.945098, 0.882353, 0.745098, 1)
+theme_override_fonts/font = ExtResource("3_xecbr")
+theme_override_font_sizes/font_size = 1024
 text = "Master"
 horizontal_alignment = 1
 

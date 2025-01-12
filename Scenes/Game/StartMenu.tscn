@@ -1,14 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc2sybv8mjop3"]
+[gd_scene load_steps=15 format=3 uid="uid://cc2sybv8mjop3"]
 
 [ext_resource type="Script" path="res://Scripts/general_config.gd" id="1_2akb4"]
-[ext_resource type="Texture2D" uid="uid://d2iwhmink6pr6" path="res://Sprites/PLAY_1.png" id="1_iabt3"]
 [ext_resource type="PackedScene" uid="uid://c803xrvfkmpnt" path="res://Scenes/Game/BaseButton.tscn" id="1_nafpx"]
-[ext_resource type="Texture2D" uid="uid://bdebbnlnjfjxm" path="res://Sprites/PLAY_ICON.png" id="3_dfsub"]
+[ext_resource type="Texture2D" uid="uid://ctdgdt40dhok0" path="res://Sprites/UI KIT/Fundo.png" id="2_0wo1r"]
+[ext_resource type="Texture2D" uid="uid://bpn0fkpfov5mq" path="res://Sprites/UI KIT/Lettering_Project_Muse.png" id="3_mkq1n"]
 [ext_resource type="AudioStream" uid="uid://cms8doiov566q" path="res://Sounds/SoundEffects/Click.wav" id="4_i7ynb"]
-[ext_resource type="Texture2D" uid="uid://c04u0ecbh63ne" path="res://Sprites/QUIT_ICON.png" id="4_mvpbn"]
+[ext_resource type="Texture2D" uid="uid://do2vpyp3mebg2" path="res://Sprites/UI KIT/Seleçao.png" id="4_r31vd"]
 [ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/Menu&Pause.wav" id="6_b24ji"]
+[ext_resource type="FontFile" uid="uid://dgvd12islhiye" path="res://Fonts/optimusprinceps/OptimusPrinceps.ttf" id="6_wesb2"]
+[ext_resource type="Texture2D" uid="uid://cr2o6a5qjrmt4" path="res://Sprites/UI KIT/Play.png" id="7_kbn8p"]
 [ext_resource type="PackedScene" uid="uid://dhx2i0yvvqfli" path="res://Scenes/ChrisScenes/credits_control.tscn" id="8_slypn"]
 [ext_resource type="PackedScene" uid="uid://bvfxsjuov6fl3" path="res://Scenes/ChrisScenes/configurations.tscn" id="8_tkwrw"]
+[ext_resource type="Texture2D" uid="uid://db6mllcol178a" path="res://Sprites/UI KIT/Quit.png" id="9_2dy26"]
+[ext_resource type="Texture2D" uid="uid://vtilid16wmmj" path="res://Sprites/UI KIT/Credits.png" id="10_taoha"]
+[ext_resource type="Texture2D" uid="uid://d2ktdlmuptkrx" path="res://Sprites/UI KIT/Settings.png" id="11_fk0gi"]
 
 [node name="StartMenu" type="Node"]
 process_mode = 3
@@ -33,10 +38,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_iabt3")
+texture = ExtResource("2_0wo1r")
 expand_mode = 1
 stretch_mode = 6
 metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/BGMenu"]
+custom_minimum_size = Vector2(2048, 2048)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.0
+offset_right = 1849.0
+offset_bottom = 2048.0
+grow_horizontal = 2
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("3_mkq1n")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/BGMenu"]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 321.0
+offset_right = 2958.0
+offset_bottom = 721.0
+scale = Vector2(0.180805, 0.221421)
+texture = ExtResource("4_r31vd")
 
 [node name="BaseButton" parent="Control" instance=ExtResource("1_nafpx")]
 layout_mode = 1
@@ -44,11 +71,14 @@ anchor_left = 0.444
 anchor_top = 0.467
 anchor_right = 0.544
 anchor_bottom = 0.533
-offset_left = -0.320068
-offset_top = -0.23999
-offset_right = -0.320068
-offset_bottom = 3.23996
-icon = ExtResource("3_dfsub")
+offset_left = -63.32
+offset_top = -20.24
+offset_right = -63.32
+offset_bottom = -16.76
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("6_wesb2")
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("7_kbn8p")
 click = ExtResource("4_i7ynb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/BaseButton"]
@@ -61,11 +91,12 @@ anchor_left = 0.894
 anchor_top = 0.911
 anchor_right = 1.0
 anchor_bottom = 0.994
-offset_left = -0.320068
-offset_top = 8.07996
-offset_right = 0.0
-offset_bottom = 0.320007
-icon = ExtResource("4_mvpbn")
+offset_left = -639.32
+offset_top = -85.92
+offset_right = -639.0
+offset_bottom = -93.6799
+scale = Vector2(1.87554, 1.9)
+icon = ExtResource("9_2dy26")
 behaviour = 4
 click = ExtResource("4_i7ynb")
 
@@ -79,11 +110,12 @@ anchor_left = 0.444
 anchor_top = 0.467
 anchor_right = 0.544
 anchor_bottom = 0.533
-offset_left = -0.320007
-offset_top = 78.76
-offset_right = -0.320007
-offset_bottom = 82.24
-text = "CREDITS"
+offset_left = -63.32
+offset_top = 62.76
+offset_right = -63.32
+offset_bottom = 66.24
+scale = Vector2(2, 2)
+icon = ExtResource("10_taoha")
 behaviour = 6
 next_ui = NodePath("../CreditsControl")
 click = ExtResource("4_i7ynb")
@@ -98,11 +130,12 @@ anchor_left = 0.444
 anchor_top = 0.467
 anchor_right = 0.544
 anchor_bottom = 0.533
-offset_left = -0.320007
-offset_top = 142.76
-offset_right = -0.320007
-offset_bottom = 146.24
-text = "SETTINGS"
+offset_left = -63.32
+offset_top = 146.76
+offset_right = -63.32
+offset_bottom = 150.24
+scale = Vector2(2, 2)
+icon = ExtResource("11_fk0gi")
 behaviour = 6
 next_ui = NodePath("../Configurations")
 click = ExtResource("4_i7ynb")
