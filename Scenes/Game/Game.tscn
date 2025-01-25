@@ -1,9 +1,7 @@
-[gd_scene load_steps=42 format=4 uid="uid://cn1l7xc1yxymr"]
+[gd_scene load_steps=30 format=3 uid="uid://cn1l7xc1yxymr"]
 
-[ext_resource type="PackedScene" uid="uid://04envoemx5dl" path="res://Scenes/Game/Player/Player.tscn" id="1_idkq2"]
 [ext_resource type="PackedScene" uid="uid://wv3jisocn4lg" path="res://Scenes/game_manager.tscn" id="1_yxang"]
 [ext_resource type="PackedScene" uid="uid://biqdf5xtp1t2l" path="res://Scenes/puzzle_camera.tscn" id="2_ho5ji"]
-[ext_resource type="Texture2D" uid="uid://qfgcecfb4g0x" path="res://icon.svg" id="3_1feaw"]
 [ext_resource type="Script" path="res://Scripts/audio_Manager.gd" id="3_cjblc"]
 [ext_resource type="AudioStream" uid="uid://cpr0tn4ji7ck6" path="res://Sounds/BGSounds/Menu&Pause.wav" id="4_4r88f"]
 [ext_resource type="Script" path="res://Scripts/NewDoor.gd" id="4_6gbm8"]
@@ -11,12 +9,14 @@
 [ext_resource type="AudioStream" uid="uid://bdidy8div3v8b" path="res://Sounds/SoundEffects/Parede Descendo.wav" id="6_welb7"]
 [ext_resource type="PackedScene" uid="uid://upwyl7ahe4ls" path="res://Scenes/Programmers/León/Area_Puzzle.tscn" id="7_ckkm8"]
 [ext_resource type="AudioStream" uid="uid://wbtq6ahs704y" path="res://Sounds/SoundEffects/Vitória Level.wav" id="8_5b6v5"]
-[ext_resource type="AudioStream" uid="uid://bq0r42vviclh7" path="res://Sounds/SoundEffects/Arrastar Peça 1.wav" id="10_7mbdc"]
+[ext_resource type="Shader" uid="uid://idb2fli5eacl" path="res://ShadePiece.tres" id="11_vmy3f"]
 [ext_resource type="PackedScene" uid="uid://ba1g72v1klhx0" path="res://Scenes/Game/Piece Settings/new_piece.tscn" id="12_4wc3v"]
-[ext_resource type="PackedScene" uid="uid://cde53xasybw5x" path="res://Scenes/Game/Piece Settings/Piece_Paint.tscn" id="12_mqbq2"]
+[ext_resource type="Texture2D" uid="uid://cifur8a8yf8sb" path="res://Mesh/Pintura Muse.png" id="12_chbip"]
 [ext_resource type="MeshLibrary" uid="uid://dst037v06mao0" path="res://Mesh/MLib_Museu2.tres" id="14_llems"]
 [ext_resource type="MeshLibrary" uid="uid://cbgtgajdfdfjo" path="res://Mesh/MLib_Frame.tres" id="15_shxcm"]
 [ext_resource type="PackedScene" uid="uid://h8x26iys3i3h" path="res://Scenes/Game/game_menu.tscn" id="18_jdbiy"]
+[ext_resource type="PackedScene" uid="uid://bh5nx00yniu5j" path="res://Scenes/Game/player_spanwner.tscn" id="19_e1h7m"]
+[ext_resource type="PackedScene" uid="uid://b07cwt7d2lwvv" path="res://Scenes/Game/PlayerSceneChanger.tscn" id="21_6ncov"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0wwh"]
 size = Vector3(4, 4, 0.5)
@@ -31,171 +31,19 @@ size = Vector3(2.4, 3, 0.15)
 size = Vector3(2.5, 3, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kuy6n"]
-size = Vector3(3.75, 2.75, 1)
+size = Vector3(3.75, 2.75, 2.425)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_675yj"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
-"attribute_data": PackedByteArray("/3/4/wYA/3//f/9//38GAPj//3//f/9/BgD/f/9/BgD/f/9/BgD/f/9/BgD/f/9/+P//f/9/+P//f/9/+P8GAP9/BgD4/wYA+P//f/j/+P//f/j/BgD/fwYABgAGAPj/+P8GAPj//38GAAYA/38GAPj//3/4/wYA/3/4//j/+P8GAP9/BgD4//9/+P/4//j/BgD4/wYA+P8GAAYA+P/4/wYA+P/4/wYABgAGAAYABgD4//j/"),
-"format": 34896613399,
-"index_count": 120,
-"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAOABAACwARABIABQATABQAEAAVABYADgAXABUACAAYABkAAgAaABsAHAAbAB0AHgAZAB8AIAAUACEAIgASACMAJAALACIAJQAIAB4AJgAFACAAJwACABwAKAABAAAAKQAEAAMAKgAHAAYAKwAKAAkALAANAAwADAAOAA8ACgARAAsABAATAAUADgAVABAADQAXAA4ABwAYAAgAAQAaAAIAAgAbABwACAAZAB4ABQAUACAACwASACIACQALACQABgAIACUAAwAFACYAAAACACcA"),
-"name": "Mat_Piece",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 45,
-"vertex_data": PackedByteArray("AAD/fwAAVNUAAP///39U1QAA/3//f1TV////fwAA////f///AAD///9//38AAP//////f////7///////3//v////3//f/+/AAD/f///AID/f/////8AgP9//3///wCA/38AAP//VNX//wAA/39U1f9/AAD/f1TVAAAAAP//VNUAAAAA/39U1f///////wCA////f///AIAAAP//AAD//wAA/38AAP///38AAAAAVNUAAAAAAABU1f//AAAAAFTV/////wAA/7////9/AAD/vwAA/////1TVAAD/f///VNUAAAAA/39U1QAAAAD//1TV//8AAP9//7///wAAAAD/v/9/AAAAAP//AAAAAAAA////fwAA//8AgP//AAD//wCAAAAAAP//AID//wAA////v///AAAAAP//AAAAAAAAVNUAAP//AABU1f////8AAP///////////78AAP////8AgP//AAD//1TVVFWqqlRVqqpUVaqq/7//v/+//7//v/+//38AAP9/AAD/fwAA/3////9/////f///qipU1aoqVNWqKlTVqipU1aoqVNX/f////3////+//7//v/+/qipU1aoqVNWqKlTV/38AAP9/AABUVaqqVFWqqlRVqqpUVaqq/38AAP9/AAD/v/+//7//v/9/////f////3////9/AAD/v/+/VFWqqlRVqqr/v/+//38AAP9///+qKlTV")
-}, {
-"aabb": AABB(-0.5, 0.5, -0.5, 1, 1e-05, 1),
-"attribute_data": PackedByteArray("/3/4/wYA/3//f/9/+P/4//j//3//fwYA+P8GAAYABgAGAPj/"),
-"format": 34896613399,
-"index_count": 24,
-"index_data": PackedByteArray("AAABAAIAAwACAAQABAAFAAYAAgAHAAUACAABAAAAAAACAAMAAgAFAAQAAQAHAAIA"),
-"name": "Mat_Painting",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 9,
-"vertex_data": PackedByteArray("/38AAP///78AAAAA/3//v/9/AAD/f/+///8AAP///7///wAA/3//v/9/AAAAAP+///8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f////3////9/////f////3////9/")
-}]
-blend_shape_mode = 0
+[sub_resource type="PlaneMesh" id="PlaneMesh_d3mrq"]
 
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_807k2"]
-parameter_name = "PaintTexture"
-texture_repeat = 2
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_gwp0h"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_3opuh"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_obv6g"]
-parameter_name = "Specular"
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5uh6c"]
-parameter_name = "Metal"
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rtwq4"]
-parameter_name = "Rough"
-
-[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_4lums"]
-parameter_name = "OffseToCell"
-default_value_enabled = true
-default_value = Vector2(1, 1)
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_08xbb"]
-parameter_name = "ScaleToSlices"
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6slo6"]
-expanded_output_ports = [0]
-source = 5
-texture = ExtResource("3_1feaw")
-texture_type = 1
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_k80uq"]
-output_port_for_preview = 0
-input_name = "uv"
-
-[sub_resource type="VisualShader" id="VisualShader_d1tm1"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
-
-uniform float ScaleToSlices;
-uniform vec2 OffseToCell = vec2(1.000000, 1.000000);
-uniform sampler2D PaintTexture : repeat_disable;
-uniform float Metal;
-uniform float Rough;
-uniform float Specular;
-
-
-
-void fragment() {
-// Input:9
-	vec2 n_out9p0 = UV;
-
-
-// FloatParameter:34
-	float n_out34p0 = ScaleToSlices;
-
-
-// VectorOp:27
-	vec2 n_out27p0 = n_out9p0 * vec2(n_out34p0);
-
-
-// Vector2Parameter:33
-	vec2 n_out33p0 = OffseToCell;
-
-
-// VectorOp:28
-	vec2 n_out28p0 = n_out27p0 + n_out33p0;
-
-
-	vec4 n_out8p0;
-// Texture2D:8
-	n_out8p0 = texture(PaintTexture, n_out28p0);
-
-
-// FloatParameter:31
-	float n_out31p0 = Metal;
-
-
-// FloatParameter:32
-	float n_out32p0 = Rough;
-
-
-// FloatParameter:30
-	float n_out30p0 = Specular;
-
-
-// Output:0
-	ALBEDO = vec3(n_out8p0.xyz);
-	METALLIC = n_out31p0;
-	ROUGHNESS = n_out32p0;
-	SPECULAR = n_out30p0;
-
-
-}
-"
-graph_offset = Vector2(-122.286, 277.87)
-flags/unshaded = true
-nodes/fragment/0/position = Vector2(400, 120)
-nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_6slo6")
-nodes/fragment/8/position = Vector2(160, 120)
-nodes/fragment/9/node = SubResource("VisualShaderNodeInput_k80uq")
-nodes/fragment/9/position = Vector2(-580, 140)
-nodes/fragment/12/node = SubResource("VisualShaderNodeTexture2DParameter_807k2")
-nodes/fragment/12/position = Vector2(-240, 340)
-nodes/fragment/27/node = SubResource("VisualShaderNodeVectorOp_gwp0h")
-nodes/fragment/27/position = Vector2(-240, 120)
-nodes/fragment/28/node = SubResource("VisualShaderNodeVectorOp_3opuh")
-nodes/fragment/28/position = Vector2(-40, 120)
-nodes/fragment/30/node = SubResource("VisualShaderNodeFloatParameter_obv6g")
-nodes/fragment/30/position = Vector2(120, 780)
-nodes/fragment/31/node = SubResource("VisualShaderNodeFloatParameter_5uh6c")
-nodes/fragment/31/position = Vector2(120, 380)
-nodes/fragment/32/node = SubResource("VisualShaderNodeFloatParameter_rtwq4")
-nodes/fragment/32/position = Vector2(120, 580)
-nodes/fragment/33/node = SubResource("VisualShaderNodeVec2Parameter_4lums")
-nodes/fragment/33/position = Vector2(-580, 600)
-nodes/fragment/34/node = SubResource("VisualShaderNodeFloatParameter_08xbb")
-nodes/fragment/34/position = Vector2(-580, 400)
-nodes/fragment/connections = PackedInt32Array(12, 0, 8, 2, 9, 0, 27, 0, 27, 0, 28, 0, 28, 0, 8, 0, 8, 0, 0, 0, 30, 0, 0, 4, 32, 0, 0, 3, 31, 0, 0, 2, 33, 0, 28, 1, 34, 0, 27, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1hy2q"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7j4yq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8wgw"]
 render_priority = 0
-shader = SubResource("VisualShader_d1tm1")
-shader_parameter/ScaleToSlices = 0.33
-shader_parameter/OffseToCell = Vector2(0, 0)
-shader_parameter/Metal = 0.0
-shader_parameter/Rough = 0.0
-shader_parameter/Specular = 2.0
-shader_parameter/PaintTexture = SubResource("CompressedTexture2D_1hy2q")
+shader = ExtResource("11_vmy3f")
+shader_parameter/ScaleToSlices = 0.3
+shader_parameter/OffseToCell = Vector2(0.3, -0.3)
+shader_parameter/Metal = null
+shader_parameter/Rough = null
+shader_parameter/Specular = null
+shader_parameter/PaintTexture = ExtResource("12_chbip")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obtvb"]
 
@@ -221,6 +69,10 @@ visible = false
 
 [node name="Test" type="Node" parent="."]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
+shadow_enabled = true
+
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource("3_cjblc")
 
@@ -229,13 +81,7 @@ stream = ExtResource("4_4r88f")
 volume_db = 5.0
 bus = &"music"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.6, 0)
-shadow_enabled = true
-
-[node name="Puzzles" type="Node" parent="."]
-
-[node name="Door" type="StaticBody3D" parent="Puzzles" node_paths=PackedStringArray("door_Audio")]
+[node name="Door" type="StaticBody3D" parent="." node_paths=PackedStringArray("door_Audio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8.026)
 script = ExtResource("4_6gbm8")
 openPos = Vector3(0, 5, 0)
@@ -243,17 +89,17 @@ lerpTime = 2.0
 door_Audio = NodePath("AudioStreamPlayer3D")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Door"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
 shape = SubResource("BoxShape3D_w0wwh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Door"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
 mesh = SubResource("BoxMesh_mhk3j")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Puzzles/Door"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Door"]
 stream = ExtResource("6_welb7")
 volume_db = 2.0
 
-[node name="MuseumDoor" type="StaticBody3D" parent="Puzzles" node_paths=PackedStringArray("door_Audio")]
+[node name="MuseumDoor" type="StaticBody3D" parent="." node_paths=PackedStringArray("door_Audio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500007, -0.5, 7.924)
 script = ExtResource("4_6gbm8")
 openPos = Vector3(0, 5, 0)
@@ -261,24 +107,29 @@ lerpTime = 2.0
 door_Audio = NodePath("AudioStreamPlayer3D")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/MuseumDoor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MuseumDoor"]
 shape = SubResource("BoxShape3D_2d8oe")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/MuseumDoor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MuseumDoor"]
 mesh = SubResource("BoxMesh_qs88n")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Puzzles/MuseumDoor"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="MuseumDoor"]
 stream = ExtResource("6_welb7")
 volume_db = 2.0
 
+[node name="PlayerSpanwner" parent="." instance=ExtResource("19_e1h7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.954)
+
+[node name="Puzzles" type="Node" parent="."]
+
 [node name="Area_Puzzle" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "vitoria", "targetInteractable") instance=ExtResource("7_ckkm8")]
-transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, 2.5, 0, -7.06469)
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, 2, 0, -7.075)
 collision_mask = 2
 input_ray_pickable = false
 puzzleCamera = NodePath("PuzzleCamera")
 locks = [NodePath("Lock"), NodePath("Lock2"), NodePath("Lock3")]
 vitoria = NodePath("AudioStreamPlayer")
-targetInteractable = NodePath("../Door")
+targetInteractable = NodePath("../../Door")
 metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle"]
@@ -287,22 +138,22 @@ volume_db = 3.0
 bus = &"sfx"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_kuy6n")
 
 [node name="PuzzleCamera" parent="Puzzles/Area_Puzzle" instance=ExtResource("2_ho5ji")]
 transform = Transform3D(2, 0, -2.78182e-08, 0, 2, 0, 2.78182e-08, 0, 2, 0, 0, 3)
 
 [node name="New_Piece" parent="Puzzles/Area_Puzzle" node_paths=PackedStringArray("nodeRef", "adStream") instance=ExtResource("12_4wc3v")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.5406, 0.566836, -1.078)
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 1.3594, 0.566836, -1.078)
 piecetype = 1
 nodeRef = NodePath("..")
 adStream = NodePath("../AudioStreamPlayer")
 
-[node name="Piece_Paint" parent="Puzzles/Area_Puzzle/New_Piece" instance=ExtResource("12_mqbq2")]
-transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, 0, 0, 0)
-mesh = SubResource("ArrayMesh_675yj")
-surface_material_override/1 = SubResource("ShaderMaterial_7j4yq")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Area_Puzzle/New_Piece"]
+transform = Transform3D(-1.09278e-08, 0.25, -1.09278e-08, 0, -1.09278e-08, -0.25, -0.25, -1.09278e-08, 4.77671e-16, -0.25, 0, 0)
+mesh = SubResource("PlaneMesh_d3mrq")
+surface_material_override/0 = SubResource("ShaderMaterial_k8wgw")
 
 [node name="Lock" parent="Puzzles/Area_Puzzle" node_paths=PackedStringArray("solverRef") instance=ExtResource("5_2isnb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.0764)
@@ -329,7 +180,7 @@ solverRef = NodePath("..")
 shape = SubResource("BoxShape3D_obtvb")
 
 [node name="GM_Frame" type="GridMap" parent="Puzzles/Area_Puzzle"]
-transform = Transform3D(2, 0, -2.13163e-14, 0, 2, 0, 2.13163e-14, 0, 2, 1.46082e-14, 0, -1.37062)
+transform = Transform3D(2, 0, -2.13163e-14, 0, 2, 0, 2.13163e-14, 0, 2, 0, 0, -1.57062)
 mesh_library = ExtResource("15_shxcm")
 cell_size = Vector3(0.25, 0.25, 0.25)
 cell_center_x = false
@@ -340,79 +191,6 @@ data = {
 "cells": PackedInt32Array(-131076, 0, 327681, -196604, 0, 393217, -196607, 0, 393216, -131073, 0, 393216, 196612, 0, 458753, 262140, 0, 262145, 262143, 0, 262144, 196609, 0, 262144, 4, 0, 458752, 65532, 0, 458752)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="Area_Puzzle2" parent="Puzzles" node_paths=PackedStringArray("puzzleCamera", "locks", "vitoria") instance=ExtResource("7_ckkm8")]
-transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -5.87868, 0, -7.06469)
-collision_mask = 2
-input_ray_pickable = false
-puzzleCamera = NodePath("PuzzleCamera")
-locks = [NodePath("Lock"), NodePath("Lock2"), NodePath("Lock3")]
-vitoria = NodePath("AudioStreamPlayer")
-metadata/_edit_group_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Puzzles/Area_Puzzle2"]
-stream = ExtResource("10_7mbdc")
-volume_db = 3.0
-bus = &"sfx"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
-shape = SubResource("BoxShape3D_kuy6n")
-
-[node name="PuzzleCamera" parent="Puzzles/Area_Puzzle2" instance=ExtResource("2_ho5ji")]
-transform = Transform3D(2, 0, -2.78182e-08, 0, 2, 0, 2.78182e-08, 0, 2, 0, 0, 3)
-
-[node name="New_Piece" parent="Puzzles/Area_Puzzle2" node_paths=PackedStringArray("nodeRef", "adStream") instance=ExtResource("12_4wc3v")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.5406, 0.566836, -1.078)
-piecetype = 1
-nodeRef = NodePath("..")
-adStream = NodePath("../AudioStreamPlayer")
-
-[node name="Piece_Paint" parent="Puzzles/Area_Puzzle2/New_Piece" instance=ExtResource("12_mqbq2")]
-transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, 0, 0, 0)
-mesh = SubResource("ArrayMesh_675yj")
-surface_material_override/1 = SubResource("ShaderMaterial_7j4yq")
-
-[node name="Lock" parent="Puzzles/Area_Puzzle2" node_paths=PackedStringArray("solverRef") instance=ExtResource("5_2isnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.0764)
-input_ray_pickable = false
-solverRef = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle2/Lock"]
-shape = SubResource("BoxShape3D_obtvb")
-
-[node name="Lock2" parent="Puzzles/Area_Puzzle2" node_paths=PackedStringArray("solverRef") instance=ExtResource("5_2isnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -1.0764)
-input_ray_pickable = false
-solverRef = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle2/Lock2"]
-shape = SubResource("BoxShape3D_obtvb")
-
-[node name="Lock3" parent="Puzzles/Area_Puzzle2" node_paths=PackedStringArray("solverRef") instance=ExtResource("5_2isnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -1.0764)
-input_ray_pickable = false
-solverRef = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Area_Puzzle2/Lock3"]
-shape = SubResource("BoxShape3D_obtvb")
-
-[node name="GM_Frame" type="GridMap" parent="Puzzles/Area_Puzzle2"]
-transform = Transform3D(2, 0, -2.13163e-14, 0, 2, 0, 2.13163e-14, 0, 2, 1.46082e-14, 0, -1.37062)
-mesh_library = ExtResource("15_shxcm")
-cell_size = Vector3(0.25, 0.25, 0.25)
-cell_center_x = false
-cell_center_y = false
-cell_center_z = false
-collision_mask = 31
-data = {
-"cells": PackedInt32Array(-131076, 0, 327681, -196604, 0, 393217, -196607, 0, 393216, -131073, 0, 393216, 196612, 0, 458753, 262140, 0, 262145, 262143, 0, 262144, 196609, 0, 262144, 4, 0, 458752, 65532, 0, 458752)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="Player" parent="." instance=ExtResource("1_idkq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 6.42535)
-current = true
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["wood"]]
 visible = false
@@ -480,5 +258,8 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="PlayerSceneChanger" parent="." instance=ExtResource("21_6ncov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.725, -1.65, -5.775)
+currentScene = 1
+
 [editable path="Puzzles/Area_Puzzle/New_Piece"]
-[editable path="Puzzles/Area_Puzzle2/New_Piece"]

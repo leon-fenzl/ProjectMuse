@@ -8,7 +8,7 @@ var solution : int
 var solved : bool = false
 var index : int = 0
 var player : Node
-@onready var lable := $Control/Label
+@export var lable : Label
 func _ready() -> void:
 	player = PlayerBehaviour.playerRef
 func _on_body_entered(body: Node3D) -> void:
@@ -26,7 +26,7 @@ func  Focus():
 func Unfocus():
 	lable.visible = !lable.visible
 func SumpUp():
-	if solution>= 0 and solution<=locks.size():
+	if solution>= 0 and solution <= locks.size():
 		solution += 1
 	if solution >= locks.size() and solved != true:
 		solved = true

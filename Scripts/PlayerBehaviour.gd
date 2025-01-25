@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name PlayerBehaviour
 @export var maxSpeed := 500.0
 @export var minSpeed := 200.0
-var speed : float
+var speed := minSpeed
 @export var jumpForce := 100.0
 @onready var gravity := Vector3.ZERO
 @onready var gravity_Direction = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
@@ -31,25 +31,26 @@ static var playerRef : Node
 
 func _init() -> void:
 	playerRef = self
+func _ready() -> void:
+	speed = minSpeed
 func _physics_process(delta: float) -> void:
-	if current == true:
-		GameModeChecker()
-		match Utilities.gameMode:
-			Utilities.GAMEMODE.PLAYER:
-				Jump(delta)
-				Gravity(delta)
-				Run()
-				MovePlayer(delta)
-				velocity = moveDirection + gravity + jumpVector
-				move_and_slide()
-				if input_dirs != Vector3.ZERO && is_on_floor():
-					FindFloor()
-					if  !audio_stream_player_steps.playing:
-						audio_stream_player_steps.play()
-				elif input_dirs == Vector3.ZERO && audio_stream_player_steps.playing && is_on_floor():
-					audio_stream_player_steps.stop()
-			Utilities.GAMEMODE.PUZZLE:
-				pass
+	GameModeChecker()
+	match Utilities.gameMode:
+		Utilities.GAMEMODE.PLAYER:
+			Jump(delta)
+			Gravity(delta)
+			Run()
+			MovePlayer(delta)
+			velocity = moveDirection + gravity + jumpVector
+			move_and_slide()
+			if input_dirs != Vector3.ZERO && is_on_floor():
+				FindFloor()
+				if  !audio_stream_player_steps.playing:
+					audio_stream_player_steps.play()
+			elif input_dirs == Vector3.ZERO && audio_stream_player_steps.playing && is_on_floor():
+				audio_stream_player_steps.stop()
+		Utilities.GAMEMODE.PUZZLE:
+			pass
 func Gravity(DELTA:float):
 	if !is_on_floor():
 		gravity += gravity_Direction * DELTA
@@ -79,24 +80,6 @@ func Jump(DELTA:float):
 		jumpVector -= transform.basis.y * jumpForce * DELTA
 	if is_on_floor() && jumpVector != -get_floor_normal():
 		jumpVector = -get_floor_normal() * DELTA
-func GameModeChecker():
-	if Input.is_action_just_pressed("Switch")  && onFocus == true:
-		if Utilities.gameMode != Utilities.GAMEMODE.PUZZLE:
-			Utilities.gameMode = Utilities.GAMEMODE.PUZZLE
-			playerCam.current = false
-			paintCam.current = true
-			bg_music.restrictedArea = true
-			%AudioStreamPlayer3D2.stop()
-			audio_stream_player_steps.stop()
-		else:
-			Utilities.gameMode = Utilities.GAMEMODE.PLAYER
-			playerCam.current = true
-			paintCam.current = false
-			bg_music.restrictedArea = false
-			%AudioStreamPlayer3D2.stop()
-			audio_stream_player_steps.stop()
-	else:
-		return
 func FindFloor():
 	if floor_ray.is_colliding():
 		floor_group = floor_ray.get_collider()
@@ -119,5 +102,22 @@ func FindFloor():
 			"_":
 				audio_stream_player_steps.stop()
 				audio_stream_player_steps.stream = wood
-
+func GameModeChecker():
+	if Input.is_action_just_pressed("Switch")  && onFocus == true:
+		if Utilities.gameMode != Utilities.GAMEMODE.PUZZLE:
+			Utilities.gameMode = Utilities.GAMEMODE.PUZZLE
+			playerCam.current = false
+			paintCam.current = true
+			bg_music.restrictedArea = true
+			%AudioStreamPlayer3D2.stop()
+			audio_stream_player_steps.stop()
+		else:
+			Utilities.gameMode = Utilities.GAMEMODE.PLAYER
+			playerCam.current = true
+			paintCam.current = false
+			bg_music.restrictedArea = false
+			%AudioStreamPlayer3D2.stop()
+			audio_stream_player_steps.stop()
+	else:
+		return
 	

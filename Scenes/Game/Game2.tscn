@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6mksydx0chak"]
+
+[ext_resource type="PackedScene" uid="uid://kr84las0fpin" path="res://IslandInherited.tscn" id="1_3fmjj"]
+[ext_resource type="PackedScene" uid="uid://b07cwt7d2lwvv" path="res://Scenes/Game/PlayerSceneChanger.tscn" id="2_jqcpf"]
+[ext_resource type="PackedScene" uid="uid://bh5nx00yniu5j" path="res://Scenes/Game/player_spanwner.tscn" id="3_eqoeq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kjrfa"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jmrhf"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[node name="Game2" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.05, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.05, 0)
+light_color = Color(1, 1, 0.513726, 1)
+shadow_enabled = true
+
+[node name="IslandInherited" parent="." instance=ExtResource("1_3fmjj")]
+transform = Transform3D(-20, 0, 1.74846e-06, 0, 20, 0, -1.74846e-06, 0, -20, -0.025, 0, -1.975)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_kjrfa")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jmrhf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.00192, 0.975, 0)
+shape = SubResource("ConvexPolygonShape3D_jmrhf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.99808, 0.975, 0)
+shape = SubResource("ConvexPolygonShape3D_jmrhf")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0.00191961, 0.975, 1)
+shape = SubResource("ConvexPolygonShape3D_jmrhf")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0.00191969, 0.975, -1)
+shape = SubResource("ConvexPolygonShape3D_jmrhf")
+
+[node name="PlayerSceneChanger" parent="." instance=ExtResource("2_jqcpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 2, -1.4)
+currentScene = 1
+
+[node name="PlayerSpanwner" parent="PlayerSceneChanger" instance=ExtResource("3_eqoeq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.229)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b07cwt7d2lwvv"]
+
+[ext_resource type="Script" path="res://Scenes/Game/PlayerSceneChanger.gd" id="1_uwuvx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cfbf"]
+
+[node name="PlayerSceneChanger" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_uwuvx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1cfbf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

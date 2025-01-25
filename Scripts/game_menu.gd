@@ -15,4 +15,3 @@ func _input(event):
 			audio_stream_player.play()
 	elif get_tree().paused == false:
 		audio_stream_player.stop()
-#tratlalalalalalala

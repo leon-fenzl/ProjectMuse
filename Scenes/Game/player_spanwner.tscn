@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh5nx00yniu5j"]
+
+[ext_resource type="Script" path="res://Scenes/Game/playerspawner.gd" id="1_vo4yt"]
+
+[node name="PlayerSpanwner" type="Marker3D"]
+script = ExtResource("1_vo4yt")
